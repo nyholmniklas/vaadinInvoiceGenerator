@@ -13,7 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package VaadinInvoiceGenerator.VaadinInvoiceGenerator;
+package org.niklas.vaadininvoice;
+
+import org.niklas.vaadininvoice.gui.VaadinInvoiceAppGui;
 
 import com.vaadin.Application;
 import com.vaadin.ui.Button;
@@ -27,26 +29,17 @@ import com.vaadin.ui.Window;
  * The Application's "main" class
  */
 @SuppressWarnings("serial")
-public class VaadinInvoiceGeneratorGUI extends Application
+public class VaadinInvoiceApp extends Application
 {
-    private Window window;
-    private final TextField nameTextField = new TextField("Name");
-    private final Button sayHelloButton = new Button("Say hello");
-
+    private VaadinInvoiceAppGui gui;
+    private VaadinInvoiceManager manager;
+    
     @Override
     public void init()
     {
-        window = new Window("InvoiceGenerator");
-        setMainWindow(window);
-        window.addComponent(nameTextField);
-        window.addComponent(sayHelloButton);
-        sayHelloButton.addListener(new ClickListener() {
-			
-			public void buttonClick(ClickEvent event) {
-				Label helloLabel = new Label("Hello " + nameTextField.getValue() + " !!");
-				window.addComponent(helloLabel);
-			}
-		});
+    	manager = new VaadinInvoiceManager();
+        gui = new VaadinInvoiceAppGui(manager);
+        setMainWindow(gui);
     }
     
 }

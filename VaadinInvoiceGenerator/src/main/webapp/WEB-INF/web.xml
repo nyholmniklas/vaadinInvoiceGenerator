@@ -12,7 +12,7 @@
         <init-param>
             <description>Vaadin application class to start</description>
             <param-name>application</param-name>
-            <param-value>VaadinInvoiceGenerator.VaadinInvoiceGenerator.VaadinInvoiceGeneratorGUI</param-value>
+            <param-value>org.niklas.vaadininvoice.VaadinInvoiceApp</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
