@@ -15,6 +15,7 @@ public class VaadinInvoiceAppGui extends Window {
 
 	private final Button createButton = new Button("Create pdf");
 	private final AddressPanel addressPanel = new AddressPanel();
+	private final InvoiceRowPanel invoiceRowPanel = new InvoiceRowPanel();
 	private final VaadinInvoiceManager manager;
 	
 	public VaadinInvoiceAppGui(VaadinInvoiceManager manager) {
@@ -25,6 +26,7 @@ public class VaadinInvoiceAppGui extends Window {
 
 	private void initComponents() {
 		addComponent(addressPanel);
+		addComponent(invoiceRowPanel);
 		addComponent(createButton);
 		createButton.addListener(new ClickListener() {
 			

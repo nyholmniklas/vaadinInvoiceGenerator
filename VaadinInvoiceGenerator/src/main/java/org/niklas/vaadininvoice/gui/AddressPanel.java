@@ -5,6 +5,7 @@ import com.vaadin.terminal.PaintException;
 import com.vaadin.terminal.PaintTarget;
 import com.vaadin.terminal.Resource;
 import com.vaadin.terminal.Paintable.RepaintRequestListener;
+import com.vaadin.terminal.Sizeable;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.HorizontalLayout;
@@ -32,6 +33,8 @@ public class AddressPanel extends Panel {
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		VerticalLayout companyLayout = new VerticalLayout();
 		VerticalLayout customerLayout = new VerticalLayout();
+		VerticalLayout thirdLayout = new VerticalLayout();
+		VerticalLayout fourthLayout = new VerticalLayout();
 		
 		Label companyLabel = new Label("<b>Company</b>");
 		companyLabel.setContentMode(Label.CONTENT_XHTML);
@@ -41,6 +44,7 @@ public class AddressPanel extends Panel {
 		companyLayout.addComponent(companyCityTextField);
 		companyLayout.addComponent(companyPostcodeTextField);
 		companyLayout.setSpacing(true);
+		companyLayout.setSizeFull();
 		
 		Label customerLabel = new Label("<b>Customer</b>");
 		customerLabel.setContentMode(Label.CONTENT_XHTML);
@@ -50,9 +54,16 @@ public class AddressPanel extends Panel {
 		customerLayout.addComponent(customerCityTextField);
 		customerLayout.addComponent(customerPostcodeTextField);
 		customerLayout.setSpacing(true);
+		customerLayout.setSizeFull();
+		
+		thirdLayout.setSizeFull();
+		fourthLayout.setSizeFull();
 		
 		horizontalLayout.addComponent(companyLayout);
 		horizontalLayout.addComponent(customerLayout);
+		horizontalLayout.addComponent(thirdLayout);
+		horizontalLayout.addComponent(fourthLayout);
+		horizontalLayout.setSizeFull();
 		
 		
 		horizontalLayout.setSpacing(true);
