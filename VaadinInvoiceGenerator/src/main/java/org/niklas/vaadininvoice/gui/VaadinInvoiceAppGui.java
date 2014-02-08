@@ -11,8 +11,11 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 public class VaadinInvoiceAppGui extends Window {
-	private final TextField nameTextField = new TextField("Name");
-	private final Button sayHelloButton = new Button("Say hello");
+	private final TextField customerNameTextField = new TextField("Customer Name");
+	private final TextField customerStreetTextField = new TextField("Street");
+	private final TextField customerCityTextField = new TextField("City");
+	private final TextField customerPostcodeTextField = new TextField("Postcode");
+	private final Button createButton = new Button("Create pdf");
 	
 	private final VaadinInvoiceManager manager;
 	
@@ -23,24 +26,38 @@ public class VaadinInvoiceAppGui extends Window {
 	}
 
 	private void initComponents() {
-		addComponent(nameTextField);
-		addComponent(sayHelloButton);
-		sayHelloButton.addListener(new ClickListener() {
+		addComponent(customerNameTextField);
+		addComponent(customerStreetTextField);
+		addComponent(customerCityTextField);
+		addComponent(customerPostcodeTextField);
+		addComponent(createButton);
+		
+		createButton.addListener(new ClickListener() {
 			
 			public void buttonClick(ClickEvent event) {
-				Label helloLabel = new Label("Hello "
-						+ nameTextField.getValue() + " !!");
-				addComponent(helloLabel);
 				createPdf();
 			}
 		});
 	}
 	
-	public void createPdf() {
+	private void createPdf() {
 		manager.createPdfTest(new InvoiceMapperImpl().getInvoiceFromForm(this));
 	}
 
-	public String getNameTextFieldValue() {
-		return nameTextField.getValue().toString();
+	public String getCustomerName() {
+		return customerNameTextField.getValue().toString();
 	}
+
+	public String getCustomerStreet() {
+		return customerStreetTextField.getValue().toString();
+	}
+	
+	public String getCustomerCity() {
+		return customerCityTextField.getValue().toString();
+	}
+	
+	public String getCustomerPostcode() {
+		return customerPostcodeTextField.getValue().toString();
+	}
+	
 }

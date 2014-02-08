@@ -6,8 +6,14 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 	
 	public Invoice getInvoiceFromForm(VaadinInvoiceAppGui gui) {
 		Invoice invoice = new Invoice();
-		System.out.println(gui.getNameTextFieldValue());
-		invoice.setName(gui.getNameTextFieldValue());
+		
+		Address customer = new Address();
+		customer.setName(gui.getCustomerName());
+		customer.setAddress(gui.getCustomerStreet());
+		customer.setCity(gui.getCustomerCity());
+		customer.setPostcode(gui.getCustomerPostcode());
+		invoice.setCustomer(customer);
+		
 		return invoice;
 	}
 
