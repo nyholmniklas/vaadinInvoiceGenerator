@@ -14,6 +14,13 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 		customer.setPostcode(gui.getCustomerPostcode());
 		invoice.setCustomer(customer);
 		
+		Address company = new Address();
+		company.setName(gui.getCompanyName());
+		company.setAddress(gui.getCompanyStreet());
+		company.setCity(gui.getCompanyCity());
+		company.setPostcode(gui.getCompanyPostcode());
+		invoice.setCompany(company);
+		
 		return invoice;
 	}
 
