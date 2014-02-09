@@ -13,6 +13,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -27,6 +28,7 @@ public class VaadinInvoiceAppGui extends Window {
 	private final AddressPanel addressPanel = new AddressPanel();
 	private final InvoiceRowPanel invoiceRowPanel = new InvoiceRowPanel();
 	private final VaadinInvoiceManager manager;
+	private final VerticalLayout layout = new VerticalLayout();
 
 	public VaadinInvoiceAppGui(VaadinInvoiceManager manager) {
 		super("VaadinInvoiceApp");
@@ -35,9 +37,12 @@ public class VaadinInvoiceAppGui extends Window {
 	}
 
 	private void initComponents() {
-		addComponent(addressPanel);
-		addComponent(invoiceRowPanel);
-		addComponent(createButton);
+		layout.addComponent(addressPanel);
+		layout.addComponent(invoiceRowPanel);
+		layout.addComponent(createButton);
+		layout.setMargin(true);
+		layout.setSpacing(true);
+		addComponent(layout);
 		createButton.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
@@ -57,7 +62,7 @@ public class VaadinInvoiceAppGui extends Window {
 		Resource fileResource = new FileResource(file);
 		FileDownloader fileDowloader = new FileDownloader(fileResource);
 		fileDowloader.extend(downloadButton);
-		addComponent(downloadButton);
+		layout.addComponent(downloadButton);
 	}
 
 

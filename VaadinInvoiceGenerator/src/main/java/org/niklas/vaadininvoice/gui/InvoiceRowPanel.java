@@ -37,8 +37,9 @@ public class InvoiceRowPanel extends Panel {
 		nextAvailableRowId = 0;
 
 		HorizontalLayout mainLayout = new HorizontalLayout();
-		VerticalLayout firstLayout = new VerticalLayout();
+
 		HorizontalLayout buttonsLayout = new HorizontalLayout();
+		VerticalLayout secondLayout = new VerticalLayout();
 		HorizontalLayout totalLayout = new HorizontalLayout();
 
 		addComponent(createTable());
@@ -61,8 +62,8 @@ public class InvoiceRowPanel extends Panel {
 			}
 		});
 		
-		firstLayout.setSizeFull();
-		buttonsLayout.setSizeFull();
+//		buttonsLayout.setSizeFull();
+		secondLayout.setSizeFull();
 		totalLayout.setSizeFull();
 		invoiceRowTable.addValueChangeListener(new ValueChangeListener() {
 			
@@ -73,8 +74,8 @@ public class InvoiceRowPanel extends Panel {
 		});
 		totalLayout.addComponent(createTotal());
 		
-		mainLayout.addComponent(firstLayout);
 		mainLayout.addComponent(buttonsLayout);
+		mainLayout.addComponent(secondLayout);
 		mainLayout.addComponent(totalLayout);
 		addComponent(mainLayout);
 		mainLayout.setSizeFull();

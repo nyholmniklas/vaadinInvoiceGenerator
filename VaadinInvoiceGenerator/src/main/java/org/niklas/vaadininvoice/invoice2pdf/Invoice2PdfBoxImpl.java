@@ -91,7 +91,7 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		writeBoldText(400, 500, "Total", contentStream);
 		
 		for (int i = 0; i < invoice.getRows().size() ; i++) {
-			InvoiceRow row = invoice.getRows().get(0);
+			InvoiceRow row = invoice.getRows().get(i);
 			int y = 460 - (14*i);
 			writeText(100, y, Integer.toString(row.getQuantity()), contentStream);
 			writeText(200, y, row.getDescription(), contentStream);
