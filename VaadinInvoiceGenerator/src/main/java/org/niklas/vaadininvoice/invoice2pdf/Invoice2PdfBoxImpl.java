@@ -11,8 +11,8 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.niklas.vaadininvoice.invoice.Invoice;
 
 public class Invoice2PdfBoxImpl implements Invoice2Pdf{
-	private final PDType1Font addressPropertyFont = PDType1Font.HELVETICA_BOLD;
-	private final PDType1Font addressValueFont = PDType1Font.HELVETICA;
+	private final PDType1Font normalFont = PDType1Font.HELVETICA;
+	private final PDType1Font boldFont = PDType1Font.HELVETICA_BOLD;
 
 	public File getPdfFromInvoice(Invoice invoice) {
 		PDDocument doc = null;
@@ -35,34 +35,52 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		PDPage page = new PDPage();
 		PDPageContentStream contentStream = new PDPageContentStream(doc, page);
 		writeCustomerAddress(invoice, page, contentStream);
+		writeCompanyAddress(invoice, page, contentStream);
+		writeDueDate(invoice, page, contentStream);
 		contentStream.close();
 		return page;
 	}
 	
 	private PDPage writeCustomerAddress(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
-		writeAddressRow(50, 700, "Name: ", invoice.getCustomer().getName(), contentStream);
-		writeAddressRow(50, 685, "Street: ", invoice.getCustomer().getAddress(), contentStream);
-		writeAddressRow(50, 670, "Postcode: ", invoice.getCustomer().getPostcode(), contentStream);
-		writeAddressRow(50, 655, "City", invoice.getCustomer().getCity(), contentStream);
+		writeBoldText(50, 720, "Billable", contentStream);
+		writeText(50, 700, invoice.getCustomer().getName(), contentStream);
+		writeText(50, 685, invoice.getCustomer().getAddress(), contentStream);
+		writeText(50, 670, invoice.getCustomer().getPostcode(), contentStream);
+		writeText(50, 655, invoice.getCustomer().getCity(), contentStream);
 		return page;
 	}
 	
-	//X and Y coordinates start from BOTTOM left (pdfbox api)
-	private void writeAddressRow(int x, int y, String property, String value, PDPageContentStream contentStream) throws IOException {
+	private PDPage writeCompanyAddress(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
+		writeBoldText(200, 720, "Payable to", contentStream);
+		writeText(200, 700, invoice.getCompany().getName(), contentStream);
+		writeText(200, 685, invoice.getCompany().getAddress(), contentStream);
+		writeText(200, 670, invoice.getCompany().getPostcode(), contentStream);
+		writeText(200, 655, invoice.getCompany().getCity(), contentStream);
+		return page;
+	}
+	
+	private void writeText(int x, int y, String value, PDPageContentStream contentStream) throws IOException {		
+		writeTextWithFont(x, y, value, contentStream, normalFont);
+	}
+	
+	private void writeBoldText(int x, int y, String value, PDPageContentStream contentStream) throws IOException {		
+		writeTextWithFont(x, y, value, contentStream, boldFont);
+	}
+	
+	private void writeTextWithFont(int x, int y, String value, PDPageContentStream contentStream, PDType1Font font) throws IOException {
 		contentStream.moveTo(0, 0);
 		contentStream.beginText();
-		contentStream.setFont(addressPropertyFont, 12);
 		contentStream.moveTextPositionByAmount(x, y);
-		contentStream.drawString(property);
-		contentStream.endText();
-		
-		contentStream.moveTo(0, 0);
-		contentStream.beginText();
-		contentStream.moveTextPositionByAmount(x+70, y);
-		contentStream.setFont(addressValueFont, 12);
+		contentStream.setFont(font, 12);
 		contentStream.drawString(value);
-		contentStream.moveTextPositionByAmount(0, -15);
 		contentStream.endText();
+	}
+	
+	
+	private PDPage writeDueDate(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
+		writeBoldText(400, 720, "Due Date", contentStream);
+		writeText(400, 700, invoice.getDueDate(), contentStream);
+		return page;
 	}
 
 }

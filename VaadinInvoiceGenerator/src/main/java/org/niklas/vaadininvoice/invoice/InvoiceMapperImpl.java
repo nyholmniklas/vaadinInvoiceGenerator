@@ -21,6 +21,8 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 		company.setPostcode(gui.getCompanyPostcode());
 		invoice.setCompany(company);
 		
+		invoice.setDueDate(gui.getDueDate());
+		
 		return invoice;
 	}
 

@@ -9,6 +9,7 @@ public class Invoice {
 	private String description;
 	private float totalsum;
 	private List<InvoiceRow> rows;
+	private String dueDate;
 	
 	public Address getCustomer() {
 		return customer;
@@ -45,6 +46,12 @@ public class Invoice {
 	}
 	public void setRows(List<InvoiceRow> rows) {
 		this.rows = rows;
+	}
+	public String getDueDate() {
+		return dueDate;
+	}
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
 	
 	
