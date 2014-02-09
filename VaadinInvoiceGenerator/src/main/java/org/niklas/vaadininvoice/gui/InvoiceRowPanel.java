@@ -73,6 +73,7 @@ public class InvoiceRowPanel extends Panel {
 			}
 		});
 		totalLayout.addComponent(createTotal());
+		buttonsLayout.setMargin(true);
 		
 		mainLayout.addComponent(buttonsLayout);
 		mainLayout.addComponent(secondLayout);
