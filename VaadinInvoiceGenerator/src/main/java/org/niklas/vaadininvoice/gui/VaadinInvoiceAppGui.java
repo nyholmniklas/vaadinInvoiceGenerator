@@ -11,6 +11,7 @@ import org.niklas.vaadininvoice.invoice.InvoiceRow;
 
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
@@ -21,10 +22,12 @@ import com.vaadin.server.FileDownloader;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.Resource;
 import com.vaadin.server.StreamResource;
+import com.vaadin.shared.ui.label.ContentMode;
 
 public class VaadinInvoiceAppGui extends Window {
 
-	private final Button createButton = new Button("Create pdf");
+	private final Button createButton = new Button("Generate PDF");
+	private final TitlePanel titlePanel = new TitlePanel(createButton);
 	private final AddressPanel addressPanel = new AddressPanel();
 	private final InvoiceRowPanel invoiceRowPanel = new InvoiceRowPanel();
 	private final VaadinInvoiceManager manager;
@@ -37,17 +40,20 @@ public class VaadinInvoiceAppGui extends Window {
 	}
 
 	private void initComponents() {
+		layout.addComponent(titlePanel);
 		layout.addComponent(addressPanel);
 		layout.addComponent(invoiceRowPanel);
-		layout.addComponent(createButton);
 		layout.setMargin(true);
 		layout.setSpacing(true);
+		
+
 		addComponent(layout);
 		createButton.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
 				createPdf();
-				addDownloadButton();
+				downloadPdf();
+				titlePanel.setLink();
 			}
 		});
 	}
@@ -55,14 +61,12 @@ public class VaadinInvoiceAppGui extends Window {
 	private void createPdf() {
 		manager.createPdfTest(new InvoiceMapperImpl().getInvoiceFromForm(this));
 	}
-
-	private void addDownloadButton(){
-		Button downloadButton = new Button("Download Pdf");
-		File file = new File("C:\\temp\\firstout.pdf");
-		Resource fileResource = new FileResource(file);
-		FileDownloader fileDowloader = new FileDownloader(fileResource);
-		fileDowloader.extend(downloadButton);
-		layout.addComponent(downloadButton);
+	
+	private void downloadPdf() {
+//		File file = new File("C:\\temp\\firstout.pdf");
+//		Resource fileResource = new FileResource(file);
+//		Window pdfWindow = new Window();
+//		pdfWindow.addComponent(f);
 	}
 
 

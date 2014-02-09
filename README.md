@@ -2,6 +2,6 @@ Vaadin Invoice Generator
 ======================
 
 ## About
-Simple web pplication for generating a PDF invoice.
+Simple web application for generating a PDF invoice.
 Built on Vaadin framework.
 Maven build.
