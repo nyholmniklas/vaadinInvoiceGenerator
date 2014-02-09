@@ -72,7 +72,9 @@ public class VaadinInvoiceAppGui extends Window {
 		return addressPanel.getCompanyPostcodeTextField().getValue().toString();
 	}
 	
-
+	public String getDueDate(){
+		return addressPanel.getDueDateField().getValue().toString();
+	}
 
 	
 }

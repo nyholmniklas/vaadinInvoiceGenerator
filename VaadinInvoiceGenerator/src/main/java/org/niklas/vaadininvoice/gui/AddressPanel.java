@@ -8,7 +8,9 @@ import com.vaadin.terminal.Paintable.RepaintRequestListener;
 import com.vaadin.terminal.Sizeable;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.ComponentContainer;
+import com.vaadin.ui.DateField;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.InlineDateField;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.RichTextArea;
@@ -20,21 +22,21 @@ import com.vaadin.ui.ComponentContainer.ComponentAttachListener;
 import com.vaadin.ui.ComponentContainer.ComponentDetachListener;
 
 public class AddressPanel extends Panel {
-	private final TextField companyNameTextField = new TextField("Name");
-	private final TextField companyStreetTextField = new TextField("Street");
-	private final TextField companyCityTextField = new TextField("City");
-	private final TextField companyPostcodeTextField = new TextField("Postcode");
-	private final TextField customerNameTextField = new TextField("Name");
-	private final TextField customerStreetTextField = new TextField("Street");
-	private final TextField customerCityTextField = new TextField("City");
-	private final TextField customerPostcodeTextField = new TextField("Postcode");
+	private final TextField companyNameTextField = new TextField("Name", "Acme Inc.");
+	private final TextField companyStreetTextField = new TextField("Street", "Main Street");
+	private final TextField companyCityTextField = new TextField("City", "El Dorado");
+	private final TextField companyPostcodeTextField = new TextField("Postcode", "31415");
+	private final TextField customerNameTextField = new TextField("Name", "John Doe");
+	private final TextField customerStreetTextField = new TextField("Street", "Elkroad 52");
+	private final TextField customerCityTextField = new TextField("City", "Atlantis");
+	private final TextField customerPostcodeTextField = new TextField("Postcode", "235711");
+	private final InlineDateField dueDateField = new InlineDateField(" ");
 	
 	public AddressPanel() {
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		VerticalLayout companyLayout = new VerticalLayout();
 		VerticalLayout customerLayout = new VerticalLayout();
-		VerticalLayout thirdLayout = new VerticalLayout();
-		VerticalLayout fourthLayout = new VerticalLayout();
+		VerticalLayout dueDateLayout = new VerticalLayout();
 		
 		Label companyLabel = new Label("<b>Company</b>");
 		companyLabel.setContentMode(Label.CONTENT_XHTML);
@@ -56,17 +58,22 @@ public class AddressPanel extends Panel {
 		customerLayout.setSpacing(true);
 		customerLayout.setSizeFull();
 		
-		thirdLayout.setSizeFull();
-		fourthLayout.setSizeFull();
+		dueDateLayout.setSizeFull();
+		Label dueDateLabel = new Label("<b>Due Date</b>");
+		dueDateLabel.setContentMode(Label.CONTENT_XHTML);
+		dueDateField.setResolution(InlineDateField.RESOLUTION_DAY);
+		dueDateLayout.addComponent(dueDateLabel);
+		dueDateLayout.addComponent(dueDateField);
+		
 		
 		horizontalLayout.addComponent(companyLayout);
 		horizontalLayout.addComponent(customerLayout);
-		horizontalLayout.addComponent(thirdLayout);
-		horizontalLayout.addComponent(fourthLayout);
+		horizontalLayout.addComponent(dueDateLayout);
 		horizontalLayout.setSizeFull();
 		
 		
 		horizontalLayout.setSpacing(true);
+		horizontalLayout.setMargin(true);
 		addComponent(horizontalLayout);
 	}
 
@@ -101,6 +108,11 @@ public class AddressPanel extends Panel {
 	public TextField getCustomerPostcodeTextField() {
 		return customerPostcodeTextField;
 	}
+
+	public DateField getDueDateField() {
+		return dueDateField;
+	}
+	
 	
 	
 }
