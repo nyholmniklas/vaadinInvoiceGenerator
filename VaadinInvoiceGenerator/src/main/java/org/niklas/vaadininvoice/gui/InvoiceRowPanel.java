@@ -1,5 +1,6 @@
 package org.niklas.vaadininvoice.gui;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -7,6 +8,7 @@ import org.niklas.vaadininvoice.invoice.InvoiceRow;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
+import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Button;
@@ -15,6 +17,7 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Component.Event;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
@@ -27,6 +30,7 @@ public class InvoiceRowPanel extends Panel {
 	private boolean editable = false;
 	private Button addRowButton = new Button("Add Item");
 	private HashMap<Integer, InvoiceRow> invoiceRows = new HashMap<Integer, InvoiceRow>();
+	TextField grandTotal = new TextField("Grand Total");
 	private int nextAvailableRowId;
 
 	public InvoiceRowPanel() {
@@ -34,22 +38,20 @@ public class InvoiceRowPanel extends Panel {
 
 		HorizontalLayout mainLayout = new HorizontalLayout();
 		VerticalLayout firstLayout = new VerticalLayout();
-		VerticalLayout secondLayout = new VerticalLayout();
 		HorizontalLayout buttonsLayout = new HorizontalLayout();
-		VerticalLayout totalLayout = new VerticalLayout();
+		HorizontalLayout totalLayout = new HorizontalLayout();
 
 		addComponent(createTable());
 		
 		buttonsLayout.addComponent(addRowButton);
-		addRowButton.addListener(new ClickListener() {
-
+		addRowButton.addClickListener(new ClickListener() {
+			
 			public void buttonClick(ClickEvent event) {
 				addRow();
 			}
 		});
 		buttonsLayout.addComponent(editButton);
-		editButton.addListener(new ClickListener() {
-			
+		editButton.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				editable = !editable;
 				invoiceRowTable.setEditable(editable);
@@ -60,12 +62,18 @@ public class InvoiceRowPanel extends Panel {
 		});
 		
 		firstLayout.setSizeFull();
-		secondLayout.setSizeFull();
 		buttonsLayout.setSizeFull();
 		totalLayout.setSizeFull();
+		invoiceRowTable.addValueChangeListener(new ValueChangeListener() {
+			
+			public void valueChange(ValueChangeEvent event) {
+				updateRows();
+				
+			}
+		});
+		totalLayout.addComponent(createTotal());
 		
 		mainLayout.addComponent(firstLayout);
-		mainLayout.addComponent(secondLayout);
 		mainLayout.addComponent(buttonsLayout);
 		mainLayout.addComponent(totalLayout);
 		addComponent(mainLayout);
@@ -73,6 +81,15 @@ public class InvoiceRowPanel extends Panel {
 		mainLayout.setSpacing(true);
 	}
 	
+	private Component createTotal() {
+		VerticalLayout layout = new VerticalLayout();
+		grandTotal.setReadOnly(true);
+		grandTotal.setValue(calculateTotal(invoiceRows).toString());
+		layout.addComponent(grandTotal);
+		layout.setMargin(true);
+		return layout;
+	}
+
 	public Component createTable(){
 		VerticalLayout layout = new VerticalLayout();
 		invoiceRowTable.addContainerProperty("Quantity", Integer.class, 1);
@@ -114,12 +131,21 @@ public class InvoiceRowPanel extends Panel {
 			invoiceRows.remove(id);
 			invoiceRowTable.removeItem(id);
 		}
+		grandTotal.setValue(calculateTotal(invoiceRows).toString());;
 	}
 
 	private int generateId() {
 		int id = nextAvailableRowId;
 		nextAvailableRowId++;
 		return nextAvailableRowId;
+	}
+	
+	private Double calculateTotal(HashMap<Integer, InvoiceRow> invoiceRows){
+		Double total = (double) 0;
+		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
+			total += row.getTotal();
+		}
+		return total;
 	}
 
 	public HashMap<Integer, InvoiceRow> getInvoiceRows() {

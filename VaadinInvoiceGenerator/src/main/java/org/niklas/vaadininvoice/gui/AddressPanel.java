@@ -50,6 +50,8 @@ public class AddressPanel extends Panel {
 		Label dueDateLabel = new Label("<b>Due Date</b>");
 		dueDateLabel.setContentMode(Label.CONTENT_XHTML);
 		dueDateField.setResolution(InlineDateField.RESOLUTION_DAY);
+		dueDateField.setDateFormat("dd-MM-yyy");
+		dueDateField.setValue(new java.util.Date());
 		dueDateLayout.addComponent(dueDateLabel);
 		dueDateLayout.addComponent(dueDateField);
 		
