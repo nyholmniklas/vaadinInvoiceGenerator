@@ -1,5 +1,7 @@
 package org.niklas.vaadininvoice.invoice;
 
+import java.util.ArrayList;
+
 import org.niklas.vaadininvoice.gui.VaadinInvoiceAppGui;
 
 public class InvoiceMapperImpl implements InvoiceMapper {
@@ -22,6 +24,9 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 		invoice.setCompany(company);
 		
 		invoice.setDueDate(gui.getDueDate());
+		
+		ArrayList<InvoiceRow> invoiceRows = new ArrayList<InvoiceRow>(gui.getInvoiceRows().values());
+		invoice.setRows(invoiceRows);
 		
 		return invoice;
 	}

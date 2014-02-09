@@ -76,7 +76,6 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		contentStream.endText();
 	}
 	
-	
 	private PDPage writeDueDate(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
 		writeBoldText(400, 720, "Due Date", contentStream);
 		writeText(400, 700, invoice.getDueDate(), contentStream);

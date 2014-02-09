@@ -121,4 +121,10 @@ public class InvoiceRowPanel extends Panel {
 		nextAvailableRowId++;
 		return nextAvailableRowId;
 	}
+
+	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
+		return invoiceRows;
+	}
+	
+	
 }

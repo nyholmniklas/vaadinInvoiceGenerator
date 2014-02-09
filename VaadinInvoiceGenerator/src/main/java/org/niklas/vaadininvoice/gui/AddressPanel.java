@@ -1,25 +1,13 @@
 package org.niklas.vaadininvoice.gui;
 
-import com.vaadin.Application;
-import com.vaadin.terminal.PaintException;
-import com.vaadin.terminal.PaintTarget;
-import com.vaadin.terminal.Resource;
-import com.vaadin.terminal.Paintable.RepaintRequestListener;
-import com.vaadin.terminal.Sizeable;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.InlineDateField;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.RichTextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
-import com.vaadin.ui.Component.Listener;
-import com.vaadin.ui.ComponentContainer.ComponentAttachListener;
-import com.vaadin.ui.ComponentContainer.ComponentDetachListener;
+
 
 public class AddressPanel extends Panel {
 	private final TextField companyNameTextField = new TextField("Name", "Acme Inc.");

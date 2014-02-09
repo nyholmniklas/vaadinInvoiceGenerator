@@ -17,29 +17,32 @@ package org.niklas.vaadininvoice;
 
 import org.niklas.vaadininvoice.gui.VaadinInvoiceAppGui;
 
-import com.vaadin.Application;
+import com.vaadin.server.WrappedRequest;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Window;
 
 /**
  * The Application's "main" class
  */
 @SuppressWarnings("serial")
-public class VaadinInvoiceApp extends Application
+public class VaadinInvoiceApp extends UI
 {
     private VaadinInvoiceAppGui gui;
     private VaadinInvoiceManager manager;
     
-    @Override
-    public void init()
-    {
+
+	@Override
+	protected void init(WrappedRequest request) {
     	manager = new VaadinInvoiceManager();
         gui = new VaadinInvoiceAppGui(manager);
-        setMainWindow(gui);
-    }
+        addWindow(gui);
+        gui.setSizeFull();
+		
+	}
     
 }
