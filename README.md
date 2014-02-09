@@ -1,7 +1,7 @@
-vaadinInvoiceGenerator
+Vaadin Invoice Generator
 ======================
 
-# About
-Simple weba pplication for generating a PDF invoice.
+## About
+Simple web pplication for generating a PDF invoice.
 Built on Vaadin framework.
 Maven build.
