@@ -9,6 +9,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.niklas.vaadininvoice.invoice.Invoice;
+import org.niklas.vaadininvoice.invoice.InvoiceRow;
 
 public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	private final PDType1Font normalFont = PDType1Font.HELVETICA;
@@ -37,25 +38,26 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		writeCustomerAddress(invoice, page, contentStream);
 		writeCompanyAddress(invoice, page, contentStream);
 		writeDueDate(invoice, page, contentStream);
+		writeInvoiceRows(invoice, page, contentStream);
 		contentStream.close();
 		return page;
 	}
 	
 	private PDPage writeCustomerAddress(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
-		writeBoldText(50, 720, "Billable", contentStream);
-		writeText(50, 700, invoice.getCustomer().getName(), contentStream);
-		writeText(50, 685, invoice.getCustomer().getAddress(), contentStream);
-		writeText(50, 670, invoice.getCustomer().getPostcode(), contentStream);
-		writeText(50, 655, invoice.getCustomer().getCity(), contentStream);
+		writeBoldText(100, 720, "Billable", contentStream);
+		writeText(100, 700, invoice.getCustomer().getName(), contentStream);
+		writeText(100, 685, invoice.getCustomer().getAddress(), contentStream);
+		writeText(100, 670, invoice.getCustomer().getPostcode(), contentStream);
+		writeText(100, 655, invoice.getCustomer().getCity(), contentStream);
 		return page;
 	}
 	
 	private PDPage writeCompanyAddress(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
-		writeBoldText(200, 720, "Payable to", contentStream);
-		writeText(200, 700, invoice.getCompany().getName(), contentStream);
-		writeText(200, 685, invoice.getCompany().getAddress(), contentStream);
-		writeText(200, 670, invoice.getCompany().getPostcode(), contentStream);
-		writeText(200, 655, invoice.getCompany().getCity(), contentStream);
+		writeBoldText(250, 720, "Payable to", contentStream);
+		writeText(250, 700, invoice.getCompany().getName(), contentStream);
+		writeText(250, 685, invoice.getCompany().getAddress(), contentStream);
+		writeText(250, 670, invoice.getCompany().getPostcode(), contentStream);
+		writeText(250, 655, invoice.getCompany().getCity(), contentStream);
 		return page;
 	}
 	
@@ -79,6 +81,24 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	private PDPage writeDueDate(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
 		writeBoldText(400, 720, "Due Date", contentStream);
 		writeText(400, 700, invoice.getDueDate(), contentStream);
+		return page;
+	}
+	
+	private PDPage writeInvoiceRows(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
+		writeBoldText(100, 500, "Quantity", contentStream);
+		writeBoldText(200, 500, "Description", contentStream);
+		writeBoldText(300, 500, "Price", contentStream);
+		writeBoldText(400, 500, "Total", contentStream);
+		
+		for (int i = 0; i < invoice.getRows().size() ; i++) {
+			InvoiceRow row = invoice.getRows().get(0);
+			int y = 460 - (14*i);
+			writeText(100, y, Integer.toString(row.getQuantity()), contentStream);
+			writeText(200, y, row.getDescription(), contentStream);
+			writeText(300, y, row.getPrice().toString(), contentStream);
+			writeText(400, y, row.getTotal().toString(), contentStream);
+		}
+		
 		return page;
 	}
 

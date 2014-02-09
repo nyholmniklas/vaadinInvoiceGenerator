@@ -131,7 +131,9 @@ public class InvoiceRowPanel extends Panel {
 			invoiceRows.remove(id);
 			invoiceRowTable.removeItem(id);
 		}
-		grandTotal.setValue(calculateTotal(invoiceRows).toString());;
+		grandTotal.setReadOnly(false);
+		grandTotal.setValue(calculateTotal(invoiceRows).toString());
+		grandTotal.setReadOnly(true);
 	}
 
 	private int generateId() {
