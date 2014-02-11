@@ -24,7 +24,7 @@ import com.vaadin.server.Resource;
 import com.vaadin.server.StreamResource;
 import com.vaadin.shared.ui.label.ContentMode;
 
-public class VaadinInvoiceAppGui extends Window {
+public class VaadinInvoiceAppGui extends Panel {
 
 	private final Button createButton = new Button("Generate PDF");
 	private final TitlePanel titlePanel = new TitlePanel(createButton);
@@ -34,7 +34,7 @@ public class VaadinInvoiceAppGui extends Window {
 	private final VerticalLayout layout = new VerticalLayout();
 
 	public VaadinInvoiceAppGui(VaadinInvoiceManager manager) {
-		super("VaadinInvoiceApp");
+		super();
 		this.manager = manager;
 		initComponents();
 	}
@@ -47,13 +47,14 @@ public class VaadinInvoiceAppGui extends Window {
 		layout.setSpacing(true);
 		
 
-		addComponent(layout);
+		setContent(layout);
+		
 		createButton.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
 				createPdf();
 				downloadPdf();
-				titlePanel.setLink();
+				titlePanel.setLink(manager.getPdfFile());
 			}
 		});
 	}

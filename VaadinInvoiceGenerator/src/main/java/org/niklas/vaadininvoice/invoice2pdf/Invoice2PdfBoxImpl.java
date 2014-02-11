@@ -15,10 +15,10 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	private final PDType1Font normalFont = PDType1Font.HELVETICA;
 	private final PDType1Font boldFont = PDType1Font.HELVETICA_BOLD;
 
-	public File getPdfFromInvoice(Invoice invoice) {
+	public File getPdfFromInvoice(Invoice invoice, String sessionId) {
 		PDDocument doc = null;
 		try {
-			File file = new File("C:\\temp\\firstout.pdf");
+			File file = new File("C:\\temp\\"+sessionId+".pdf");
 			doc = new PDDocument();
 			doc.addPage(createPage(doc, invoice));
 			doc.save(file);

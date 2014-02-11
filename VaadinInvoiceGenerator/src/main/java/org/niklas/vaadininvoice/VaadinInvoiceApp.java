@@ -17,7 +17,9 @@ package org.niklas.vaadininvoice;
 
 import org.niklas.vaadininvoice.gui.VaadinInvoiceAppGui;
 
-import com.vaadin.server.WrappedRequest;
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.WrappedSession;
+import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -35,13 +37,16 @@ public class VaadinInvoiceApp extends UI
     private VaadinInvoiceAppGui gui;
     private VaadinInvoiceManager manager;
     
-
 	@Override
-	protected void init(WrappedRequest request) {
+	protected void init(VaadinRequest request) {
     	manager = new VaadinInvoiceManager();
+
         gui = new VaadinInvoiceAppGui(manager);
-        addWindow(gui);
+        setContent(gui);
         gui.setSizeFull();
+		String id = getSession().getSession().getId();
+    	manager.setSessionId(id);
+		System.out.println("Id of this session is:" + id);
 		
 	}
     

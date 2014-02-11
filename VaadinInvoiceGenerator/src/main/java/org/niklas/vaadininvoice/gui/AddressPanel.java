@@ -64,7 +64,7 @@ public class AddressPanel extends Panel {
 		
 		horizontalLayout.setSpacing(true);
 		horizontalLayout.setMargin(true);
-		addComponent(horizontalLayout);
+		setContent(horizontalLayout);
 	}
 
 	public TextField getCompanyNameTextField() {

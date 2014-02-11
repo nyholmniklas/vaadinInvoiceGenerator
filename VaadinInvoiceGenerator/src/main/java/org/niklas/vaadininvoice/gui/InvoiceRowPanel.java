@@ -36,13 +36,12 @@ public class InvoiceRowPanel extends Panel {
 	public InvoiceRowPanel() {
 		nextAvailableRowId = 0;
 
-		HorizontalLayout mainLayout = new HorizontalLayout();
-
+		VerticalLayout mainLayout = new VerticalLayout();
+		HorizontalLayout buttonsAndTotalLayout = new HorizontalLayout();
 		HorizontalLayout buttonsLayout = new HorizontalLayout();
 		VerticalLayout secondLayout = new VerticalLayout();
 		HorizontalLayout totalLayout = new HorizontalLayout();
-
-		addComponent(createTable());
+		mainLayout.addComponent(createTable());
 		
 		buttonsLayout.addComponent(addRowButton);
 		addRowButton.addClickListener(new ClickListener() {
@@ -62,7 +61,6 @@ public class InvoiceRowPanel extends Panel {
 			}
 		});
 		
-//		buttonsLayout.setSizeFull();
 		secondLayout.setSizeFull();
 		totalLayout.setSizeFull();
 		invoiceRowTable.addValueChangeListener(new ValueChangeListener() {
@@ -75,10 +73,11 @@ public class InvoiceRowPanel extends Panel {
 		totalLayout.addComponent(createTotal());
 		buttonsLayout.setMargin(true);
 		
-		mainLayout.addComponent(buttonsLayout);
-		mainLayout.addComponent(secondLayout);
-		mainLayout.addComponent(totalLayout);
-		addComponent(mainLayout);
+		buttonsAndTotalLayout.addComponent(buttonsLayout);
+		buttonsAndTotalLayout.addComponent(secondLayout);
+		buttonsAndTotalLayout.addComponent(totalLayout);
+		mainLayout.addComponent(buttonsAndTotalLayout);
+		setContent(mainLayout);
 		mainLayout.setSizeFull();
 		mainLayout.setSpacing(true);
 	}

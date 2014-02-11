@@ -1,6 +1,7 @@
 package org.niklas.vaadininvoice.gui;
 
-import com.google.gwt.layout.client.Layout;
+import java.io.File;
+
 import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Button;
@@ -15,21 +16,19 @@ public class TitlePanel extends Panel{
 
 	
 	public TitlePanel(Button button){
-
 		titleLabel.setContentMode(ContentMode.HTML);
 		titleLabel.setWidth(300, Unit.PIXELS);;
 		layout.addComponent(titleLabel);
 		layout.addComponent(button);
 		layout.setSpacing(true);
 		layout.setMargin(true);
-		addComponent(layout);
+		setContent(layout);
 	}
 
 
-	public void setLink() {
-		Link link = new DownloadLink();
+	public void setLink(File file) {
+		Link link = new DownloadLink(file);
 //		link.setIcon(new ThemeResource("http://www.vectorsland.com/imgd/l61205-adobe-pdf-logo-77966.png"));
-		addComponent(link);
 		layout.addComponent(link);
 	}
 }

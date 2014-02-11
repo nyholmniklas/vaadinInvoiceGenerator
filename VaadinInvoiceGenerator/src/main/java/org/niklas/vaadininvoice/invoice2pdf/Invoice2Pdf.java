@@ -5,5 +5,5 @@ import java.io.File;
 import org.niklas.vaadininvoice.invoice.Invoice;
 
 public interface Invoice2Pdf {
-	public File getPdfFromInvoice(Invoice invoice);
+	public File getPdfFromInvoice(Invoice invoice, String sessionId);
 }

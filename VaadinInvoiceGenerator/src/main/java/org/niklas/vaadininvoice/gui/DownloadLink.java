@@ -11,9 +11,11 @@ import com.vaadin.ui.Link;
 import com.vaadin.ui.UI;
 
 public class DownloadLink extends Link {
+	private File file;
 	
-	public DownloadLink() {
+	public DownloadLink(File file) {
 		super();
+		this.file = file;
 		setCaption("View Pdf");
 		setDescription("View Pdf Invoice");
 		setTargetName("_blank");
@@ -23,7 +25,6 @@ public class DownloadLink extends Link {
 	@Override
 	public void attach() {
 		super.attach();
-		File file = new File("C:\\temp\\firstout.pdf");
 		Resource resource = new FileResource(file);
 		setResource(resource);
 	}
