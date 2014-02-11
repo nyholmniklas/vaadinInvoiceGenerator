@@ -24,33 +24,53 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
 public class InvoiceRowPanel extends Panel {
-	private Table invoiceRowTable = new Table();
+	private Table invoiceRowTable;
+	private Button editButton;
+	private Button addRowButton;
+	private HashMap<Integer, InvoiceRow> invoiceRows;
+	private TextField grandTotal;
 	
-	private Button editButton = new Button("Edit");
-	private boolean editable = false;
-	private Button addRowButton = new Button("Add Item");
-	private HashMap<Integer, InvoiceRow> invoiceRows = new HashMap<Integer, InvoiceRow>();
-	TextField grandTotal = new TextField("Grand Total");
+	private boolean editable;
 	private int nextAvailableRowId;
 
 	public InvoiceRowPanel() {
+		editable = false;
 		nextAvailableRowId = 0;
 
+		invoiceRowTable = new Table();
+		editButton = new Button("Edit");
+		addRowButton = new Button("Add Item");
+		invoiceRows = new HashMap<Integer, InvoiceRow>();
+		grandTotal = new TextField("Grand Total");
+		
+		setActionListeners();
+		setLayout();
+	}
+	
+	private void setLayout() {
 		VerticalLayout mainLayout = new VerticalLayout();
 		HorizontalLayout buttonsAndTotalLayout = new HorizontalLayout();
 		HorizontalLayout buttonsLayout = new HorizontalLayout();
 		VerticalLayout secondLayout = new VerticalLayout();
 		HorizontalLayout totalLayout = new HorizontalLayout();
 		mainLayout.addComponent(createTable());
-		
 		buttonsLayout.addComponent(addRowButton);
-		addRowButton.addClickListener(new ClickListener() {
-			
-			public void buttonClick(ClickEvent event) {
-				addRow();
-			}
-		});
 		buttonsLayout.addComponent(editButton);
+		secondLayout.setSizeFull();
+		totalLayout.setSizeFull();
+		totalLayout.addComponent(createTotal());
+		buttonsLayout.setMargin(true);
+		buttonsAndTotalLayout.addComponent(buttonsLayout);
+		buttonsAndTotalLayout.addComponent(secondLayout);
+		buttonsAndTotalLayout.addComponent(totalLayout);
+		mainLayout.addComponent(buttonsAndTotalLayout);
+		setContent(mainLayout);
+		mainLayout.setSizeFull();
+		mainLayout.setSpacing(true);
+		
+	}
+
+	private void setActionListeners() {
 		editButton.addClickListener(new ClickListener() {
 			public void buttonClick(ClickEvent event) {
 				editable = !editable;
@@ -61,8 +81,6 @@ public class InvoiceRowPanel extends Panel {
 			}
 		});
 		
-		secondLayout.setSizeFull();
-		totalLayout.setSizeFull();
 		invoiceRowTable.addValueChangeListener(new ValueChangeListener() {
 			
 			public void valueChange(ValueChangeEvent event) {
@@ -70,18 +88,15 @@ public class InvoiceRowPanel extends Panel {
 				
 			}
 		});
-		totalLayout.addComponent(createTotal());
-		buttonsLayout.setMargin(true);
 		
-		buttonsAndTotalLayout.addComponent(buttonsLayout);
-		buttonsAndTotalLayout.addComponent(secondLayout);
-		buttonsAndTotalLayout.addComponent(totalLayout);
-		mainLayout.addComponent(buttonsAndTotalLayout);
-		setContent(mainLayout);
-		mainLayout.setSizeFull();
-		mainLayout.setSpacing(true);
+		addRowButton.addClickListener(new ClickListener() {
+			
+			public void buttonClick(ClickEvent event) {
+				addRow();
+			}
+		});
 	}
-	
+
 	private Component createTotal() {
 		VerticalLayout layout = new VerticalLayout();
 		grandTotal.setReadOnly(true);
@@ -99,7 +114,7 @@ public class InvoiceRowPanel extends Panel {
 		invoiceRowTable.addContainerProperty("Total", Double.class, (double) 1);
 		invoiceRowTable.setEditable(false);
 		invoiceRowTable.setSizeFull();
-		invoiceRowTable.setHeight(130f, UNITS_PIXELS);
+		invoiceRowTable.setHeight(130f, Unit.PIXELS);
 		addRow();
 		layout.addComponent(invoiceRowTable);
 		layout.setMargin(true);

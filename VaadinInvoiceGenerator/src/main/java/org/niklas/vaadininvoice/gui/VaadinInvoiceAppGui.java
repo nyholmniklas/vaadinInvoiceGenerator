@@ -25,35 +25,39 @@ import com.vaadin.server.StreamResource;
 import com.vaadin.shared.ui.label.ContentMode;
 
 public class VaadinInvoiceAppGui extends Panel {
-
-	private final Button createButton = new Button("Generate PDF");
-	private final TitlePanel titlePanel = new TitlePanel(createButton);
-	private final AddressPanel addressPanel = new AddressPanel();
-	private final InvoiceRowPanel invoiceRowPanel = new InvoiceRowPanel();
-	private final VaadinInvoiceManager manager;
-	private final VerticalLayout layout = new VerticalLayout();
+	private VerticalLayout layout;
+	private Button createButton;
+	private TitlePanel titlePanel;
+	private AddressPanel addressPanel;
+	private InvoiceRowPanel invoiceRowPanel;
+	private VaadinInvoiceManager manager;
 
 	public VaadinInvoiceAppGui(VaadinInvoiceManager manager) {
 		super();
 		this.manager = manager;
-		initComponents();
+		createButton = new Button("Generate PDF");
+		titlePanel = new TitlePanel(createButton);
+		addressPanel = new AddressPanel();
+		invoiceRowPanel = new InvoiceRowPanel();
+		setActionListeners();
+		setLayout();
 	}
 
-	private void initComponents() {
+	private void setLayout() {
+		layout = new VerticalLayout();
 		layout.addComponent(titlePanel);
 		layout.addComponent(addressPanel);
 		layout.addComponent(invoiceRowPanel);
 		layout.setMargin(true);
 		layout.setSpacing(true);
-		
-
 		setContent(layout);
-		
+	}
+
+	private void setActionListeners() {
 		createButton.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
 				createPdf();
-				downloadPdf();
 				titlePanel.setLink(manager.getPdfFile());
 			}
 		});
@@ -62,14 +66,6 @@ public class VaadinInvoiceAppGui extends Panel {
 	private void createPdf() {
 		manager.createPdfTest(new InvoiceMapperImpl().getInvoiceFromForm(this));
 	}
-	
-	private void downloadPdf() {
-//		File file = new File("C:\\temp\\firstout.pdf");
-//		Resource fileResource = new FileResource(file);
-//		Window pdfWindow = new Window();
-//		pdfWindow.addComponent(f);
-	}
-
 
 	public String getCustomerName() {
 		return addressPanel.getCustomerNameTextField().getValue().toString();

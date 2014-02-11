@@ -11,24 +11,28 @@ import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
 
 public class TitlePanel extends Panel{
-	private final Label titleLabel = new Label("<h1>Create New Invoice</h1>");
-	private final HorizontalLayout layout = new HorizontalLayout();
-
+	private HorizontalLayout layout;
+	private Label titleLabel;
+	private Button createButton;
 	
 	public TitlePanel(Button button){
-		titleLabel.setContentMode(ContentMode.HTML);
+		layout = new HorizontalLayout();
+		titleLabel = new Label("<h1>Create New Invoice</h1>", ContentMode.HTML);
 		titleLabel.setWidth(300, Unit.PIXELS);;
+		this.createButton = button;
+		setLayout();
+	}
+	
+	private void setLayout() {
 		layout.addComponent(titleLabel);
-		layout.addComponent(button);
+		layout.addComponent(createButton);
 		layout.setSpacing(true);
 		layout.setMargin(true);
 		setContent(layout);
 	}
 
-
-	public void setLink(File file) {
+	protected void setLink(File file) {
 		Link link = new DownloadLink(file);
-//		link.setIcon(new ThemeResource("http://www.vectorsland.com/imgd/l61205-adobe-pdf-logo-77966.png"));
 		layout.addComponent(link);
 	}
 }

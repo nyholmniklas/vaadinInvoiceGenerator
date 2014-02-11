@@ -1,5 +1,7 @@
 package org.niklas.vaadininvoice.gui;
 
+import com.vaadin.shared.ui.datefield.Resolution;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.InlineDateField;
@@ -10,24 +12,38 @@ import com.vaadin.ui.VerticalLayout;
 
 
 public class AddressPanel extends Panel {
-	private final TextField companyNameTextField = new TextField("Name", "Acme Inc.");
-	private final TextField companyStreetTextField = new TextField("Street", "Main Street");
-	private final TextField companyCityTextField = new TextField("City", "El Dorado");
-	private final TextField companyPostcodeTextField = new TextField("Postcode", "31415");
-	private final TextField customerNameTextField = new TextField("Name", "John Doe");
-	private final TextField customerStreetTextField = new TextField("Street", "Elkroad 52");
-	private final TextField customerCityTextField = new TextField("City", "Atlantis");
-	private final TextField customerPostcodeTextField = new TextField("Postcode", "235711");
-	private final InlineDateField dueDateField = new InlineDateField(" ");
+	private TextField companyNameTextField;
+	private TextField companyStreetTextField;
+	private TextField companyCityTextField;
+	private TextField companyPostcodeTextField;
+	private TextField customerNameTextField;
+	private TextField customerStreetTextField;
+	private TextField customerCityTextField;
+	private TextField customerPostcodeTextField;
+	private InlineDateField dueDateField;
+	private Label companyLabel;
+	private Label customerLabel;
+	private Label dueDateLabel;
 	
 	public AddressPanel() {
-		HorizontalLayout horizontalLayout = new HorizontalLayout();
-		VerticalLayout companyLayout = new VerticalLayout();
-		VerticalLayout customerLayout = new VerticalLayout();
-		VerticalLayout dueDateLayout = new VerticalLayout();
+		companyNameTextField = new TextField("Name", "Acme Inc.");
+		companyStreetTextField = new TextField("Street", "Main Street");
+		companyCityTextField = new TextField("City", "El Dorado");
+		companyPostcodeTextField = new TextField("Postcode", "31415");
+		customerNameTextField = new TextField("Name", "John Doe");
+		customerStreetTextField = new TextField("Street", "Elkroad 52");
+		customerCityTextField = new TextField("City", "Atlantis");
+		customerPostcodeTextField = new TextField("Postcode", "235711");
+		dueDateField = new InlineDateField(" ");
+		companyLabel = new Label("<b>Company</b>", ContentMode.HTML);
+		customerLabel = new Label("<b>Customer</b>", ContentMode.HTML);
+		dueDateLabel = new Label("<b>Due Date</b>", ContentMode.HTML);
 		
-		Label companyLabel = new Label("<b>Company</b>");
-		companyLabel.setContentMode(Label.CONTENT_XHTML);
+		setLayout();
+	}
+	
+	private void setLayout() {
+		VerticalLayout companyLayout = new VerticalLayout();
 		companyLayout.addComponent(companyLabel);
 		companyLayout.addComponent(companyNameTextField);
 		companyLayout.addComponent(companyStreetTextField);
@@ -36,8 +52,7 @@ public class AddressPanel extends Panel {
 		companyLayout.setSpacing(true);
 		companyLayout.setSizeFull();
 		
-		Label customerLabel = new Label("<b>Customer</b>");
-		customerLabel.setContentMode(Label.CONTENT_XHTML);
+		VerticalLayout customerLayout = new VerticalLayout();
 		customerLayout.addComponent(customerLabel);
 		customerLayout.addComponent(customerNameTextField);
 		customerLayout.addComponent(customerStreetTextField);
@@ -46,22 +61,19 @@ public class AddressPanel extends Panel {
 		customerLayout.setSpacing(true);
 		customerLayout.setSizeFull();
 		
-		dueDateLayout.setSizeFull();
-		Label dueDateLabel = new Label("<b>Due Date</b>");
-		dueDateLabel.setContentMode(Label.CONTENT_XHTML);
-		dueDateField.setResolution(InlineDateField.RESOLUTION_DAY);
+		VerticalLayout dueDateLayout = new VerticalLayout();
+		dueDateField.setResolution(Resolution.DAY);
 		dueDateField.setDateFormat("dd-MM-yyy");
 		dueDateField.setValue(new java.util.Date());
 		dueDateLayout.addComponent(dueDateLabel);
 		dueDateLayout.addComponent(dueDateField);
+		dueDateLayout.setSizeFull();
 		
-		
+		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.addComponent(companyLayout);
 		horizontalLayout.addComponent(customerLayout);
 		horizontalLayout.addComponent(dueDateLayout);
 		horizontalLayout.setSizeFull();
-		
-		
 		horizontalLayout.setSpacing(true);
 		horizontalLayout.setMargin(true);
 		setContent(horizontalLayout);
