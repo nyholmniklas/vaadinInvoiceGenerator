@@ -14,7 +14,7 @@ public class VaadinInvoiceManager {
 		invoice2Pdf = new Invoice2PdfBoxImpl();
 	}
 
-	public void createPdfTest(Invoice invoice){
+	public void createPdf(Invoice invoice){
 		invoice2Pdf.getPdfFromInvoice(invoice, sessionId);
 	}
 

@@ -1,5 +1,6 @@
 package org.niklas.vaadininvoice.invoice;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Invoice {
@@ -7,9 +8,13 @@ public class Invoice {
 	private Address company;
 	private int reference;
 	private String description;
-	private float totalsum;
 	private List<InvoiceRow> rows;
 	private String dueDate;
+	private DecimalFormat priceFormat;
+	
+	public Invoice() {
+		priceFormat = new DecimalFormat("###.##");
+	}
 	
 	public Address getCustomer() {
 		return customer;
@@ -23,8 +28,12 @@ public class Invoice {
 	public String getDescription() {
 		return description;
 	}
-	public float getTotalsum() {
-		return totalsum;
+	public Double getTotal() {
+		Double total = new Double(0);
+		for (InvoiceRow row:rows) {
+			total += row.getTotal();
+		}
+		return total;
 	}
 	public List<InvoiceRow> getRows() {
 		return rows;
@@ -41,9 +50,7 @@ public class Invoice {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public void setTotalsum(float totalsum) {
-		this.totalsum = totalsum;
-	}
+
 	public void setRows(List<InvoiceRow> rows) {
 		this.rows = rows;
 	}
@@ -52,6 +59,9 @@ public class Invoice {
 	}
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
+	}
+	public String getTotalFormatted() {
+		return priceFormat.format(getTotal());
 	}
 	
 	

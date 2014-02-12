@@ -88,16 +88,23 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		writeBoldText(100, 500, "Quantity", contentStream);
 		writeBoldText(200, 500, "Description", contentStream);
 		writeBoldText(300, 500, "Price", contentStream);
-		writeBoldText(400, 500, "Total", contentStream);
+		writeBoldText(400, 500, "Tax Rate %", contentStream);
+		writeBoldText(500, 500, "Total", contentStream);
 		
-		for (int i = 0; i < invoice.getRows().size() ; i++) {
+		int i = 0;
+		for (; i < invoice.getRows().size() ; i++) {
 			InvoiceRow row = invoice.getRows().get(i);
 			int y = 460 - (14*i);
-			writeText(100, y, Integer.toString(row.getQuantity()), contentStream);
-			writeText(200, y, row.getDescription(), contentStream);
+			writeText(100, y, row.getDescription(), contentStream);
+			writeText(200, y, Integer.toString(row.getQuantity()), contentStream);
 			writeText(300, y, row.getPrice().toString(), contentStream);
-			writeText(400, y, row.getTotal().toString(), contentStream);
+			writeText(400, y, row.getTaxRate().toString(), contentStream);
+			writeText(500, y, row.getTotalFormatted(), contentStream);
 		}
+		
+		
+		writeBoldText(400, 440 - (14*i), "TOTAL: ", contentStream);
+		writeBoldText(500, 440 - (14*i), invoice.getTotalFormatted(), contentStream);
 		
 		return page;
 	}

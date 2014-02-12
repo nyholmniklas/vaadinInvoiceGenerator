@@ -1,6 +1,7 @@
 package org.niklas.vaadininvoice.gui;
 
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -108,13 +109,14 @@ public class InvoiceRowPanel extends Panel {
 
 	public Component createTable(){
 		VerticalLayout layout = new VerticalLayout();
-		invoiceRowTable.addContainerProperty("Quantity", Integer.class, 1);
 		invoiceRowTable.addContainerProperty("Description", String.class, "Product");
-		invoiceRowTable.addContainerProperty("Unit Price", Double.class, (double) 1);
-		invoiceRowTable.addContainerProperty("Total", Double.class, (double) 1);
+		invoiceRowTable.addContainerProperty("Quantity", Integer.class, 1);
+		invoiceRowTable.addContainerProperty("Unit Price", Double.class, (double) 1.00);
+		invoiceRowTable.addContainerProperty("Tax Rate %", Double.class, (double) 23);
+		invoiceRowTable.addContainerProperty("Total", Double.class, (double) 1.00);
 		invoiceRowTable.setEditable(false);
 		invoiceRowTable.setSizeFull();
-		invoiceRowTable.setHeight(130f, Unit.PIXELS);
+		invoiceRowTable.setHeight(140f, Unit.PIXELS);
 		addRow();
 		layout.addComponent(invoiceRowTable);
 		layout.setMargin(true);
@@ -124,7 +126,7 @@ public class InvoiceRowPanel extends Panel {
 	private void addRow() {
 		int id = generateId();
 		invoiceRowTable.addItem(id);
-		InvoiceRow row = new InvoiceRow(id, 1, "", (double) 1);
+		InvoiceRow row = new InvoiceRow(id, 1, "", (double) 1, (double) 23);
 		invoiceRows.put(id, row);
 		updateRows();
 	}
@@ -138,6 +140,7 @@ public class InvoiceRowPanel extends Panel {
 			row.setDescription((String) rowItem.getItemProperty("Description")
 					.getValue());
 			row.setPrice((Double) rowItem.getItemProperty("Unit Price").getValue());
+			row.setTaxRate((Double) rowItem.getItemProperty("Tax Rate %").getValue());
 			rowItem.getItemProperty("Total").setValue(row.getTotal());
 			if (row.getQuantity() == 0) {
 				itemIdsToRemove.add(row.getId());
@@ -158,12 +161,12 @@ public class InvoiceRowPanel extends Panel {
 		return nextAvailableRowId;
 	}
 	
-	private Double calculateTotal(HashMap<Integer, InvoiceRow> invoiceRows){
+	private String calculateTotal(HashMap<Integer, InvoiceRow> invoiceRows){
 		Double total = (double) 0;
 		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
 			total += row.getTotal();
 		}
-		return total;
+		return new DecimalFormat("###.##").format(total);
 	}
 
 	public HashMap<Integer, InvoiceRow> getInvoiceRows() {

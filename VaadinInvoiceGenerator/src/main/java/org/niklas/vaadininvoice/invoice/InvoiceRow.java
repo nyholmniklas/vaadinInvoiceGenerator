@@ -1,17 +1,23 @@
 package org.niklas.vaadininvoice.invoice;
 
+import java.text.DecimalFormat;
+
 public class InvoiceRow {
 	private Integer id;
 	private Integer quantity;
 	private String description;
 	private Double price;
+	private Double taxRate;
+	private DecimalFormat priceFormat;
 	
-	public InvoiceRow(Integer id, Integer quantity, String description, Double price) {
+	public InvoiceRow(Integer id, Integer quantity, String description, Double price, Double taxRate) {
 		super();
 		this.id = id;
 		this.quantity = quantity;
 		this.description = description;
 		this.price = price;
+		this.taxRate = taxRate;
+		priceFormat = new DecimalFormat("###.##");
 	}
 
 	public int getId() {
@@ -30,8 +36,9 @@ public class InvoiceRow {
 		return price;
 	}
 	
-	public Double getTotal(){
-		return  quantity * price;
+	public String getTotalFormatted(){
+		double total =  quantity * (price + ( price * (taxRate/100) ) );
+		return priceFormat.format(total);
 	}
 
 	public void setQuantity(int quantity) {
@@ -45,6 +52,16 @@ public class InvoiceRow {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	
-	
+
+	public Double getTaxRate() {
+		return taxRate;
+	}
+
+	public void setTaxRate(Double taxRate) {
+		this.taxRate = taxRate;
+	}
+
+	public Double getTotal() {
+		return quantity * (price + ( price * (taxRate/100) ) );
+	}
 }
