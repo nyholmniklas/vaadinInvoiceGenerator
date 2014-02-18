@@ -158,7 +158,7 @@ public class InvoiceRowPanel extends Panel {
 	private int generateId() {
 		int id = nextAvailableRowId;
 		nextAvailableRowId++;
-		return nextAvailableRowId;
+		return id;
 	}
 	
 	private String calculateTotal(HashMap<Integer, InvoiceRow> invoiceRows){
