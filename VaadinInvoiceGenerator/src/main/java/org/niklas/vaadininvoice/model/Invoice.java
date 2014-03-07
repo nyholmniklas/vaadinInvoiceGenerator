@@ -1,4 +1,4 @@
-package org.niklas.vaadininvoice.invoice;
+package org.niklas.vaadininvoice.model;
 
 import java.text.DecimalFormat;
 import java.util.List;

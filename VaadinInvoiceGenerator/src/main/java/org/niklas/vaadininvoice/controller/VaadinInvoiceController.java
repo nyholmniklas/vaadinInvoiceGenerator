@@ -1,16 +1,16 @@
-package org.niklas.vaadininvoice;
+package org.niklas.vaadininvoice.controller;
 
 import java.io.File;
 
-import org.niklas.vaadininvoice.invoice.Invoice;
 import org.niklas.vaadininvoice.invoice2pdf.Invoice2Pdf;
 import org.niklas.vaadininvoice.invoice2pdf.Invoice2PdfBoxImpl;
+import org.niklas.vaadininvoice.model.Invoice;
 
-public class VaadinInvoiceManager {
+public class VaadinInvoiceController {
 	private Invoice2Pdf invoice2Pdf;
 	private String sessionId;
 	
-	public VaadinInvoiceManager(){
+	public VaadinInvoiceController(){
 		invoice2Pdf = new Invoice2PdfBoxImpl();
 	}
 

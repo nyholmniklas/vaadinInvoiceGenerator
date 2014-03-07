@@ -15,6 +15,7 @@
  */
 package org.niklas.vaadininvoice;
 
+import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
 import org.niklas.vaadininvoice.gui.VaadinInvoiceAppGui;
 
 import com.vaadin.server.VaadinRequest;
@@ -29,23 +30,23 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.Window;
 
 /**
- * The Application's "main" class
+ * Entry point
  */
 @SuppressWarnings("serial")
 public class VaadinInvoiceApp extends UI
 {
     private VaadinInvoiceAppGui gui;
-    private VaadinInvoiceManager manager;
+    private VaadinInvoiceController controller;
     
 	@Override
 	protected void init(VaadinRequest request) {
-    	manager = new VaadinInvoiceManager();
+    	controller = new VaadinInvoiceController();
 
-        gui = new VaadinInvoiceAppGui(manager);
+        gui = new VaadinInvoiceAppGui(controller);
         setContent(gui);
         gui.setSizeFull();
 		String id = getSession().getSession().getId();
-    	manager.setSessionId(id);
+    	controller.setSessionId(id);
 		System.out.println("Id of this session is:" + id);
 		
 	}

@@ -1,4 +1,4 @@
-package org.niklas.vaadininvoice.invoice;
+package org.niklas.vaadininvoice.model;
 
 import java.util.ArrayList;
 

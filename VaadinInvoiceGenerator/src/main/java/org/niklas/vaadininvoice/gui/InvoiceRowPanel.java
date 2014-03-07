@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.niklas.vaadininvoice.invoice.InvoiceRow;
+import org.niklas.vaadininvoice.model.InvoiceRow;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -113,7 +113,7 @@ public class InvoiceRowPanel extends Panel {
 		invoiceRowTable.addContainerProperty("Quantity", Integer.class, 1);
 		invoiceRowTable.addContainerProperty("Unit Price", Double.class, (double) 1.00);
 		invoiceRowTable.addContainerProperty("Tax Rate %", Double.class, (double) 23);
-		invoiceRowTable.addContainerProperty("Total", Double.class, (double) 1.00);
+		invoiceRowTable.addContainerProperty("Total", String.class, "1.00");
 		invoiceRowTable.setEditable(false);
 		invoiceRowTable.setSizeFull();
 		invoiceRowTable.setHeight(140f, Unit.PIXELS);
@@ -141,7 +141,7 @@ public class InvoiceRowPanel extends Panel {
 					.getValue());
 			row.setPrice((Double) rowItem.getItemProperty("Unit Price").getValue());
 			row.setTaxRate((Double) rowItem.getItemProperty("Tax Rate %").getValue());
-			rowItem.getItemProperty("Total").setValue(row.getTotal());
+			rowItem.getItemProperty("Total").setValue((String) row.getTotalFormatted());
 			if (row.getQuantity() == 0) {
 				itemIdsToRemove.add(row.getId());
 			}

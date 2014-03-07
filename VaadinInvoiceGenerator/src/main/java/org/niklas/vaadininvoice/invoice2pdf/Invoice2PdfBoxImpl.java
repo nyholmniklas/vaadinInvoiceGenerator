@@ -8,8 +8,8 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import org.niklas.vaadininvoice.invoice.Invoice;
-import org.niklas.vaadininvoice.invoice.InvoiceRow;
+import org.niklas.vaadininvoice.model.Invoice;
+import org.niklas.vaadininvoice.model.InvoiceRow;
 
 public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	private final PDType1Font normalFont = PDType1Font.HELVETICA;

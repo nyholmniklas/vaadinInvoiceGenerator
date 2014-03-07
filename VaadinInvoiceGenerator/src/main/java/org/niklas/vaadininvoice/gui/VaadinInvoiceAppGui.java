@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 
-import org.niklas.vaadininvoice.VaadinInvoiceManager;
-import org.niklas.vaadininvoice.invoice.InvoiceMapperImpl;
-import org.niklas.vaadininvoice.invoice.InvoiceRow;
+import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
+import org.niklas.vaadininvoice.model.InvoiceMapperImpl;
+import org.niklas.vaadininvoice.model.InvoiceRow;
 
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
@@ -30,11 +30,11 @@ public class VaadinInvoiceAppGui extends Panel {
 	private TitlePanel titlePanel;
 	private AddressPanel addressPanel;
 	private InvoiceRowPanel invoiceRowPanel;
-	private VaadinInvoiceManager manager;
+	private VaadinInvoiceController controller;
 
-	public VaadinInvoiceAppGui(VaadinInvoiceManager manager) {
+	public VaadinInvoiceAppGui(VaadinInvoiceController controller) {
 		super();
-		this.manager = manager;
+		this.controller = controller;
 		createButton = new Button("Generate PDF");
 		titlePanel = new TitlePanel(createButton);
 		addressPanel = new AddressPanel();
@@ -58,13 +58,13 @@ public class VaadinInvoiceAppGui extends Panel {
 
 			public void buttonClick(ClickEvent event) {
 				createPdf();
-				titlePanel.setLink(manager.getPdfFile());
+				titlePanel.setLink(controller.getPdfFile());
 			}
 		});
 	}
 
 	private void createPdf() {
-		manager.createPdf(new InvoiceMapperImpl().getInvoiceFromForm(this));
+		controller.createPdf(new InvoiceMapperImpl().getInvoiceFromForm(this));
 	}
 
 	public String getCustomerName() {

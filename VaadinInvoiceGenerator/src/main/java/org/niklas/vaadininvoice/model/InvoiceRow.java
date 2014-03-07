@@ -1,4 +1,4 @@
-package org.niklas.vaadininvoice.invoice;
+package org.niklas.vaadininvoice.model;
 
 import java.text.DecimalFormat;
 
@@ -37,8 +37,7 @@ public class InvoiceRow {
 	}
 	
 	public String getTotalFormatted(){
-		double total =  quantity * (price + ( price * (taxRate/100) ) );
-		return priceFormat.format(total);
+		return priceFormat.format(getTotal());
 	}
 
 	public void setQuantity(int quantity) {
@@ -62,6 +61,16 @@ public class InvoiceRow {
 	}
 
 	public Double getTotal() {
-		return quantity * (price + ( price * (taxRate/100) ) );
+		return ((double) quantity) * price;
+	}
+	
+	public Double getSubTotal(){
+		double total = getTotal();
+		double subTotal = total - (total*(taxRate/100));
+		return subTotal;
+	}
+	
+	public String getSubTotalFormatted(){
+		return priceFormat.format(getSubTotal());
 	}
 }
