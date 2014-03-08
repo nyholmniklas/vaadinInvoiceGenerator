@@ -28,7 +28,7 @@ public class VaadinInvoiceGui extends Panel {
 	private VerticalLayout layout;
 	private Button createButton;
 	private TitlePanel titlePanel;
-	private AddressPanel addressPanel;
+	private InfoPanel infoPanel;
 	private InvoiceRowPanel invoiceRowPanel;
 	private VaadinInvoiceController controller;
 
@@ -37,7 +37,7 @@ public class VaadinInvoiceGui extends Panel {
 		this.controller = controller;
 		createButton = new Button("Generate PDF");
 		titlePanel = new TitlePanel(createButton);
-		addressPanel = new AddressPanel();
+		infoPanel = new InfoPanel();
 		invoiceRowPanel = new InvoiceRowPanel();
 		setActionListeners();
 		setLayout();
@@ -46,7 +46,7 @@ public class VaadinInvoiceGui extends Panel {
 	private void setLayout() {
 		layout = new VerticalLayout();
 		layout.addComponent(titlePanel);
-		layout.addComponent(addressPanel);
+		layout.addComponent(infoPanel);
 		layout.addComponent(invoiceRowPanel);
 		layout.setMargin(true);
 		layout.setSpacing(true);
@@ -68,40 +68,40 @@ public class VaadinInvoiceGui extends Panel {
 	}
 
 	public String getCustomerName() {
-		return addressPanel.getCustomerNameTextField().getValue().toString();
+		return infoPanel.getCustomerNameTextField().getValue().toString();
 	}
 
 	public String getCustomerStreet() {
-		return addressPanel.getCustomerStreetTextField().getValue().toString();
+		return infoPanel.getCustomerStreetTextField().getValue().toString();
 	}
 
 	public String getCustomerCity() {
-		return addressPanel.getCustomerCityTextField().getValue().toString();
+		return infoPanel.getCustomerCityTextField().getValue().toString();
 	}
 
 	public String getCustomerPostcode() {
-		return addressPanel.getCustomerPostcodeTextField().getValue()
+		return infoPanel.getCustomerPostcodeTextField().getValue()
 				.toString();
 	}
 
 	public String getCompanyName() {
-		return addressPanel.getCompanyNameTextField().getValue().toString();
+		return infoPanel.getCompanyNameTextField().getValue().toString();
 	}
 
 	public String getCompanyStreet() {
-		return addressPanel.getCompanyStreetTextField().getValue().toString();
+		return infoPanel.getCompanyStreetTextField().getValue().toString();
 	}
 
 	public String getCompanyCity() {
-		return addressPanel.getCompanyCityTextField().getValue().toString();
+		return infoPanel.getCompanyCityTextField().getValue().toString();
 	}
 
 	public String getCompanyPostcode() {
-		return addressPanel.getCompanyPostcodeTextField().getValue().toString();
+		return infoPanel.getCompanyPostcodeTextField().getValue().toString();
 	}
 
 	public String getDueDate() {
-		return addressPanel.getDueDateField().getValue().toString();
+		return infoPanel.getDueDateField().getValue().toString();
 	}
 
 	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
@@ -109,11 +109,11 @@ public class VaadinInvoiceGui extends Panel {
 	}
 
 	public int getReferenceNumber() {
-		return Integer.parseInt(addressPanel.getReferenceNumberField().getValue());
+		return Integer.parseInt(infoPanel.getReferenceNumberField().getValue());
 	}
 
 	public int getInvoiceNumber() {
-		return Integer.parseInt(addressPanel.getInvoiceNumberField().getValue());
+		return Integer.parseInt(infoPanel.getInvoiceNumberField().getValue());
 	}
 
 }

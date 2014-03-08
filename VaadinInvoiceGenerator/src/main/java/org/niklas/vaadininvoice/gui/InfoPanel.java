@@ -11,7 +11,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
 
-public class AddressPanel extends Panel {
+public class InfoPanel extends Panel {
 	private TextField companyNameTextField;
 	private TextField companyStreetTextField;
 	private TextField companyCityTextField;
@@ -27,7 +27,7 @@ public class AddressPanel extends Panel {
 	private Label customerLabel;
 	private Label dueDateLabel;
 	
-	public AddressPanel() {
+	public InfoPanel() {
 		companyNameTextField = new TextField("Name", "Acme Inc.");
 		companyStreetTextField = new TextField("Street", "Main Street");
 		companyCityTextField = new TextField("City", "El Dorado");
