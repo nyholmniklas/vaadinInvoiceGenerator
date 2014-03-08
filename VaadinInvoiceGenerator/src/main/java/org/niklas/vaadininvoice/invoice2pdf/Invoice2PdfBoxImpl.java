@@ -38,6 +38,7 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		writeCustomerAddress(invoice, page, contentStream);
 		writeCompanyAddress(invoice, page, contentStream);
 		writeInvoiceInfo(invoice, page, contentStream);
+		//TODO Write description, look into text wrapping problem with pdfbox
 		writeInvoiceRows(invoice, page, contentStream);
 		contentStream.close();
 		return page;
@@ -105,7 +106,6 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 			writeText(400, y, row.getTaxRate().toString(), contentStream);
 			writeText(500, y, row.getTotalFormatted(), contentStream);
 		}
-		
 		
 		writeBoldText(400, 440 - (14*i), "TOTAL: ", contentStream);
 		writeBoldText(500, 440 - (14*i), invoice.getTotalFormatted(), contentStream);

@@ -4,7 +4,6 @@ import com.vaadin.shared.ui.datefield.Resolution;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.InlineDateField;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
@@ -73,6 +72,7 @@ public class InfoPanel extends Panel {
 		invoiceInfoLayout.addComponent(invoiceNumberField);
 		invoiceInfoLayout.addComponent(referenceNumberField);
 		invoiceInfoLayout.setSizeFull();
+		
 		
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.addComponent(companyLayout);

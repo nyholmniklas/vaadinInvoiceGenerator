@@ -1,34 +1,22 @@
 package org.niklas.vaadininvoice.gui;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
-import org.niklas.vaadininvoice.mapping.InvoiceMapperImpl;
 import org.niklas.vaadininvoice.model.InvoiceRow;
 
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Window;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.server.FileDownloader;
-import com.vaadin.server.FileResource;
-import com.vaadin.server.Resource;
-import com.vaadin.server.StreamResource;
-import com.vaadin.shared.ui.label.ContentMode;
 
 public class VaadinInvoiceGui extends Panel {
 	private VerticalLayout layout;
 	private Button createButton;
 	private TitlePanel titlePanel;
 	private InfoPanel infoPanel;
+	private DescriptionPanel descriptionPanel;
 	private InvoiceRowPanel invoiceRowPanel;
 	private VaadinInvoiceController controller;
 
@@ -38,6 +26,7 @@ public class VaadinInvoiceGui extends Panel {
 		createButton = new Button("Generate PDF");
 		titlePanel = new TitlePanel(createButton);
 		infoPanel = new InfoPanel();
+		descriptionPanel = new DescriptionPanel();
 		invoiceRowPanel = new InvoiceRowPanel();
 		setActionListeners();
 		setLayout();
@@ -47,6 +36,7 @@ public class VaadinInvoiceGui extends Panel {
 		layout = new VerticalLayout();
 		layout.addComponent(titlePanel);
 		layout.addComponent(infoPanel);
+		layout.addComponent(descriptionPanel);
 		layout.addComponent(invoiceRowPanel);
 		layout.setMargin(true);
 		layout.setSpacing(true);
@@ -114,6 +104,10 @@ public class VaadinInvoiceGui extends Panel {
 
 	public String getInvoiceNumber() {
 		return infoPanel.getInvoiceNumberField().getValue();
+	}
+	
+	public String getDescription(){
+		return descriptionPanel.getDescription();
 	}
 
 }

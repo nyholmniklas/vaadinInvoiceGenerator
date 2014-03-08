@@ -30,6 +30,8 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 		invoice.setInvoiceNumber(gui.getInvoiceNumber());
 		invoice.setReferenceNumber(gui.getReferenceNumber());
 		
+		invoice.setDescription(gui.getDescription());
+		
 		ArrayList<InvoiceRow> invoiceRows = new ArrayList<InvoiceRow>(gui.getInvoiceRows().values());
 		invoice.setRows(invoiceRows);
 		
