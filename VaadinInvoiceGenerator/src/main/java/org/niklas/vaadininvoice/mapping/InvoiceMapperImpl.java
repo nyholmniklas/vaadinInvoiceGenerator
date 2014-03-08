@@ -1,12 +1,15 @@
-package org.niklas.vaadininvoice.model;
+package org.niklas.vaadininvoice.mapping;
 
 import java.util.ArrayList;
 
-import org.niklas.vaadininvoice.gui.VaadinInvoiceAppGui;
+import org.niklas.vaadininvoice.gui.VaadinInvoiceGui;
+import org.niklas.vaadininvoice.model.Address;
+import org.niklas.vaadininvoice.model.Invoice;
+import org.niklas.vaadininvoice.model.InvoiceRow;
 
 public class InvoiceMapperImpl implements InvoiceMapper {
 	
-	public Invoice getInvoiceFromForm(VaadinInvoiceAppGui gui) {
+	public Invoice getInvoiceFromForm(VaadinInvoiceGui gui) {
 		Invoice invoice = new Invoice();
 		
 		Address customer = new Address();

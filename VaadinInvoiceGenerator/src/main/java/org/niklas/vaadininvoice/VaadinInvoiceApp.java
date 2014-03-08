@@ -16,7 +16,7 @@
 package org.niklas.vaadininvoice;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
-import org.niklas.vaadininvoice.gui.VaadinInvoiceAppGui;
+import org.niklas.vaadininvoice.gui.VaadinInvoiceGui;
 
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.WrappedSession;
@@ -35,14 +35,14 @@ import com.vaadin.ui.Window;
 @SuppressWarnings("serial")
 public class VaadinInvoiceApp extends UI
 {
-    private VaadinInvoiceAppGui gui;
+    private VaadinInvoiceGui gui;
     private VaadinInvoiceController controller;
     
 	@Override
 	protected void init(VaadinRequest request) {
     	controller = new VaadinInvoiceController();
 
-        gui = new VaadinInvoiceAppGui(controller);
+        gui = new VaadinInvoiceGui(controller);
         setContent(gui);
         gui.setSizeFull();
 		String id = getSession().getSession().getId();

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
-import org.niklas.vaadininvoice.model.InvoiceMapperImpl;
+import org.niklas.vaadininvoice.mapping.InvoiceMapperImpl;
 import org.niklas.vaadininvoice.model.InvoiceRow;
 
 import com.vaadin.ui.Button;
@@ -24,7 +24,7 @@ import com.vaadin.server.Resource;
 import com.vaadin.server.StreamResource;
 import com.vaadin.shared.ui.label.ContentMode;
 
-public class VaadinInvoiceAppGui extends Panel {
+public class VaadinInvoiceGui extends Panel {
 	private VerticalLayout layout;
 	private Button createButton;
 	private TitlePanel titlePanel;
@@ -32,7 +32,7 @@ public class VaadinInvoiceAppGui extends Panel {
 	private InvoiceRowPanel invoiceRowPanel;
 	private VaadinInvoiceController controller;
 
-	public VaadinInvoiceAppGui(VaadinInvoiceController controller) {
+	public VaadinInvoiceGui(VaadinInvoiceController controller) {
 		super();
 		this.controller = controller;
 		createButton = new Button("Generate PDF");
