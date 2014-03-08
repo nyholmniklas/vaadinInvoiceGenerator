@@ -8,7 +8,8 @@ import java.util.Locale;
 public class Invoice {
 	private Address customer;
 	private Address company;
-	private int reference;
+	private int referenceNumber;
+	private int invoiceNumber;
 	private String description;
 	private List<InvoiceRow> rows;
 	private String dueDate;
@@ -24,9 +25,7 @@ public class Invoice {
 	public Address getCompany() {
 		return company;
 	}
-	public int getReference() {
-		return reference;
-	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -46,9 +45,7 @@ public class Invoice {
 	public void setCompany(Address company) {
 		this.company = company;
 	}
-	public void setReference(int reference) {
-		this.reference = reference;
-	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -64,6 +61,22 @@ public class Invoice {
 	}
 	public String getTotalFormatted() {
 		return priceFormat.format(getTotal());
+	}
+
+	public int getReferenceNumber() {
+		return referenceNumber;
+	}
+
+	public void setReferenceNumber(int referenceNumber) {
+		this.referenceNumber = referenceNumber;
+	}
+
+	public int getInvoiceNumber() {
+		return invoiceNumber;
+	}
+
+	public void setInvoiceNumber(int invoiceNumber) {
+		this.invoiceNumber = invoiceNumber;
 	}
 	
 	

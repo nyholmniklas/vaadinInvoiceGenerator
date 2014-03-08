@@ -27,6 +27,8 @@ public class InvoiceMapperImpl implements InvoiceMapper {
 		invoice.setCompany(company);
 		
 		invoice.setDueDate(gui.getDueDate());
+		invoice.setInvoiceNumber(gui.getInvoiceNumber());
+		invoice.setReferenceNumber(gui.getReferenceNumber());
 		
 		ArrayList<InvoiceRow> invoiceRows = new ArrayList<InvoiceRow>(gui.getInvoiceRows().values());
 		invoice.setRows(invoiceRows);

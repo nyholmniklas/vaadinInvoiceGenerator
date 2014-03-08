@@ -108,4 +108,12 @@ public class VaadinInvoiceGui extends Panel {
 		return invoiceRowPanel.getInvoiceRows();
 	}
 
+	public int getReferenceNumber() {
+		return Integer.parseInt(addressPanel.getReferenceNumberField().getValue());
+	}
+
+	public int getInvoiceNumber() {
+		return Integer.parseInt(addressPanel.getInvoiceNumberField().getValue());
+	}
+
 }

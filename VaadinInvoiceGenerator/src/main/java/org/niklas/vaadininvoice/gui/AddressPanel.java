@@ -20,7 +20,9 @@ public class AddressPanel extends Panel {
 	private TextField customerStreetTextField;
 	private TextField customerCityTextField;
 	private TextField customerPostcodeTextField;
-	private InlineDateField dueDateField;
+	private DateField dueDateField;
+	private TextField referenceNumberField;
+	private TextField invoiceNumberField;
 	private Label companyLabel;
 	private Label customerLabel;
 	private Label dueDateLabel;
@@ -34,11 +36,12 @@ public class AddressPanel extends Panel {
 		customerStreetTextField = new TextField("Street", "Elkroad 52");
 		customerCityTextField = new TextField("City", "Atlantis");
 		customerPostcodeTextField = new TextField("Postcode", "235711");
-		dueDateField = new InlineDateField(" ");
+		dueDateField = new DateField(" ");
 		companyLabel = new Label("<b>Company</b>", ContentMode.HTML);
 		customerLabel = new Label("<b>Customer</b>", ContentMode.HTML);
 		dueDateLabel = new Label("<b>Due Date</b>", ContentMode.HTML);
-		
+		referenceNumberField = new TextField("Reference Number", "000000");
+		invoiceNumberField = new TextField("Invoice Number", "00000");
 		setLayout();
 	}
 	
@@ -61,18 +64,20 @@ public class AddressPanel extends Panel {
 		customerLayout.setSpacing(true);
 		customerLayout.setSizeFull();
 		
-		VerticalLayout dueDateLayout = new VerticalLayout();
+		VerticalLayout invoiceInfoLayout = new VerticalLayout();
 		dueDateField.setResolution(Resolution.DAY);
 		dueDateField.setDateFormat("dd-MM-yyy");
 		dueDateField.setValue(new java.util.Date());
-		dueDateLayout.addComponent(dueDateLabel);
-		dueDateLayout.addComponent(dueDateField);
-		dueDateLayout.setSizeFull();
+		invoiceInfoLayout.addComponent(dueDateLabel);
+		invoiceInfoLayout.addComponent(dueDateField);
+		invoiceInfoLayout.addComponent(invoiceNumberField);
+		invoiceInfoLayout.addComponent(referenceNumberField);
+		invoiceInfoLayout.setSizeFull();
 		
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.addComponent(companyLayout);
 		horizontalLayout.addComponent(customerLayout);
-		horizontalLayout.addComponent(dueDateLayout);
+		horizontalLayout.addComponent(invoiceInfoLayout);
 		horizontalLayout.setSizeFull();
 		horizontalLayout.setSpacing(true);
 		horizontalLayout.setMargin(true);
@@ -114,7 +119,14 @@ public class AddressPanel extends Panel {
 	public DateField getDueDateField() {
 		return dueDateField;
 	}
-	
+
+	public TextField getReferenceNumberField() {
+		return referenceNumberField;
+	}
+
+	public TextField getInvoiceNumberField() {
+		return invoiceNumberField;
+	}
 	
 	
 }

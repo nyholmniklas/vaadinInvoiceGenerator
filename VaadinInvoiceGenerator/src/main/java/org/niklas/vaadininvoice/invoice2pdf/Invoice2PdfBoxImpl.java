@@ -37,7 +37,7 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		PDPageContentStream contentStream = new PDPageContentStream(doc, page);
 		writeCustomerAddress(invoice, page, contentStream);
 		writeCompanyAddress(invoice, page, contentStream);
-		writeDueDate(invoice, page, contentStream);
+		writeInvoiceInfo(invoice, page, contentStream);
 		writeInvoiceRows(invoice, page, contentStream);
 		contentStream.close();
 		return page;
@@ -78,9 +78,13 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		contentStream.endText();
 	}
 	
-	private PDPage writeDueDate(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
+	private PDPage writeInvoiceInfo(Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
 		writeBoldText(400, 720, "Due Date", contentStream);
 		writeText(400, 700, invoice.getDueDate(), contentStream);
+		writeBoldText(400, 680, "Invoice Number", contentStream);
+		writeText(400, 665, ""+invoice.getInvoiceNumber(), contentStream);
+		writeBoldText(400, 645, "Reference", contentStream);
+		writeText(400, 630, ""+invoice.getReferenceNumber(), contentStream);
 		return page;
 	}
 	
