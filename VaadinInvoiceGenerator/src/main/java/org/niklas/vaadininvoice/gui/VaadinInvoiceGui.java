@@ -108,12 +108,12 @@ public class VaadinInvoiceGui extends Panel {
 		return invoiceRowPanel.getInvoiceRows();
 	}
 
-	public int getReferenceNumber() {
-		return Integer.parseInt(infoPanel.getReferenceNumberField().getValue());
+	public String getReferenceNumber() {
+		return infoPanel.getReferenceNumberField().getValue();
 	}
 
-	public int getInvoiceNumber() {
-		return Integer.parseInt(infoPanel.getInvoiceNumberField().getValue());
+	public String getInvoiceNumber() {
+		return infoPanel.getInvoiceNumberField().getValue();
 	}
 
 }
