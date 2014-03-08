@@ -1,6 +1,8 @@
 package org.niklas.vaadininvoice.model;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 public class InvoiceRow {
 	private Integer id;
@@ -17,7 +19,7 @@ public class InvoiceRow {
 		this.description = description;
 		this.price = price;
 		this.taxRate = taxRate;
-		priceFormat = new DecimalFormat("###.##");
+		priceFormat = new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US));
 	}
 
 	public int getId() {
@@ -33,7 +35,7 @@ public class InvoiceRow {
 	}
 
 	public Double getPrice() {
-		return price;
+		return Double.parseDouble(priceFormat.format(price));
 	}
 	
 	public String getTotalFormatted(){
@@ -67,10 +69,6 @@ public class InvoiceRow {
 	public Double getSubTotal(){
 		double total = getTotal();
 		double subTotal = total - (total*(taxRate/100));
-		return subTotal;
-	}
-	
-	public String getSubTotalFormatted(){
-		return priceFormat.format(getSubTotal());
+		return Double.parseDouble(priceFormat.format(subTotal));
 	}
 }

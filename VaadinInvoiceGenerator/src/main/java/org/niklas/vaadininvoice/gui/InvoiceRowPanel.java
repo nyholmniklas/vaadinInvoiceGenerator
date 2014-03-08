@@ -2,21 +2,20 @@ package org.niklas.vaadininvoice.gui;
 
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 import org.niklas.vaadininvoice.model.InvoiceRow;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
-import com.vaadin.event.ItemClickEvent;
-import com.vaadin.event.ItemClickEvent.ItemClickListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Component.Event;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
@@ -113,7 +112,7 @@ public class InvoiceRowPanel extends Panel {
 		invoiceRowTable.addContainerProperty("Quantity", Integer.class, 1);
 		invoiceRowTable.addContainerProperty("Unit Price", Double.class, (double) 1.00);
 		invoiceRowTable.addContainerProperty("Tax Rate %", Double.class, (double) 23);
-		invoiceRowTable.addContainerProperty("Total", String.class, "1.00");
+		invoiceRowTable.addContainerProperty("Total", Double.class, (double) 1.00);
 		invoiceRowTable.setEditable(false);
 		invoiceRowTable.setSizeFull();
 		invoiceRowTable.setHeight(140f, Unit.PIXELS);
@@ -141,7 +140,8 @@ public class InvoiceRowPanel extends Panel {
 					.getValue());
 			row.setPrice((Double) rowItem.getItemProperty("Unit Price").getValue());
 			row.setTaxRate((Double) rowItem.getItemProperty("Tax Rate %").getValue());
-			rowItem.getItemProperty("Total").setValue((String) row.getTotalFormatted());
+			rowItem.getItemProperty("Total").setValue((double) row.getTotal());
+			rowItem.getItemProperty("Unit Price").setValue((double) row.getPrice());
 			if (row.getQuantity() == 0) {
 				itemIdsToRemove.add(row.getId());
 			}
@@ -166,7 +166,7 @@ public class InvoiceRowPanel extends Panel {
 		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
 			total += row.getTotal();
 		}
-		return new DecimalFormat("###.##").format(total);
+		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
 	}
 
 	public HashMap<Integer, InvoiceRow> getInvoiceRows() {

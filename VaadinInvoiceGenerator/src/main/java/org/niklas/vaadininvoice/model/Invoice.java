@@ -1,7 +1,9 @@
 package org.niklas.vaadininvoice.model;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 public class Invoice {
 	private Address customer;
@@ -13,7 +15,7 @@ public class Invoice {
 	private DecimalFormat priceFormat;
 	
 	public Invoice() {
-		priceFormat = new DecimalFormat("###.##");
+		priceFormat = new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US));
 	}
 	
 	public Address getCustomer() {
