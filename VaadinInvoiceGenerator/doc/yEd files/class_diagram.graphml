@@ -18,10 +18,10 @@
       <data key="d5"/>
       <data key="d6">
         <y:TableNode configuration="com.yworks.bpmn.Pool">
-          <y:Geometry height="644.4172524171606" width="1400.22345227462" x="-118.52997701923005" y="-265.4792056511977"/>
+          <y:Geometry height="987.4460542266668" width="803.9297485709168" x="-118.52997701923005" y="-265.4792056511977"/>
           <y:Fill color="#FFF2BC" color2="#D4D4D4CC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="163.2578125" x="4.0" y="240.5797199585803">org.niklas.vaadininvoice</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="163.2578125" x="4.0" y="412.0941208633334">org.niklas.vaadininvoice</y:NodeLabel>
           <y:StyleProperties>
             <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
             <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
@@ -45,18 +45,18 @@
           </y:StyleProperties>
           <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
           <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-          <y:BorderInsets bottom="30" bottomF="30.03592814371268" left="24" leftF="23.911456723503875" right="26" rightF="25.88510479041929" top="20" topF="20.222695234530875"/>
+          <y:BorderInsets bottom="13" bottomF="13.102992383684523" left="24" leftF="23.911456723503875" right="25" rightF="24.981116777983402" top="20" topF="20.222695234530875"/>
           <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
             <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
             <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
             <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
             <y:Columns>
-              <y:Column id="column_0" minimumWidth="30.0" width="1347.22345227462">
+              <y:Column id="column_0" minimumWidth="30.0" width="750.9297485709168">
                 <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
               </y:Column>
             </y:Columns>
             <y:Rows>
-              <y:Row height="621.4172524171606" id="row_0" minimumHeight="30.0">
+              <y:Row height="964.4460542266668" id="row_0" minimumHeight="30.0">
                 <y:Insets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
               </y:Row>
             </y:Rows>
@@ -68,24 +68,24 @@
           <data key="d5"/>
           <data key="d6">
             <y:TableNode configuration="com.yworks.bpmn.Pool">
-              <y:Geometry height="260.73556184668973" width="565.7918877032519" x="115.94907583841473" y="-225.2565104166668"/>
+              <y:Geometry height="260.73556184668973" width="540.5296654810297" x="115.94907583841473" y="-225.2565104166668"/>
               <y:Fill color="#FFF2BC" color2="#D4D4D4CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="187.4423828125" x="4.0" y="36.64658951709487">org.niklas.vaadininvoice.gui</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="24.01708984375" x="4.0" y="118.35923600146987">gui</y:NodeLabel>
               <y:StyleProperties>
                 <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
                   <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
                 </y:Property>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_STYLE">
                   <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
                 </y:Property>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
-                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_SELECTION_STYLE">
                   <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
                 </y:Property>
+                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
                 <y:Property class="java.lang.String" name="POOL_LANE_STYLE" value="LANE_STYLE_COLUMNS"/>
                 <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
                 <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_MAIN" value="#ffffff"/>
@@ -95,13 +95,13 @@
               </y:StyleProperties>
               <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
               <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-              <y:BorderInsets bottom="13" bottomF="13.228953355360659" left="17" leftF="17.123194323460922" right="58" rightF="57.77999999999997" top="10" topF="10.344767733739445"/>
+              <y:BorderInsets bottom="13" bottomF="13.228953355360659" left="17" leftF="17.123194323460922" right="33" rightF="32.51777777777784" top="10" topF="10.344767733739445"/>
               <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
                 <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                 <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
                 <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
                 <y:Columns>
-                  <y:Column id="column_0" minimumWidth="30.0" width="512.7918877032519">
+                  <y:Column id="column_0" minimumWidth="30.0" width="487.5296654810297">
                     <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                   </y:Column>
                 </y:Columns>
@@ -220,24 +220,24 @@
           <data key="d5"/>
           <data key="d6">
             <y:TableNode configuration="com.yworks.bpmn.Pool">
-              <y:Geometry height="261.2863430966896" width="566.2666862424414" x="116.41419075348409" y="82.4144354311843"/>
+              <y:Geometry height="149.71152828187485" width="541.0044640202193" x="116.41419075348409" y="82.4144354311843"/>
               <y:Fill color="#FFF2BC" color2="#D4D4D4CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="229.1171875" x="4.0" y="16.08457779834481">org.niklas.vaadininvoice.controller</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="65.69189453125" x="4.0" y="42.009816875312424">controller</y:NodeLabel>
               <y:StyleProperties>
                 <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
                   <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
                 </y:Property>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_STYLE">
                   <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
                 </y:Property>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
-                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_SELECTION_STYLE">
                   <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
                 </y:Property>
+                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
                 <y:Property class="java.lang.String" name="POOL_LANE_STYLE" value="LANE_STYLE_COLUMNS"/>
                 <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
                 <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_MAIN" value="#ffffff"/>
@@ -247,18 +247,18 @@
               </y:StyleProperties>
               <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
               <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-              <y:BorderInsets bottom="40" bottomF="39.84542047764188" left="17" leftF="16.658079408391472" right="59" rightF="58.71991345425886" top="12" topF="11.907267733739445"/>
+              <y:BorderInsets bottom="36" bottomF="35.635050107271525" left="17" leftF="16.658079408391472" right="33" rightF="33.45769123203672" top="12" topF="11.907267733739445"/>
               <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
                 <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                 <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
                 <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
                 <y:Columns>
-                  <y:Column id="column_0" minimumWidth="30.0" width="513.2666862424414">
+                  <y:Column id="column_0" minimumWidth="30.0" width="488.0044640202193">
                     <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                   </y:Column>
                 </y:Columns>
                 <y:Rows>
-                  <y:Row height="238.28634309668962" id="row_0" minimumHeight="30.0">
+                  <y:Row height="126.71152828187485" id="row_0" minimumHeight="30.0">
                     <y:Insets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
                   </y:Row>
                 </y:Rows>
@@ -270,10 +270,10 @@
               <data key="d5"/>
               <data key="d6">
                 <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="186.5336548853083" width="437.8886933797911" x="183.07227016187557" y="114.32170316492375"/>
+                  <y:Geometry height="79.16921044086388" width="437.8886933797911" x="183.07227016187557" y="114.32170316492375"/>
                   <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="131.40625" x="153.24122168989555" y="83.91624150515415">VaadinInvoiceController<y:LabelModel>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="131.40625" x="153.24122168989555" y="30.23401928293194">VaadinInvoiceController<y:LabelModel>
                       <y:SmartNodeLabelModel distance="4.0"/>
                     </y:LabelModel>
                     <y:ModelParameter>
@@ -288,107 +288,34 @@
             </node>
           </graph>
         </node>
-        <node id="n0::n2" yfiles.foldertype="group">
+        <node id="n0::n2">
           <data key="d5"/>
           <data key="d6">
-            <y:TableNode configuration="com.yworks.bpmn.Pool">
-              <y:Geometry height="255.23472258116578" width="242.09277103295562" x="712.2264304956084" y="88.46605594670814"/>
-              <y:Fill color="#FFF2BC" color2="#D4D4D4CC" transparent="false"/>
+            <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
+              <y:Geometry height="457.38247412972595" width="113.26550522648085" x="-44.61852029572617" y="-225.2565104166668"/>
+              <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="243.3115234375" x="4.0" y="5.961599571832892">org.niklas.vaadininvoice.invoice2pdf</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="106.73828125" x="3.2636119882404273" y="219.34065112736297">VaadinInvvoiceApp<y:LabelModel>
+                  <y:SmartNodeLabelModel distance="4.0"/>
+                </y:LabelModel>
+                <y:ModelParameter>
+                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                </y:ModelParameter>
+              </y:NodeLabel>
               <y:StyleProperties>
-                <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
-                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
-                  <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
-                </y:Property>
-                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_STYLE">
-                  <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
-                </y:Property>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
-                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_SELECTION_STYLE">
-                  <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
-                </y:Property>
-                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
-                <y:Property class="java.lang.String" name="POOL_LANE_STYLE" value="LANE_STYLE_COLUMNS"/>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
-                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_MAIN" value="#ffffff"/>
-                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_STYLE">
-                  <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
-                </y:Property>
+                <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
               </y:StyleProperties>
-              <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
-              <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-              <y:BorderInsets bottom="40" bottomF="39.84542047764188" left="14" leftF="13.975579843386981" right="40" rightF="40.326947287129656" top="7" topF="6.6757949857319545"/>
-              <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
-                <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
-                <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
-                <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
-                <y:Columns>
-                  <y:Column id="column_0" minimumWidth="30.0" width="189.09277103295562">
-                    <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
-                  </y:Column>
-                </y:Columns>
-                <y:Rows>
-                  <y:Row height="232.23472258116578" id="row_0" minimumHeight="30.0">
-                    <y:Insets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
-                  </y:Row>
-                </y:Rows>
-              </y:Table>
-            </y:TableNode>
+            </y:GenericNode>
           </data>
-          <graph edgedefault="directed" id="n0::n2:">
-            <node id="n0::n2::n0">
-              <data key="d5"/>
-              <data key="d6">
-                <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="58.37204948631273" width="134.790243902439" x="776.2020103389954" y="242.4833085639193"/>
-                  <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-                  <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="110.0546875" x="12.367778201219494" y="19.835438805656395">Invoice2PdfBoxImpl<y:LabelModel>
-                      <y:SmartNodeLabelModel distance="4.0"/>
-                    </y:LabelModel>
-                    <y:ModelParameter>
-                      <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                    </y:ModelParameter>
-                  </y:NodeLabel>
-                  <y:StyleProperties>
-                    <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
-                  </y:StyleProperties>
-                </y:GenericNode>
-              </data>
-            </node>
-            <node id="n0::n2::n1">
-              <data key="d5"/>
-              <data key="d6">
-                <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="58.37204948631273" width="134.790243902439" x="776.2020103389954" y="115.1418509324401"/>
-                  <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-                  <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="87.384765625" x="23.702739138719494" y="12.484852868156366">&lt;&lt;interface&gt;&gt;
-Invoice2PdfBox<y:LabelModel>
-                      <y:SmartNodeLabelModel distance="4.0"/>
-                    </y:LabelModel>
-                    <y:ModelParameter>
-                      <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                    </y:ModelParameter>
-                  </y:NodeLabel>
-                  <y:StyleProperties>
-                    <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
-                  </y:StyleProperties>
-                </y:GenericNode>
-              </data>
-            </node>
-          </graph>
         </node>
         <node id="n0::n3" yfiles.foldertype="group">
           <data key="d5"/>
           <data key="d6">
             <y:TableNode configuration="com.yworks.bpmn.Pool">
-              <y:Geometry height="566.7913619512283" width="268.48916893640694" x="984.319201528564" y="-220.88924332897795"/>
+              <y:Geometry height="218.39398184042506" width="246.07263856064083" x="410.4061027588036" y="279.07033738573824"/>
               <y:Fill color="#FFF2BC" color2="#D4D4D4CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="208.27978515625" x="4.0" y="179.25578839748914">org.niklas.vaadininvoice.model</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="79.88623046875" x="4.0" y="69.2538756858375">invoice2pdf</y:NodeLabel>
               <y:StyleProperties>
                 <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
@@ -412,18 +339,18 @@ Invoice2PdfBox<y:LabelModel>
               </y:StyleProperties>
               <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
               <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-              <y:BorderInsets bottom="19" bottomF="19.47828620216086" left="3" leftF="3.0" right="16" rightF="15.857521446161172" top="3" topF="3.129150137920817"/>
+              <y:BorderInsets bottom="27" bottomF="26.68801307023432" left="26" leftF="25.764616880424" right="33" rightF="32.51777777777784" top="7" topF="6.6757949857319545"/>
               <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
                 <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                 <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
                 <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
                 <y:Columns>
-                  <y:Column id="column_0" minimumWidth="30.0" width="215.48916893640688">
+                  <y:Column id="column_0" minimumWidth="30.0" width="193.07263856064083">
                     <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                   </y:Column>
                 </y:Columns>
                 <y:Rows>
-                  <y:Row height="543.7913619512283" id="row_0" minimumHeight="30.0">
+                  <y:Row height="195.39398184042506" id="row_0" minimumHeight="30.0">
                     <y:Insets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
                   </y:Row>
                 </y:Rows>
@@ -435,10 +362,10 @@ Invoice2PdfBox<y:LabelModel>
               <data key="d5"/>
               <data key="d6">
                 <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="521.1839256111466" width="66.93545348327723" x="1037.319201528564" y="-197.76009319105714"/>
+                  <y:Geometry height="58.37204948631273" width="134.790243902439" x="486.1707196392276" y="409.40425666961625"/>
                   <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="42.021484375" x="12.456984554138671" y="251.2413768680733">Invoice<y:LabelModel>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="110.0546875" x="12.367778201219494" y="19.835438805656338">Invoice2PdfBoxImpl<y:LabelModel>
                       <y:SmartNodeLabelModel distance="4.0"/>
                     </y:LabelModel>
                     <y:ModelParameter>
@@ -455,30 +382,11 @@ Invoice2PdfBox<y:LabelModel>
               <data key="d5"/>
               <data key="d6">
                 <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="40.0" width="99.69619400696851" x="1134.2546550118414" y="-197.76009319105714"/>
+                  <y:Geometry height="58.37204948631273" width="134.790243902439" x="486.1707196392276" y="305.7461323714702"/>
                   <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="48.021484375" x="25.837354815984327" y="10.6494140625">Address<y:LabelModel>
-                      <y:SmartNodeLabelModel distance="4.0"/>
-                    </y:LabelModel>
-                    <y:ModelParameter>
-                      <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                    </y:ModelParameter>
-                  </y:NodeLabel>
-                  <y:StyleProperties>
-                    <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
-                  </y:StyleProperties>
-                </y:GenericNode>
-              </data>
-            </node>
-            <node id="n0::n3::n2">
-              <data key="d5"/>
-              <data key="d6">
-                <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="40.0" width="99.69619400696845" x="1134.2546550118414" y="-90.94572193357214"/>
-                  <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-                  <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="66.02734375" x="16.834425128484327" y="10.6494140625">InvoiceRow<y:LabelModel>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="87.384765625" x="23.702739138719494" y="12.484852868156338">&lt;&lt;interface&gt;&gt;
+Invoice2PdfBox<y:LabelModel>
                       <y:SmartNodeLabelModel distance="4.0"/>
                     </y:LabelModel>
                     <y:ModelParameter>
@@ -493,48 +401,28 @@ Invoice2PdfBox<y:LabelModel>
             </node>
           </graph>
         </node>
-        <node id="n0::n4">
-          <data key="d5"/>
-          <data key="d6">
-            <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-              <y:Geometry height="568.9572889445407" width="113.26550522648085" x="-44.61852029572617" y="-225.2565104166668"/>
-              <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-              <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="106.73828125" x="3.2636119882404273" y="275.12805853477033">VaadinInvvoiceApp<y:LabelModel>
-                  <y:SmartNodeLabelModel distance="4.0"/>
-                </y:LabelModel>
-                <y:ModelParameter>
-                  <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
-                </y:ModelParameter>
-              </y:NodeLabel>
-              <y:StyleProperties>
-                <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
-              </y:StyleProperties>
-            </y:GenericNode>
-          </data>
-        </node>
-        <node id="n0::n5" yfiles.foldertype="group">
+        <node id="n0::n4" yfiles.foldertype="group">
           <data key="d5"/>
           <data key="d6">
             <y:TableNode configuration="com.yworks.bpmn.Pool">
-              <y:Geometry height="254.54285351335642" width="242.09277103295562" x="712.2264304956085" y="-219.06380208333348"/>
+              <y:Geometry height="178.39953696562122" width="535.8476874549254" x="118.99257903613105" y="527.4643192261633"/>
               <y:Fill color="#FFF2BC" color2="#D4D4D4CC" transparent="false"/>
               <y:BorderStyle color="#000000" type="line" width="1.0"/>
-              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="224.96435546875" x="4.0" y="14.78924902230321">org.niklas.vaadininvoice.mapping</y:NodeLabel>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="44.8544921875" x="4.0" y="66.77252238906067">model</y:NodeLabel>
               <y:StyleProperties>
                 <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
                   <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
                 </y:Property>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_STYLE">
                   <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
                 </y:Property>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
                 <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_SELECTION_STYLE">
                   <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
                 </y:Property>
-                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
-                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
                 <y:Property class="java.lang.String" name="POOL_LANE_STYLE" value="LANE_STYLE_COLUMNS"/>
                 <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
                 <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_MAIN" value="#ffffff"/>
@@ -544,18 +432,130 @@ Invoice2PdfBox<y:LabelModel>
               </y:StyleProperties>
               <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
               <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
-              <y:BorderInsets bottom="42" bottomF="41.50197506132545" left="14" leftF="13.975579843386981" right="43" rightF="43.10065158609177" top="9" topF="8.978608347850837"/>
+              <y:BorderInsets bottom="24" bottomF="23.898337341387673" left="3" leftF="3.0" right="32" rightF="31.865278515198156" top="3" topF="3.1291501379207602"/>
               <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
                 <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                 <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
                 <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
                 <y:Columns>
-                  <y:Column id="column_0" minimumWidth="30.0" width="189.09277103295562">
+                  <y:Column id="column_0" minimumWidth="30.0" width="482.8476874549254">
                     <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
                   </y:Column>
                 </y:Columns>
                 <y:Rows>
-                  <y:Row height="231.54285351335642" id="row_0" minimumHeight="30.0">
+                  <y:Row height="155.39953696562122" id="row_0" minimumHeight="30.0">
+                    <y:Insets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
+                  </y:Row>
+                </y:Rows>
+              </y:Table>
+            </y:TableNode>
+          </data>
+          <graph edgedefault="directed" id="n0::n4:">
+            <node id="n0::n4::n0">
+              <data key="d5"/>
+              <data key="d6">
+                <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
+                  <y:Geometry height="58.37204948631279" width="447.9824089397273" x="171.99257903613105" y="550.5934693640841"/>
+                  <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+                  <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="42.021484375" x="202.98046228236362" y="19.835438805656395">Invoice<y:LabelModel>
+                      <y:SmartNodeLabelModel distance="4.0"/>
+                    </y:LabelModel>
+                    <y:ModelParameter>
+                      <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                    </y:ModelParameter>
+                  </y:NodeLabel>
+                  <y:StyleProperties>
+                    <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
+                  </y:StyleProperties>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="n0::n4::n1">
+              <data key="d5"/>
+              <data key="d6">
+                <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
+                  <y:Geometry height="40.0" width="99.69619400696851" x="171.99257903613105" y="638.9655188503968"/>
+                  <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+                  <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="48.021484375" x="25.83735481598424" y="10.6494140625">Address<y:LabelModel>
+                      <y:SmartNodeLabelModel distance="4.0"/>
+                    </y:LabelModel>
+                    <y:ModelParameter>
+                      <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                    </y:ModelParameter>
+                  </y:NodeLabel>
+                  <y:StyleProperties>
+                    <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
+                  </y:StyleProperties>
+                </y:GenericNode>
+              </data>
+            </node>
+            <node id="n0::n4::n2">
+              <data key="d5"/>
+              <data key="d6">
+                <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
+                  <y:Geometry height="40.0" width="99.69619400696845" x="301.68877304309956" y="638.9655188503968"/>
+                  <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
+                  <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="66.02734375" x="16.834425128484213" y="10.6494140625">InvoiceRow<y:LabelModel>
+                      <y:SmartNodeLabelModel distance="4.0"/>
+                    </y:LabelModel>
+                    <y:ModelParameter>
+                      <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+                    </y:ModelParameter>
+                  </y:NodeLabel>
+                  <y:StyleProperties>
+                    <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
+                  </y:StyleProperties>
+                </y:GenericNode>
+              </data>
+            </node>
+          </graph>
+        </node>
+        <node id="n0::n5" yfiles.foldertype="group">
+          <data key="d5"/>
+          <data key="d6">
+            <y:TableNode configuration="com.yworks.bpmn.Pool">
+              <y:Geometry height="217.70211277261575" width="250.5135117736964" x="119.09669031848864" y="279.0613477142205"/>
+              <y:Fill color="#FFF2BC" color2="#D4D4D4CC" transparent="false"/>
+              <y:BorderStyle color="#000000" type="line" width="1.0"/>
+              <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="internal" modelPosition="l" rotationAngle="270.0" textColor="#000000" visible="true" width="61.5390625" x="4.0" y="78.0815251363079">mapping</y:NodeLabel>
+              <y:StyleProperties>
+                <y:Property class="com.yworks.yfiles.bpmn.view.BPMNTypeEnum" name="com.yworks.bpmn.type" value="POOL_TYPE_EMPTY"/>
+                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_SELECTION_STYLE">
+                  <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
+                </y:Property>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.line.color" value="#000000"/>
+                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_STYLE">
+                  <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
+                </y:Property>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill" value="#ffffffe6"/>
+                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_ALTERNATING" value="#ffffff"/>
+                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_ROW_SELECTION_STYLE">
+                  <y:SimpleStyle fillColor="#474A4380" lineColor="#000000" lineType="line" lineWidth="3.0"/>
+                </y:Property>
+                <y:Property class="java.lang.String" name="POOL_LANE_STYLE" value="LANE_STYLE_COLUMNS"/>
+                <y:Property class="java.awt.Color" name="com.yworks.bpmn.icon.fill2" value="#d4d4d4cc"/>
+                <y:Property class="java.awt.Color" name="POOL_LANE_COLOR_MAIN" value="#ffffff"/>
+                <y:Property name="y.view.tabular.TableNodePainter.ALTERNATE_COLUMN_STYLE">
+                  <y:SimpleStyle fillColor="#474A4340" lineColor="#000000" lineType="line" lineWidth="1.0"/>
+                </y:Property>
+              </y:StyleProperties>
+              <y:State autoResize="true" closed="false" closedHeight="80.0" closedWidth="100.0"/>
+              <y:Insets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+              <y:BorderInsets bottom="28" bottomF="28.34456765391792" left="14" leftF="13.975579843386981" right="52" rightF="51.52139232683254" top="9" topF="8.978608347850809"/>
+              <y:Table autoResizeTable="true" defaultColumnWidth="380.0" defaultMinimumColumnWidth="30.0" defaultMinimumRowHeight="30.0" defaultRowHeight="320.0">
+                <y:DefaultColumnInsets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
+                <y:DefaultRowInsets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
+                <y:Insets bottom="0.0" left="30.0" right="0.0" top="0.0"/>
+                <y:Columns>
+                  <y:Column id="column_0" minimumWidth="30.0" width="197.5135117736964">
+                    <y:Insets bottom="3.0" left="3.0" right="3.0" top="20.0"/>
+                  </y:Column>
+                </y:Columns>
+                <y:Rows>
+                  <y:Row height="194.70211277261575" id="row_0" minimumHeight="30.0">
                     <y:Insets bottom="3.0" left="20.0" right="3.0" top="3.0"/>
                   </y:Row>
                 </y:Rows>
@@ -567,10 +567,10 @@ Invoice2PdfBox<y:LabelModel>
               <data key="d5"/>
               <data key="d6">
                 <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="53.78440210511059" width="131.82122002059748" x="776.3973299218749" y="-190.08519373548265"/>
+                  <y:Geometry height="53.78440210511059" width="131.82122002059748" x="183.267589744755" y="308.0399560620713"/>
                   <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="82.708984375" x="24.556117822798797" y="10.191029177555293">&lt;&lt;interface&gt;&gt;
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="82.708984375" x="24.55611782279874" y="10.191029177555322">&lt;&lt;interface&gt;&gt;
 InvoiceMapper<y:LabelModel>
                       <y:SmartNodeLabelModel distance="4.0"/>
                     </y:LabelModel>
@@ -588,10 +588,10 @@ InvoiceMapper<y:LabelModel>
               <data key="d5"/>
               <data key="d6">
                 <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
-                  <y:Geometry height="58.37204948631273" width="132.01653960347687" x="776.2020103389955" y="-67.39497311761525"/>
+                  <y:Geometry height="58.37204948631273" width="132.01653960347687" x="183.07227016187562" y="407.0468433466056"/>
                   <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="105.37890625" x="13.318816676738379" y="19.835438805656366">InvoiceMapperImpl<y:LabelModel>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="105.37890625" x="13.318816676738436" y="19.835438805656338">InvoiceMapperImpl<y:LabelModel>
                       <y:SmartNodeLabelModel distance="4.0"/>
                     </y:LabelModel>
                     <y:ModelParameter>
@@ -608,24 +608,24 @@ InvoiceMapper<y:LabelModel>
         </node>
       </graph>
     </node>
-    <edge id="n0::e0" source="n0::n4" target="n0::n0::n0">
+    <edge id="n0::e0" source="n0::n2" target="n0::n0::n0">
       <data key="d8"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="56.63275261324043" sy="-222.4151267385309" tx="-218.94434668989547" ty="0.0"/>
+          <y:Path sx="56.63275261324043" sy="-166.62771933112353" tx="-218.94434668989547" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="diamond" target="none"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n0::e1" source="n0::n4" target="n0::n1::n0">
+    <edge id="n0::e1" source="n0::n2" target="n0::n1::n0">
       <data key="d8"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="56.63275261324043" sy="148.36639655197436" tx="-218.94434668989555" ty="0.0"/>
+          <y:Path sx="56.63275261324043" sy="150.4715817371595" tx="-218.94434668989555" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="diamond" target="none"/>
           <y:BendStyle smoothed="false"/>
@@ -680,50 +680,38 @@ InvoiceMapper<y:LabelModel>
         </y:PolyLineEdge>
       </data>
     </edge>
+    <edge id="n0::n4::e0" source="n0::n4::n0" target="n0::n4::n1">
+      <data key="d8"/>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-174.14310746637938" sy="29.186024743156395" tx="0.0" ty="-20.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::n4::e1" source="n0::n4::n0" target="n0::n4::n2">
+      <data key="d8"/>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-44.446913459410894" sy="29.186024743156395" tx="0.0" ty="-20.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="diamond" target="none"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
     <edge id="n0::n3::e0" source="n0::n3::n0" target="n0::n3::n1">
       <data key="d8"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="33.46772674163867" sy="-240.5919628055733" tx="-49.84809700348433" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="diamond" target="none"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n3::e1" source="n0::n3::n0" target="n0::n3::n2">
-      <data key="d8"/>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="33.46772674163867" sy="-133.7775915480883" tx="-49.84809700348433" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="diamond" target="none"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::n2::e0" source="n0::n2::n0" target="n0::n2::n1">
-      <data key="d8"/>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="-29.186024743156395" tx="0.0" ty="29.186024743156366"/>
+          <y:Path sx="0.0" sy="-29.186024743156338" tx="0.0" ty="29.186024743156395"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::e2" source="n0::n1::n0" target="n0::n2::n1">
-      <data key="d8"/>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="218.9443466898955" sy="-63.260654931981435" tx="-67.3951219512195" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -733,55 +721,67 @@ InvoiceMapper<y:LabelModel>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.09765979143980985" sy="-29.186024743156366" tx="0.0" ty="26.892201052555293"/>
+          <y:Path sx="0.09765979143969616" sy="-29.186024743156338" tx="0.0" ty="26.892201052555265"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n0::e3" source="n0::n0::n0" target="n0::n5::n0">
+    <edge id="n0::e2" source="n0::n5::n1" target="n0::n4::n0">
       <data key="d8"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="218.9443466898955" sy="0.0" tx="-65.9106100102988" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="plain"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="n0::e4" source="n0::n5::n1" target="n0::n3::n0">
-      <data key="d8"/>
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="66.00826980173849" sy="0.0" tx="-33.46772674163867" ty="-101.04081798897505"/>
+          <y:Path sx="0.0" sy="29.186024743156395" tx="-146.9032435423806" ty="-29.186024743156395"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n0::e5" source="n0::n2::n0" target="n0::n3::n0">
+    <edge id="n0::e3" source="n0::n3::n0" target="n0::n4::n0">
       <data key="d8"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="67.3951219512195" sy="0.0" tx="-33.46772674163867" ty="208.83746369255954"/>
+          <y:Path sx="0.0" sy="29.186024743156395" tx="157.58205808445246" ty="-29.186024743156395"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="n0::e6" source="n0::n0::n0" target="n0::n1::n0">
+    <edge id="n0::e4" source="n0::n0::n0" target="n0::n1::n0">
       <data key="d8"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-161.38643721105228" sy="6.542992682927149" tx="-161.38643721105228" ty="8.659098134936897"/>
+          <y:Path sx="-171.001729839009" sy="31.676671439404032" tx="-171.001729839009" ty="-39.58601958588902"/>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="plain"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e5" source="n0::n1::n0" target="n0::n5::n0">
+      <data key="d8"/>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-152.83841709671736" sy="39.58460522043194" tx="0.0" ty="-26.892201052555322"/>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="plain"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n0::e6" source="n0::n1::n0" target="n0::n3::n1">
+      <data key="d8"/>
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="151.549224738676" sy="39.58460522043194" tx="0.0" ty="-29.186024743156338"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
           <y:BendStyle smoothed="false"/>

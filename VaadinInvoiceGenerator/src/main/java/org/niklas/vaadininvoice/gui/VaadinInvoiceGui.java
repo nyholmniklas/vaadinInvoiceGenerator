@@ -64,7 +64,7 @@ public class VaadinInvoiceGui extends Panel {
 	}
 
 	private void createPdf() {
-		controller.createPdf(new InvoiceMapperImpl().getInvoiceFromForm(this));
+		controller.createPdf(this);
 	}
 
 	public String getCustomerName() {
