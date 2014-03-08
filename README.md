@@ -7,4 +7,4 @@ Built on Vaadin framework.
 Maven build.
 
 ## Class Diagram
-![Class Diagram](/doc/class_diagram.jpg)
+![Class Diagram](https://raw.github.com/nyholmniklas/vaadinInvoiceGenerator/master/VaadinInvoiceGenerator/doc/class_diagram.jpg)
