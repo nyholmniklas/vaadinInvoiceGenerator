@@ -1,5 +1,6 @@
 package org.niklas.vaadininvoice.gui;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
@@ -90,8 +91,8 @@ public class VaadinInvoiceGui extends Panel {
 		return infoPanel.getCompanyPostcodeTextField().getValue().toString();
 	}
 
-	public String getDueDate() {
-		return infoPanel.getDueDateField().getValue().toString();
+	public Date getDueDate() {
+		return infoPanel.getDueDateField().getValue();
 	}
 
 	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
@@ -108,6 +109,10 @@ public class VaadinInvoiceGui extends Panel {
 	
 	public String getDescription(){
 		return descriptionPanel.getDescription();
+	}
+
+	public Date getInvoiceDate() {
+		return infoPanel.getInvoiceDateField().getValue();
 	}
 
 }

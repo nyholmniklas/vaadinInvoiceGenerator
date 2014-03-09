@@ -140,6 +140,8 @@ public class InfoPanel extends Panel {
 	public TextField getInvoiceNumberField() {
 		return invoiceNumberField;
 	}
-	
-	
+
+	public DateField getInvoiceDateField() {
+		return invoiceDateField;
+	}
 }

@@ -2,6 +2,7 @@ package org.niklas.vaadininvoice.model;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -12,7 +13,8 @@ public class Invoice {
 	private String invoiceNumber;
 	private String description;
 	private List<InvoiceRow> rows;
-	private String dueDate;
+	private Date dueDate;
+	private Date invoiceDate;
 	private DecimalFormat priceFormat;
 	
 	public Invoice() {
@@ -53,10 +55,10 @@ public class Invoice {
 	public void setRows(List<InvoiceRow> rows) {
 		this.rows = rows;
 	}
-	public String getDueDate() {
+	public Date getDueDate() {
 		return dueDate;
 	}
-	public void setDueDate(String dueDate) {
+	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 	public String getTotalFormatted() {
@@ -77,6 +79,14 @@ public class Invoice {
 
 	public void setInvoiceNumber(String invoiceNumber) {
 		this.invoiceNumber = invoiceNumber;
+	}
+	
+	public void setInvoiceDate(Date date) {
+		this.invoiceDate = date;
+	}
+
+	public Date getInvoiceDate() {
+		return invoiceDate;
 	}
 
 }
