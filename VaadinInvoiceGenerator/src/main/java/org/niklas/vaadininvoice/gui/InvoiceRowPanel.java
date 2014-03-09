@@ -111,8 +111,12 @@ public class InvoiceRowPanel extends Panel {
 		invoiceRowTable.addContainerProperty("Description", String.class, "Product");
 		invoiceRowTable.addContainerProperty("Quantity", Integer.class, 1);
 		invoiceRowTable.addContainerProperty("Unit Price", Double.class, (double) 1.00);
-		invoiceRowTable.addContainerProperty("Tax Rate %", Double.class, (double) 23);
+		double defaultTaxRate = 23;
+		invoiceRowTable.addContainerProperty("VAT %", Double.class, (double) defaultTaxRate);
+		invoiceRowTable.addContainerProperty("SubTotal (0% VAT)", Double.class, (double) 1.00 * (defaultTaxRate/100));
 		invoiceRowTable.addContainerProperty("Total", Double.class, (double) 1.00);
+		invoiceRowTable.setColumnWidth("VAT %", 100);
+		invoiceRowTable.setColumnWidth("SubTotal (0% VAT)", 100);
 		invoiceRowTable.setEditable(false);
 		invoiceRowTable.setSizeFull();
 		invoiceRowTable.setHeight(140f, Unit.PIXELS);
@@ -139,7 +143,8 @@ public class InvoiceRowPanel extends Panel {
 			row.setDescription((String) rowItem.getItemProperty("Description")
 					.getValue());
 			row.setPrice((Double) rowItem.getItemProperty("Unit Price").getValue());
-			row.setTaxRate((Double) rowItem.getItemProperty("Tax Rate %").getValue());
+			row.setTaxRate((Double) rowItem.getItemProperty("VAT %").getValue());
+			rowItem.getItemProperty("SubTotal (0% VAT)").setValue((double) row.getSubTotal());
 			rowItem.getItemProperty("Total").setValue((double) row.getTotal());
 			rowItem.getItemProperty("Unit Price").setValue((double) row.getPrice());
 			if (row.getQuantity() == 0) {
