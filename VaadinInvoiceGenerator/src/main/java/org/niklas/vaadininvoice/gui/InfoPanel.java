@@ -1,5 +1,8 @@
 package org.niklas.vaadininvoice.gui;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import com.vaadin.shared.ui.datefield.Resolution;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.DateField;
@@ -19,12 +22,13 @@ public class InfoPanel extends Panel {
 	private TextField customerStreetTextField;
 	private TextField customerCityTextField;
 	private TextField customerPostcodeTextField;
+	private DateField invoiceDateField;
 	private DateField dueDateField;
 	private TextField referenceNumberField;
 	private TextField invoiceNumberField;
 	private Label companyLabel;
 	private Label customerLabel;
-	private Label dueDateLabel;
+	private Label invoiceInfoLabel;
 	
 	public InfoPanel() {
 		companyNameTextField = new TextField("Name", "Acme Inc.");
@@ -35,10 +39,11 @@ public class InfoPanel extends Panel {
 		customerStreetTextField = new TextField("Street", "Elkroad 52");
 		customerCityTextField = new TextField("City", "Atlantis");
 		customerPostcodeTextField = new TextField("Postcode", "235711");
-		dueDateField = new DateField(" ");
+		invoiceDateField = new DateField("Invoice Date");
+		dueDateField = new DateField("Due Date");
 		companyLabel = new Label("<b>Company</b>", ContentMode.HTML);
 		customerLabel = new Label("<b>Customer</b>", ContentMode.HTML);
-		dueDateLabel = new Label("<b>Due Date</b>", ContentMode.HTML);
+		invoiceInfoLabel = new Label("<b>Invoice Information</b>", ContentMode.HTML);
 		referenceNumberField = new TextField("Reference Number", "000000");
 		invoiceNumberField = new TextField("Invoice Number", "00000");
 		setLayout();
@@ -64,13 +69,21 @@ public class InfoPanel extends Panel {
 		customerLayout.setSizeFull();
 		
 		VerticalLayout invoiceInfoLayout = new VerticalLayout();
+		Calendar c = Calendar.getInstance();    
+		c.setTime(new Date());
+		invoiceDateField.setResolution(Resolution.DAY);
+		invoiceDateField.setDateFormat("dd-MM-yyyy");
+		invoiceDateField.setValue(c.getTime());
+		c.add(Calendar.DATE, 14);
 		dueDateField.setResolution(Resolution.DAY);
-		dueDateField.setDateFormat("dd-MM-yyy");
-		dueDateField.setValue(new java.util.Date());
-		invoiceInfoLayout.addComponent(dueDateLabel);
+		dueDateField.setDateFormat("dd-MM-yyyy");
+		dueDateField.setValue(c.getTime());
+		invoiceInfoLayout.addComponent(invoiceInfoLabel);
+		invoiceInfoLayout.addComponent(invoiceDateField);
 		invoiceInfoLayout.addComponent(dueDateField);
 		invoiceInfoLayout.addComponent(invoiceNumberField);
 		invoiceInfoLayout.addComponent(referenceNumberField);
+		invoiceInfoLayout.setSpacing(true);
 		invoiceInfoLayout.setSizeFull();
 		
 		
