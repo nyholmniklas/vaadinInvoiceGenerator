@@ -71,4 +71,8 @@ public class InvoiceRow {
 		double subTotal = total - (total*(taxRate/100));
 		return Double.parseDouble(priceFormat.format(subTotal));
 	}
+
+	public Double getVatTotal() {
+		return getTotal() - getSubTotal();
+	}
 }

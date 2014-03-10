@@ -11,9 +11,11 @@ public class DescriptionPanel extends Panel {
 	private TextArea descriptionTextArea;
 	
 	public DescriptionPanel(){
+		setHeight(115, Unit.PIXELS);
 		descriptionLabel = new Label("<b>Description</b>", ContentMode.HTML);
 		descriptionTextArea = new TextArea();
 		descriptionTextArea.setSizeFull();
+		descriptionTextArea.setHeight(50, Unit.PIXELS);
 		setLayout();
 	}
 
@@ -21,8 +23,6 @@ public class DescriptionPanel extends Panel {
 		VerticalLayout layout = new VerticalLayout();
 		layout.addComponent(descriptionLabel);
 		layout.addComponent(descriptionTextArea);
-		layout.setSpacing(true);
-		layout.setSizeFull();
 		layout.setSpacing(true);
 		layout.setMargin(true);
 		setContent(layout);

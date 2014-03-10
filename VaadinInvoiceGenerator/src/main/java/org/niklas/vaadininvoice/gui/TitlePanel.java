@@ -28,7 +28,8 @@ public class TitlePanel extends Panel{
 		layout = new GridLayout(3,1);
 		titleLabel = new Label("<h1>Create New Invoice</h1>", ContentMode.HTML);
 		titleLabel.setWidth(300, Unit.PIXELS);;
-		this.createButton = button;
+		createButton = button;
+		setHeight(90, Unit.PIXELS);
 		setLayout();
 	}
 	

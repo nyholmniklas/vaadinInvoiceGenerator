@@ -12,11 +12,15 @@ import org.niklas.vaadininvoice.model.InvoiceRow;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.shared.ui.label.ContentMode;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Panel;
@@ -28,10 +32,16 @@ public class InvoiceRowPanel extends Panel {
 	private Button editButton;
 	private Button addRowButton;
 	private HashMap<Integer, InvoiceRow> invoiceRows;
-	private TextField grandTotal;
+	private Label totalLabel;
+	private Label totalValueLabel;
+	private Label subTotalLabel;
+	private Label subTotalValueLabel;
+	private Label vatTotalLabel;
+	private Label vatTotalValueLabel;
 	
 	private boolean editable;
 	private int nextAvailableRowId;
+
 
 	public InvoiceRowPanel() {
 		editable = false;
@@ -41,7 +51,13 @@ public class InvoiceRowPanel extends Panel {
 		editButton = new Button("Edit");
 		addRowButton = new Button("Add Item");
 		invoiceRows = new HashMap<Integer, InvoiceRow>();
-		grandTotal = new TextField("Grand Total");
+		totalLabel = new Label("<b>Total:</b>", ContentMode.HTML);
+		subTotalLabel = new Label("Sub-total:");
+		vatTotalLabel = new Label("VAT total:");
+		
+		totalValueLabel = new Label("", ContentMode.HTML);
+		subTotalValueLabel = new Label();
+		vatTotalValueLabel = new Label();
 		
 		setActionListeners();
 		setLayout();
@@ -49,7 +65,7 @@ public class InvoiceRowPanel extends Panel {
 	
 	private void setLayout() {
 		VerticalLayout mainLayout = new VerticalLayout();
-		HorizontalLayout buttonsAndTotalLayout = new HorizontalLayout();
+		GridLayout buttonsAndTotalLayout = new GridLayout(3,1);
 		HorizontalLayout buttonsLayout = new HorizontalLayout();
 		VerticalLayout secondLayout = new VerticalLayout();
 		HorizontalLayout totalLayout = new HorizontalLayout();
@@ -59,10 +75,14 @@ public class InvoiceRowPanel extends Panel {
 		secondLayout.setSizeFull();
 		totalLayout.setSizeFull();
 		totalLayout.addComponent(createTotal());
+
+		buttonsAndTotalLayout.setHeight(100, Unit.PIXELS);
+		buttonsAndTotalLayout.addComponent(buttonsLayout, 0, 0);
+		buttonsAndTotalLayout.setComponentAlignment(buttonsLayout, Alignment.TOP_LEFT);
+		buttonsAndTotalLayout.addComponent(totalLayout,2,0);
+		buttonsAndTotalLayout.setComponentAlignment(totalLayout, Alignment.MIDDLE_RIGHT);
 		buttonsLayout.setMargin(true);
-		buttonsAndTotalLayout.addComponent(buttonsLayout);
-		buttonsAndTotalLayout.addComponent(secondLayout);
-		buttonsAndTotalLayout.addComponent(totalLayout);
+		buttonsAndTotalLayout.setSizeFull();
 		mainLayout.addComponent(buttonsAndTotalLayout);
 		setContent(mainLayout);
 		mainLayout.setSizeFull();
@@ -98,12 +118,23 @@ public class InvoiceRowPanel extends Panel {
 	}
 
 	private Component createTotal() {
-		VerticalLayout layout = new VerticalLayout();
-		grandTotal.setReadOnly(true);
-		grandTotal.setValue(calculateTotal(invoiceRows).toString());
-		layout.addComponent(grandTotal);
+		GridLayout layout = new GridLayout(2,3);
+		updateTotal();
+		layout.addComponent(subTotalValueLabel, 1,0);
+		layout.addComponent(subTotalLabel,0,0);
+		layout.addComponent(vatTotalValueLabel, 1,1);
+		layout.addComponent(vatTotalLabel,0,1);
+		layout.addComponent(totalValueLabel, 1,2);
+		layout.addComponent(totalLabel,0,2);
 		layout.setMargin(true);
+		layout.setSpacing(true);
 		return layout;
+	}
+	
+	private void updateTotal(){
+		subTotalValueLabel.setValue(calculateSubTotal(invoiceRows).toString());
+		vatTotalValueLabel.setValue(calculateVat(invoiceRows).toString());
+		totalValueLabel.setValue("<b>"+calculateTotal(invoiceRows).toString()+"</b>");
 	}
 
 	public Component createTable(){
@@ -155,9 +186,7 @@ public class InvoiceRowPanel extends Panel {
 			invoiceRows.remove(id);
 			invoiceRowTable.removeItem(id);
 		}
-		grandTotal.setReadOnly(false);
-		grandTotal.setValue(calculateTotal(invoiceRows).toString());
-		grandTotal.setReadOnly(true);
+		updateTotal();
 	}
 
 	private int generateId() {
@@ -174,6 +203,23 @@ public class InvoiceRowPanel extends Panel {
 		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
 	}
 
+	
+	private String calculateSubTotal(HashMap<Integer, InvoiceRow> invoiceRows){
+		Double total = (double) 0;
+		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
+			total += row.getSubTotal();
+		}
+		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+	}
+	
+	private String calculateVat(HashMap<Integer, InvoiceRow> invoiceRows){
+		Double total = (double) 0;
+		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
+			total += row.getVatTotal();
+		}
+		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+	}
+	
 	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
 		return invoiceRows;
 	}
