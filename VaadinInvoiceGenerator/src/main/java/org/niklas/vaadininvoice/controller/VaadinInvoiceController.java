@@ -1,10 +1,7 @@
 package org.niklas.vaadininvoice.controller;
 
 import java.io.File;
-
-import org.niklas.vaadininvoice.gui.VaadinInvoiceGui;
 import org.niklas.vaadininvoice.invoice2pdf.Invoice2Pdf;
-import org.niklas.vaadininvoice.invoice2pdf.Invoice2PdfBoxImpl;
 import org.niklas.vaadininvoice.model.Invoice;
 
 public class VaadinInvoiceController {

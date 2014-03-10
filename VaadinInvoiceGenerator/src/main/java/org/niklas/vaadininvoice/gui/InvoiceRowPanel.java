@@ -1,15 +1,8 @@
 package org.niklas.vaadininvoice.gui;
 
-
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-
 import org.niklas.vaadininvoice.model.Invoice;
 import org.niklas.vaadininvoice.model.InvoiceRow;
-
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
@@ -23,11 +16,9 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
-import com.vaadin.ui.VerticalLayout;
 
 public class InvoiceRowPanel extends Panel {
 	private BeanItem<Invoice> invoiceBean;
@@ -55,7 +46,6 @@ public class InvoiceRowPanel extends Panel {
 		invoiceRowTable = new Table();
 		editButton = new Button("Edit");
 		addRowButton = new Button("Add Item");
-//		invoiceRows = new HashMap<Integer, InvoiceRow>();
 		totalLabel = new Label("<b>Total:</b>", ContentMode.HTML);
 		subTotalLabel = new Label("Sub-total:");
 		vatTotalLabel = new Label("VAT total:");
@@ -199,38 +189,5 @@ public class InvoiceRowPanel extends Panel {
 		nextAvailableRowId++;
 		return id;
 	}
-	
-//	private String calculateTotal(HashMap<Integer, InvoiceRow> invoiceRows){
-//		Double total = (double) 0;
-//		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
-//			total += row.getTotal();
-//		}
-//		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
-//	}
-//
-//	
-//	private String calculateSubTotal(HashMap<Integer, InvoiceRow> invoiceRows){
-//		Double total = (double) 0;
-//		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
-//			total += row.getSubTotal();
-//		}
-//		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
-//	}
-//	
-//	private String calculateVat(HashMap<Integer, InvoiceRow> invoiceRows){
-//		Double total = (double) 0;
-//		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
-//			total += row.getVatTotal();
-//		}
-//		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
-//	}
-	
-//	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
-//		return invoiceRows;
-//	}
-	
-//	public void commitFields(){
-//		
-//	}
 	
 }

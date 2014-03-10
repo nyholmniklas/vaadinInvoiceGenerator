@@ -1,12 +1,7 @@
 package org.niklas.vaadininvoice.gui;
 
-import java.util.Date;
-import java.util.HashMap;
-
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
 import org.niklas.vaadininvoice.model.Invoice;
-import org.niklas.vaadininvoice.model.InvoiceRow;
-
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.ui.Button;
