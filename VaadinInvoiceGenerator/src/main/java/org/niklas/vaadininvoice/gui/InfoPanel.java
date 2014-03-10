@@ -1,8 +1,5 @@
 package org.niklas.vaadininvoice.gui;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import org.niklas.vaadininvoice.model.Address;
 import org.niklas.vaadininvoice.model.Invoice;
 
@@ -161,53 +158,5 @@ public class InfoPanel extends Panel {
 		customerFieldGroup.commit();
 		companyFieldGroup.commit();
 		invoiceInfoFieldGroup.commit();
-	}
-
-	public TextField getCompanyNameTextField() {
-		return companyNameTextField;
-	}
-
-	public TextField getCompanyStreetTextField() {
-		return companyStreetTextField;
-	}
-
-	public TextField getCompanyCityTextField() {
-		return companyCityTextField;
-	}
-
-	public TextField getCompanyPostcodeTextField() {
-		return companyPostcodeTextField;
-	}
-
-	public TextField getCustomerNameTextField() {
-		return customerNameTextField;
-	}
-
-	public TextField getCustomerStreetTextField() {
-		return customerStreetTextField;
-	}
-
-	public TextField getCustomerCityTextField() {
-		return customerCityTextField;
-	}
-
-	public TextField getCustomerPostcodeTextField() {
-		return customerPostcodeTextField;
-	}
-
-	public DateField getDueDateField() {
-		return dueDateField;
-	}
-
-	public TextField getReferenceNumberField() {
-		return referenceNumberField;
-	}
-
-	public TextField getInvoiceNumberField() {
-		return invoiceNumberField;
-	}
-
-	public DateField getInvoiceDateField() {
-		return invoiceDateField;
 	}
 }

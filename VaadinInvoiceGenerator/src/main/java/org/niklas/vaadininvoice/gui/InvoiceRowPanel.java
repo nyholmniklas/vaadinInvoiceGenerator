@@ -30,10 +30,11 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
 public class InvoiceRowPanel extends Panel {
+	private BeanItem<Invoice> invoiceBean;
+	
 	private Table invoiceRowTable;
 	private Button editButton;
 	private Button addRowButton;
-	private HashMap<Integer, InvoiceRow> invoiceRows;
 	private Label totalLabel;
 	private Label totalValueLabel;
 	private Label subTotalLabel;
@@ -46,13 +47,15 @@ public class InvoiceRowPanel extends Panel {
 
 
 	public InvoiceRowPanel(BeanItem<Invoice> invoiceBean) {
+		this.invoiceBean = invoiceBean;
+		
 		editable = false;
 		nextAvailableRowId = 0;
 
 		invoiceRowTable = new Table();
 		editButton = new Button("Edit");
 		addRowButton = new Button("Add Item");
-		invoiceRows = new HashMap<Integer, InvoiceRow>();
+//		invoiceRows = new HashMap<Integer, InvoiceRow>();
 		totalLabel = new Label("<b>Total:</b>", ContentMode.HTML);
 		subTotalLabel = new Label("Sub-total:");
 		vatTotalLabel = new Label("VAT total:");
@@ -134,9 +137,9 @@ public class InvoiceRowPanel extends Panel {
 	}
 	
 	private void updateTotal(){
-		subTotalValueLabel.setValue(calculateSubTotal(invoiceRows).toString());
-		vatTotalValueLabel.setValue(calculateVat(invoiceRows).toString());
-		totalValueLabel.setValue("<b>"+calculateTotal(invoiceRows).toString()+"</b>");
+		subTotalValueLabel.setValue(invoiceBean.getBean().getSubTotalToString());
+		vatTotalValueLabel.setValue(invoiceBean.getBean().getVatTotalToString());
+		totalValueLabel.setValue("<b>"+invoiceBean.getBean().getTotalToString()+"</b>");
 	}
 
 	public Component createTable(){
@@ -163,13 +166,13 @@ public class InvoiceRowPanel extends Panel {
 		int id = generateId();
 		invoiceRowTable.addItem(id);
 		InvoiceRow row = new InvoiceRow(id, 1, "", (double) 1, (double) 23);
-		invoiceRows.put(id, row);
+		invoiceBean.getBean().addRow(id, row);
 		updateRows();
 	}
 
 	private void updateRows() {
 		ArrayList<Integer> itemIdsToRemove = new ArrayList<Integer>();
-		for (InvoiceRow row : invoiceRows.values()) {
+		for (InvoiceRow row : invoiceBean.getBean().getRows().values()) {
 			Item rowItem = invoiceRowTable.getItem(row.getId());
 			row.setQuantity((Integer) rowItem.getItemProperty("Quantity")
 					.getValue());
@@ -185,7 +188,7 @@ public class InvoiceRowPanel extends Panel {
 			}
 		}
 		for (Integer id:itemIdsToRemove) {
-			invoiceRows.remove(id);
+			invoiceBean.getBean().removeRowById(id);
 			invoiceRowTable.removeItem(id);
 		}
 		updateTotal();
@@ -197,34 +200,37 @@ public class InvoiceRowPanel extends Panel {
 		return id;
 	}
 	
-	private String calculateTotal(HashMap<Integer, InvoiceRow> invoiceRows){
-		Double total = (double) 0;
-		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
-			total += row.getTotal();
-		}
-		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
-	}
-
+//	private String calculateTotal(HashMap<Integer, InvoiceRow> invoiceRows){
+//		Double total = (double) 0;
+//		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
+//			total += row.getTotal();
+//		}
+//		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+//	}
+//
+//	
+//	private String calculateSubTotal(HashMap<Integer, InvoiceRow> invoiceRows){
+//		Double total = (double) 0;
+//		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
+//			total += row.getSubTotal();
+//		}
+//		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+//	}
+//	
+//	private String calculateVat(HashMap<Integer, InvoiceRow> invoiceRows){
+//		Double total = (double) 0;
+//		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
+//			total += row.getVatTotal();
+//		}
+//		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+//	}
 	
-	private String calculateSubTotal(HashMap<Integer, InvoiceRow> invoiceRows){
-		Double total = (double) 0;
-		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
-			total += row.getSubTotal();
-		}
-		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
-	}
+//	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
+//		return invoiceRows;
+//	}
 	
-	private String calculateVat(HashMap<Integer, InvoiceRow> invoiceRows){
-		Double total = (double) 0;
-		for (InvoiceRow row:new ArrayList<InvoiceRow>(invoiceRows.values())) {
-			total += row.getVatTotal();
-		}
-		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
-	}
-	
-	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
-		return invoiceRows;
-	}
-	
+//	public void commitFields(){
+//		
+//	}
 	
 }

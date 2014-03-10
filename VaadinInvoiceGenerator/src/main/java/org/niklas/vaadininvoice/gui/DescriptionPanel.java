@@ -57,8 +57,4 @@ public class DescriptionPanel extends Panel {
 	public void commitFields() throws CommitException{
 		descriptionFieldGroup.commit();
 	}
-	
-	public String getDescription() {
-		return descriptionTextArea.getValue();
-	}
 }

@@ -5,6 +5,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,7 +15,7 @@ public class Invoice {
 	private String referenceNumber;
 	private String invoiceNumber;
 	private String description;
-	private List<InvoiceRow> rows;
+	private HashMap<Integer, InvoiceRow> rows;
 	private Date dueDate;
 	private Date invoiceDate;
 	private DecimalFormat priceFormat;
@@ -26,7 +27,7 @@ public class Invoice {
 		referenceNumber = "00000";
 		invoiceNumber = "00000";
 		description = "Write description here";
-		rows = new ArrayList<InvoiceRow>();
+		rows = new HashMap<Integer, InvoiceRow>();
 		Calendar c = Calendar.getInstance();    
 		c.setTime(new Date());
 		invoiceDate = c.getTime();
@@ -36,7 +37,7 @@ public class Invoice {
 	
 	public Double getTotal() {
 		Double total = new Double(0);
-		for (InvoiceRow row:rows) {
+		for (InvoiceRow row:rows.values()) {
 			total += row.getTotal();
 		}
 		return total;
@@ -44,6 +45,22 @@ public class Invoice {
 	
 	public String getTotalToString() {
 		return priceFormat.format(getTotal());
+	}
+	
+	public String getSubTotalToString() {
+		Double total = (double) 0;
+		for (InvoiceRow row:rows.values()) {
+			total += row.getSubTotal();
+		}
+		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+	}
+
+	public String getVatTotalToString() {
+		Double total = (double) 0;
+		for (InvoiceRow row:rows.values()) {
+			total += row.getVatTotal();
+		}
+		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
 	}
 
 	public Address getCustomer() {
@@ -86,11 +103,11 @@ public class Invoice {
 		this.description = description;
 	}
 
-	public List<InvoiceRow> getRows() {
+	public HashMap<Integer, InvoiceRow> getRows() {
 		return rows;
 	}
 
-	public void setRows(List<InvoiceRow> rows) {
+	public void setRows(HashMap<Integer, InvoiceRow> rows) {
 		this.rows = rows;
 	}
 
@@ -108,6 +125,14 @@ public class Invoice {
 
 	public void setInvoiceDate(Date invoiceDate) {
 		this.invoiceDate = invoiceDate;
+	}
+
+	public void removeRowById(Integer id) {
+		rows.remove(id);
+	}
+
+	public void addRow(int id, InvoiceRow row) {
+		rows.put(id, row);
 	}
 
 }
