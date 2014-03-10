@@ -26,7 +26,7 @@ public class VaadinInvoiceGui extends Panel {
 		this.controller = controller;
 		invoice = new Invoice();
 		invoiceBean = new BeanItem<Invoice>(invoice);
-		
+
 		createButton = new Button("Generate PDF");
 		titlePanel = new TitlePanel(createButton, invoiceBean);
 		infoPanel = new InfoPanel(invoiceBean);
@@ -51,22 +51,22 @@ public class VaadinInvoiceGui extends Panel {
 		createButton.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
-				commitFields();
-				createPdf();
-				titlePanel.setLink(controller.getPdfFile());
+				try {
+					commitFields();
+					createPdf();
+					titlePanel.setLink(controller.getPdfFile());
+				} catch (CommitException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}
 
-	private void commitFields(){
-		try {
-			infoPanel.commitFields();
-			descriptionPanel.commitFields();
-		} catch (CommitException e) {
-			e.printStackTrace();
-		}
+	private void commitFields() throws CommitException {
+		infoPanel.commitFields();
+		descriptionPanel.commitFields();
 	}
-	
+
 	private void createPdf() {
 		controller.createPdf(invoiceBean.getBean());
 	}

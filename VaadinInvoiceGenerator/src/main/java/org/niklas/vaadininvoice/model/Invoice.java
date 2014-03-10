@@ -23,8 +23,8 @@ public class Invoice {
 		priceFormat = new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US));
 		customer = new Address();
 		company = new Address();
-		referenceNumber = "00000";
-		invoiceNumber = "00000";
+		referenceNumber = "";
+		invoiceNumber = "";
 		description = "Write description here";
 		rows = new HashMap<Integer, InvoiceRow>();
 		Calendar c = Calendar.getInstance();    

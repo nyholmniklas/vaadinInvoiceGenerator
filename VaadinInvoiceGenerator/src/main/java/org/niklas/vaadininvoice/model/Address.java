@@ -4,11 +4,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Address {
-	@Size(min = 5, max = 50)
+	@Size(min = 5, max = 40)
 	private String name;
 	private String name2;
+	@Size(min = 5, max = 40)
 	private String address;
+	@Size(min = 3, max = 10)
 	private String postcode;
+	@Size(min = 3, max = 40)
 	private String city;
 	private String country;
 
