@@ -17,7 +17,6 @@ package org.niklas.vaadininvoice;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
 import org.niklas.vaadininvoice.gui.VaadinInvoiceGui;
-import org.niklas.vaadininvoice.mapping.InvoiceMapperImpl;
 import org.niklas.vaadininvoice.invoice2pdf.Invoice2PdfBoxImpl;
 
 import com.vaadin.server.VaadinRequest;
@@ -48,7 +47,6 @@ public class VaadinInvoiceApp extends UI
 
 	private void injectControllerDependencies() {
 		controller.setInvoice2Pdf(new Invoice2PdfBoxImpl());
-		controller.setInvoiceMapper(new InvoiceMapperImpl());
 	}
     
 }

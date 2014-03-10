@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
+import org.niklas.vaadininvoice.model.Invoice;
 import org.niklas.vaadininvoice.model.InvoiceRow;
 
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
+import com.vaadin.data.util.BeanItem;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -43,7 +45,7 @@ public class InvoiceRowPanel extends Panel {
 	private int nextAvailableRowId;
 
 
-	public InvoiceRowPanel() {
+	public InvoiceRowPanel(BeanItem<Invoice> invoiceBean) {
 		editable = false;
 		nextAvailableRowId = 0;
 

@@ -38,7 +38,7 @@ public class InvoiceRow {
 		return Double.parseDouble(priceFormat.format(price));
 	}
 	
-	public String getTotalFormatted(){
+	public String getTotalToString(){
 		return priceFormat.format(getTotal());
 	}
 

@@ -4,8 +4,11 @@ import java.util.Date;
 import java.util.HashMap;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
+import org.niklas.vaadininvoice.model.Invoice;
 import org.niklas.vaadininvoice.model.InvoiceRow;
 
+import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
+import com.vaadin.data.util.BeanItem;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
@@ -13,6 +16,8 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 
 public class VaadinInvoiceGui extends Panel {
+	private BeanItem<Invoice> invoiceBean;
+	private Invoice invoice;
 	private VerticalLayout layout;
 	private Button createButton;
 	private TitlePanel titlePanel;
@@ -24,11 +29,14 @@ public class VaadinInvoiceGui extends Panel {
 	public VaadinInvoiceGui(VaadinInvoiceController controller) {
 		super();
 		this.controller = controller;
+		invoice = new Invoice();
+		invoiceBean = new BeanItem<Invoice>(invoice);
+		
 		createButton = new Button("Generate PDF");
-		titlePanel = new TitlePanel(createButton);
-		infoPanel = new InfoPanel();
-		descriptionPanel = new DescriptionPanel();
-		invoiceRowPanel = new InvoiceRowPanel();
+		titlePanel = new TitlePanel(createButton, invoiceBean);
+		infoPanel = new InfoPanel(invoiceBean);
+		descriptionPanel = new DescriptionPanel(invoiceBean);
+		invoiceRowPanel = new InvoiceRowPanel(invoiceBean);
 		setActionListeners();
 		setLayout();
 	}
@@ -48,71 +56,24 @@ public class VaadinInvoiceGui extends Panel {
 		createButton.addClickListener(new ClickListener() {
 
 			public void buttonClick(ClickEvent event) {
+				commitFields();
 				createPdf();
 				titlePanel.setLink(controller.getPdfFile());
 			}
 		});
 	}
 
-	private void createPdf() {
-		controller.createPdf(this);
-	}
-
-	public String getCustomerName() {
-		return infoPanel.getCustomerNameTextField().getValue().toString();
-	}
-
-	public String getCustomerStreet() {
-		return infoPanel.getCustomerStreetTextField().getValue().toString();
-	}
-
-	public String getCustomerCity() {
-		return infoPanel.getCustomerCityTextField().getValue().toString();
-	}
-
-	public String getCustomerPostcode() {
-		return infoPanel.getCustomerPostcodeTextField().getValue()
-				.toString();
-	}
-
-	public String getCompanyName() {
-		return infoPanel.getCompanyNameTextField().getValue().toString();
-	}
-
-	public String getCompanyStreet() {
-		return infoPanel.getCompanyStreetTextField().getValue().toString();
-	}
-
-	public String getCompanyCity() {
-		return infoPanel.getCompanyCityTextField().getValue().toString();
-	}
-
-	public String getCompanyPostcode() {
-		return infoPanel.getCompanyPostcodeTextField().getValue().toString();
-	}
-
-	public Date getDueDate() {
-		return infoPanel.getDueDateField().getValue();
-	}
-
-	public HashMap<Integer, InvoiceRow> getInvoiceRows() {
-		return invoiceRowPanel.getInvoiceRows();
-	}
-
-	public String getReferenceNumber() {
-		return infoPanel.getReferenceNumberField().getValue();
-	}
-
-	public String getInvoiceNumber() {
-		return infoPanel.getInvoiceNumberField().getValue();
+	private void commitFields(){
+		try {
+			infoPanel.commitFields();
+			descriptionPanel.commitFields();
+		} catch (CommitException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public String getDescription(){
-		return descriptionPanel.getDescription();
-	}
-
-	public Date getInvoiceDate() {
-		return infoPanel.getInvoiceDateField().getValue();
+	private void createPdf() {
+		controller.createPdf(invoiceBean.getBean());
 	}
 
 }

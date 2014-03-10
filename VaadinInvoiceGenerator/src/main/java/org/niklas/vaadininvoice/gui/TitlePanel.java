@@ -2,6 +2,9 @@ package org.niklas.vaadininvoice.gui;
 
 import java.io.File;
 
+import org.niklas.vaadininvoice.model.Invoice;
+
+import com.vaadin.data.util.BeanItem;
 import com.vaadin.server.FileDownloader;
 import com.vaadin.server.FileResource;
 import com.vaadin.server.ThemeResource;
@@ -18,13 +21,15 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.Button.ClickEvent;
 
 public class TitlePanel extends Panel{
+	private BeanItem<Invoice> invoiceBean;
 	private GridLayout layout;
 	private Label titleLabel;
 	private Button createButton;
 	private Button downloadButton;
 	private FileDownloader fileDownloader;
 	
-	public TitlePanel(Button button){
+	public TitlePanel(Button button, BeanItem<Invoice> invoiceBean){
+		this.invoiceBean = invoiceBean;
 		layout = new GridLayout(3,1);
 		titleLabel = new Label("<h1>Create New Invoice</h1>", ContentMode.HTML);
 		titleLabel.setWidth(300, Unit.PIXELS);;

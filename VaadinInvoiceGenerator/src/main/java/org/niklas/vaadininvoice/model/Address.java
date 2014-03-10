@@ -1,6 +1,10 @@
 package org.niklas.vaadininvoice.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Address {
+	@Size(min = 5, max = 50)
 	private String name;
 	private String name2;
 	private String address;
@@ -8,6 +12,15 @@ public class Address {
 	private String city;
 	private String country;
 
+	public Address(){
+		name = "";
+		name2 = "";
+		address = "";
+		postcode = "";
+		city = "";
+		country = "";
+	}
+	
 	public String getName() {
 		return name;
 	}

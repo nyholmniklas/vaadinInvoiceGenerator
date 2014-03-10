@@ -2,6 +2,8 @@ package org.niklas.vaadininvoice.model;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -19,18 +21,19 @@ public class Invoice {
 	
 	public Invoice() {
 		priceFormat = new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US));
+		customer = new Address();
+		company = new Address();
+		referenceNumber = "00000";
+		invoiceNumber = "00000";
+		description = "Write description here";
+		rows = new ArrayList<InvoiceRow>();
+		Calendar c = Calendar.getInstance();    
+		c.setTime(new Date());
+		invoiceDate = c.getTime();
+		c.add(Calendar.DATE, 14);
+		dueDate = c.getTime();
 	}
 	
-	public Address getCustomer() {
-		return customer;
-	}
-	public Address getCompany() {
-		return company;
-	}
-
-	public String getDescription() {
-		return description;
-	}
 	public Double getTotal() {
 		Double total = new Double(0);
 		for (InvoiceRow row:rows) {
@@ -38,31 +41,25 @@ public class Invoice {
 		}
 		return total;
 	}
-	public List<InvoiceRow> getRows() {
-		return rows;
+	
+	public String getTotalToString() {
+		return priceFormat.format(getTotal());
 	}
+
+	public Address getCustomer() {
+		return customer;
+	}
+
 	public void setCustomer(Address customer) {
 		this.customer = customer;
 	}
+
+	public Address getCompany() {
+		return company;
+	}
+
 	public void setCompany(Address company) {
 		this.company = company;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public void setRows(List<InvoiceRow> rows) {
-		this.rows = rows;
-	}
-	public Date getDueDate() {
-		return dueDate;
-	}
-	public void setDueDate(Date dueDate) {
-		this.dueDate = dueDate;
-	}
-	public String getTotalFormatted() {
-		return priceFormat.format(getTotal());
 	}
 
 	public String getReferenceNumber() {
@@ -80,13 +77,37 @@ public class Invoice {
 	public void setInvoiceNumber(String invoiceNumber) {
 		this.invoiceNumber = invoiceNumber;
 	}
-	
-	public void setInvoiceDate(Date date) {
-		this.invoiceDate = date;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<InvoiceRow> getRows() {
+		return rows;
+	}
+
+	public void setRows(List<InvoiceRow> rows) {
+		this.rows = rows;
+	}
+
+	public Date getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
 	}
 
 	public Date getInvoiceDate() {
 		return invoiceDate;
+	}
+
+	public void setInvoiceDate(Date invoiceDate) {
+		this.invoiceDate = invoiceDate;
 	}
 
 }
