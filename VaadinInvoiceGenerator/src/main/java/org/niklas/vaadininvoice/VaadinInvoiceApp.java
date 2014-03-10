@@ -17,17 +17,11 @@ package org.niklas.vaadininvoice;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
 import org.niklas.vaadininvoice.gui.VaadinInvoiceGui;
+import org.niklas.vaadininvoice.mapping.InvoiceMapperImpl;
+import org.niklas.vaadininvoice.invoice2pdf.Invoice2PdfBoxImpl;
 
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.WrappedSession;
-import com.vaadin.ui.AbstractComponent;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.Window;
 
 /**
  * Entry point
@@ -41,6 +35,7 @@ public class VaadinInvoiceApp extends UI
 	@Override
 	protected void init(VaadinRequest request) {
     	controller = new VaadinInvoiceController();
+    	injectControllerDependencies();
 
         gui = new VaadinInvoiceGui(controller);
         setContent(gui);
@@ -49,6 +44,11 @@ public class VaadinInvoiceApp extends UI
     	controller.setSessionId(id);
 		System.out.println("Id of this session is:" + id);
 		
+	}
+
+	private void injectControllerDependencies() {
+		controller.setInvoice2Pdf(new Invoice2PdfBoxImpl());
+		controller.setInvoiceMapper(new InvoiceMapperImpl());
 	}
     
 }

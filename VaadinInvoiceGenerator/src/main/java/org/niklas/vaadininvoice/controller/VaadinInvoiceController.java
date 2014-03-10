@@ -13,11 +13,18 @@ public class VaadinInvoiceController {
 	private Invoice2Pdf invoice2Pdf;
 	private InvoiceMapper invoiceMapper;
 	private String sessionId;
-	
-	public VaadinInvoiceController(){
-		invoice2Pdf = new Invoice2PdfBoxImpl();
-		invoiceMapper = new InvoiceMapperImpl();
+
+	public void setInvoice2Pdf(Invoice2Pdf invoice2Pdf) {
+		this.invoice2Pdf = invoice2Pdf;
 	}
+
+
+
+	public void setInvoiceMapper(InvoiceMapper invoiceMapper) {
+		this.invoiceMapper = invoiceMapper;
+	}
+
+
 
 	public void createPdf(VaadinInvoiceGui vaadinInvoiceGui){
 		invoice2Pdf.getPdfFromInvoice(invoiceMapper.getInvoiceFromForm(vaadinInvoiceGui), sessionId);
