@@ -1,8 +1,11 @@
 package org.niklas.vaadininvoice.gui;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+
 import org.niklas.vaadininvoice.model.Invoice;
 import org.niklas.vaadininvoice.model.InvoiceRow;
+
 import com.vaadin.data.Item;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
@@ -91,8 +94,11 @@ public class InvoiceRowPanel extends Panel {
 				editable = !editable;
 				invoiceRowTable.setEditable(editable);
 				if (editable) editButton.setCaption("Done");
-				else editButton.setCaption("Edit");
+				else {
+					editButton.setCaption("Edit");
+				}
 				updateRows();
+				updateTotal();
 			}
 		});
 		
@@ -100,7 +106,7 @@ public class InvoiceRowPanel extends Panel {
 			
 			public void valueChange(ValueChangeEvent event) {
 				updateRows();
-				
+				updateTotal();
 			}
 		});
 		
@@ -108,6 +114,8 @@ public class InvoiceRowPanel extends Panel {
 			
 			public void buttonClick(ClickEvent event) {
 				addRow();
+				updateRows();
+				updateTotal();
 			}
 		});
 	}
@@ -127,26 +135,29 @@ public class InvoiceRowPanel extends Panel {
 	}
 	
 	private void updateTotal(){
-		subTotalValueLabel.setValue(invoiceBean.getBean().getSubTotalToString());
-		vatTotalValueLabel.setValue(invoiceBean.getBean().getVatTotalToString());
-		totalValueLabel.setValue("<b>"+invoiceBean.getBean().getTotalToString()+"</b>");
+		subTotalValueLabel.setValue(invoiceBean.getBean().getSubTotal().toString());
+		vatTotalValueLabel.setValue(invoiceBean.getBean().getVatTotal().toString());
+		totalValueLabel.setValue("<b>"+invoiceBean.getBean().getTotal().toString()+"</b>");
 	}
 
 	public Component createTable(){
-		VerticalLayout layout = new VerticalLayout();
-		invoiceRowTable.addContainerProperty("Description", String.class, "Product");
-		invoiceRowTable.addContainerProperty("Quantity", Integer.class, 1);
-		invoiceRowTable.addContainerProperty("Unit Price", Double.class, (double) 1.00);
-		double defaultTaxRate = 23;
-		invoiceRowTable.addContainerProperty("VAT %", Double.class, (double) defaultTaxRate);
-		invoiceRowTable.addContainerProperty("SubTotal (0% VAT)", Double.class, (double) 1.00 * (defaultTaxRate/100));
-		invoiceRowTable.addContainerProperty("Total", Double.class, (double) 1.00);
+		InvoiceRow row = new InvoiceRow(generateId());
+		invoiceRowTable.addItem(row.getId());
+		invoiceBean.getBean().addRow(row.getId(), row);
+		invoiceRowTable.addContainerProperty("Description", String.class, row.getDescription());
+		invoiceRowTable.addContainerProperty("Quantity", Integer.class, row.getQuantity());
+		invoiceRowTable.addContainerProperty("Unit Price", String.class, row.getPrice().toString());
+		invoiceRowTable.addContainerProperty("VAT %", String.class, row.getTaxRate().toString());
+		invoiceRowTable.addContainerProperty("SubTotal (0% VAT)", String.class, row.getSubTotal().toString());
+		invoiceRowTable.addContainerProperty("Total", String.class, row.getTotal().toString());
 		invoiceRowTable.setColumnWidth("VAT %", 100);
 		invoiceRowTable.setColumnWidth("SubTotal (0% VAT)", 100);
 		invoiceRowTable.setEditable(false);
 		invoiceRowTable.setSizeFull();
 		invoiceRowTable.setHeight(140f, Unit.PIXELS);
-		addRow();
+		updateRows();
+		
+		VerticalLayout layout = new VerticalLayout();
 		layout.addComponent(invoiceRowTable);
 		layout.setMargin(true);
 		return layout;
@@ -155,33 +166,34 @@ public class InvoiceRowPanel extends Panel {
 	private void addRow() {
 		int id = generateId();
 		invoiceRowTable.addItem(id);
-		InvoiceRow row = new InvoiceRow(id, 1, "", (double) 1, (double) 23);
+		InvoiceRow row = new InvoiceRow(id);
 		invoiceBean.getBean().addRow(id, row);
 		updateRows();
 	}
 
 	private void updateRows() {
 		ArrayList<Integer> itemIdsToRemove = new ArrayList<Integer>();
-		for (InvoiceRow row : invoiceBean.getBean().getRows().values()) {
-			Item rowItem = invoiceRowTable.getItem(row.getId());
-			row.setQuantity((Integer) rowItem.getItemProperty("Quantity")
+		for (InvoiceRow invoiceRow : invoiceBean.getBean().getRows().values()) {
+			Item tableRow = invoiceRowTable.getItem(invoiceRow.getId());
+			invoiceRow.setQuantity((Integer) tableRow.getItemProperty("Quantity")
 					.getValue());
-			row.setDescription((String) rowItem.getItemProperty("Description")
+			invoiceRow.setDescription((String) tableRow.getItemProperty("Description")
 					.getValue());
-			row.setPrice((Double) rowItem.getItemProperty("Unit Price").getValue());
-			row.setTaxRate((Double) rowItem.getItemProperty("VAT %").getValue());
-			rowItem.getItemProperty("SubTotal (0% VAT)").setValue((double) row.getSubTotal());
-			rowItem.getItemProperty("Total").setValue((double) row.getTotal());
-			rowItem.getItemProperty("Unit Price").setValue((double) row.getPrice());
-			if (row.getQuantity() == 0) {
-				itemIdsToRemove.add(row.getId());
+			invoiceRow.setPrice(new BigDecimal(tableRow.getItemProperty("Unit Price").getValue().toString()));
+			invoiceRow.setTaxRate(new BigDecimal(tableRow.getItemProperty("VAT %").getValue().toString()));
+			System.out.println("Row with id "+invoiceRow.getId()+ "has " + invoiceRow.getQuantity() + "products now.");
+			System.out.println("Even in bean row with id "+invoiceBean.getBean().getRows().get(invoiceRow.getId()).getId()+ "has " + invoiceBean.getBean().getRows().get(invoiceRow.getId()).getQuantity() + "products now.");
+			tableRow.getItemProperty("SubTotal (0% VAT)").setValue(invoiceRow.getSubTotal().toString());
+			tableRow.getItemProperty("Total").setValue(invoiceRow.getTotal().toString());
+			tableRow.getItemProperty("Unit Price").setValue(invoiceRow.getPrice().toString());
+			if (invoiceRow.getQuantity() == 0) {
+				itemIdsToRemove.add(invoiceRow.getId());
 			}
 		}
 		for (Integer id:itemIdsToRemove) {
 			invoiceBean.getBean().removeRowById(id);
 			invoiceRowTable.removeItem(id);
 		}
-		updateTotal();
 	}
 
 	private int generateId() {

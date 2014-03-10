@@ -1,5 +1,6 @@
 package org.niklas.vaadininvoice.model;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -8,17 +9,17 @@ public class InvoiceRow {
 	private Integer id;
 	private Integer quantity;
 	private String description;
-	private Double price;
-	private Double taxRate;
+	private BigDecimal price;
+	private BigDecimal taxRate;
 	private DecimalFormat priceFormat;
 	
-	public InvoiceRow(Integer id, Integer quantity, String description, Double price, Double taxRate) {
+	public InvoiceRow(Integer id) {
 		super();
 		this.id = id;
-		this.quantity = quantity;
-		this.description = description;
-		this.price = price;
-		this.taxRate = taxRate;
+		this.quantity = 1;
+		this.description = "Product";
+		this.price = new BigDecimal(1);
+		this.taxRate = new BigDecimal(23);
 		priceFormat = new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US));
 	}
 
@@ -34,8 +35,8 @@ public class InvoiceRow {
 		return description;
 	}
 
-	public Double getPrice() {
-		return Double.parseDouble(priceFormat.format(price));
+	public BigDecimal getPrice() {
+		return price;
 	}
 	
 	public String getTotalToString(){
@@ -50,29 +51,29 @@ public class InvoiceRow {
 		this.description = description;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 
-	public Double getTaxRate() {
+	public BigDecimal getTaxRate() {
 		return taxRate;
 	}
 
-	public void setTaxRate(Double taxRate) {
+	public void setTaxRate(BigDecimal taxRate) {
 		this.taxRate = taxRate;
 	}
 
-	public Double getTotal() {
-		return ((double) quantity) * price;
+	public BigDecimal getTotal() {
+		return price.multiply(new BigDecimal(quantity));
 	}
 	
-	public Double getSubTotal(){
-		double total = getTotal();
-		double subTotal = total - (total*(taxRate/100));
-		return Double.parseDouble(priceFormat.format(subTotal));
+	public BigDecimal getSubTotal(){
+		BigDecimal total = getTotal();
+		BigDecimal subTotal = total.subtract(total.multiply(taxRate.divide(new BigDecimal(100))));
+		return subTotal;
 	}
 
-	public Double getVatTotal() {
-		return getTotal() - getSubTotal();
+	public BigDecimal getVatTotal() {
+		return getTotal().subtract(getSubTotal());
 	}
 }

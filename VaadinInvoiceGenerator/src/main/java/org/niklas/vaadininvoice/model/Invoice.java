@@ -1,5 +1,6 @@
 package org.niklas.vaadininvoice.model;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Calendar;
@@ -33,32 +34,49 @@ public class Invoice {
 		dueDate = c.getTime();
 	}
 	
-	public Double getTotal() {
-		Double total = new Double(0);
+	public BigDecimal getTotal() {
+		BigDecimal total = new BigDecimal(0);
 		for (InvoiceRow row:rows.values()) {
-			total += row.getTotal();
+			total = total.add(row.getTotal());
 		}
 		return total;
 	}
 	
-	public String getTotalToString() {
-		return priceFormat.format(getTotal());
+	public BigDecimal getSubTotal() {
+		BigDecimal subTotal = new BigDecimal(0);
+		for (InvoiceRow row:rows.values()) {
+			subTotal = subTotal.add(row.getSubTotal());
+		}
+		return subTotal;
 	}
 	
-	public String getSubTotalToString() {
-		Double total = (double) 0;
+	public BigDecimal getVatTotal() {
+		BigDecimal vatTotal = new BigDecimal(0);
 		for (InvoiceRow row:rows.values()) {
-			total += row.getSubTotal();
+			vatTotal = vatTotal.add(row.getVatTotal());
 		}
-		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+		return vatTotal;
+	}
+	
+//	public String getTotalToString() {
+//		return priceFormat.format(getTotal());
+//	}
+//	
+//	public String getSubTotalToString() {
+//		return priceFormat.format(getSubTotal());
+//	}
+//
+//	public String getVatTotalToString() {
+//		return priceFormat.format(getVatTotal());
+//	}
+	
+	public void removeRowById(Integer id) {
+		rows.remove(id);
 	}
 
-	public String getVatTotalToString() {
-		Double total = (double) 0;
-		for (InvoiceRow row:rows.values()) {
-			total += row.getVatTotal();
-		}
-		return new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US)).format(total);
+	public void addRow(int id, InvoiceRow row) {
+		System.out.println("adding row with id" + id);
+		rows.put(id, row);
 	}
 
 	public Address getCustomer() {
@@ -123,14 +141,6 @@ public class Invoice {
 
 	public void setInvoiceDate(Date invoiceDate) {
 		this.invoiceDate = invoiceDate;
-	}
-
-	public void removeRowById(Integer id) {
-		rows.remove(id);
-	}
-
-	public void addRow(int id, InvoiceRow row) {
-		rows.put(id, row);
 	}
 
 }

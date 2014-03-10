@@ -116,7 +116,7 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		}
 		
 		writeBoldText(400, 440 - (14*i), "TOTAL: ", contentStream);
-		writeBoldText(500, 440 - (14*i), invoice.getTotalToString(), contentStream);
+		writeBoldText(500, 440 - (14*i), invoice.getTotal().toString(), contentStream);
 		
 		return page;
 	}

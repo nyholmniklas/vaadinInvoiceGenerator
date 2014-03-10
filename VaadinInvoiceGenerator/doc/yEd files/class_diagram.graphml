@@ -372,8 +372,8 @@
                   <y:Geometry height="58.37204948631273" width="198.67846482979644" x="191.71369271883867" y="305.74613237147014"/>
                   <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
                   <y:BorderStyle color="#000000" type="line" width="1.0"/>
-                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="87.384765625" x="55.64684960239822" y="12.484852868156395">&lt;&lt;interface&gt;&gt;
-Invoice2PdfBox<y:LabelModel>
+                  <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="78.056640625" x="60.31091210239822" y="12.484852868156395">&lt;&lt;interface&gt;&gt;
+Invoice2Pdf<y:LabelModel>
                       <y:SmartNodeLabelModel distance="4.0"/>
                     </y:LabelModel>
                     <y:ModelParameter>
