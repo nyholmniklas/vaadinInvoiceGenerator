@@ -58,24 +58,11 @@ public class Invoice {
 		return vatTotal;
 	}
 	
-//	public String getTotalToString() {
-//		return priceFormat.format(getTotal());
-//	}
-//	
-//	public String getSubTotalToString() {
-//		return priceFormat.format(getSubTotal());
-//	}
-//
-//	public String getVatTotalToString() {
-//		return priceFormat.format(getVatTotal());
-//	}
-	
 	public void removeRowById(Integer id) {
 		rows.remove(id);
 	}
 
 	public void addRow(int id, InvoiceRow row) {
-		System.out.println("adding row with id" + id);
 		rows.put(id, row);
 	}
 

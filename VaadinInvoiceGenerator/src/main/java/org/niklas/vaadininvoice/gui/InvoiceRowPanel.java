@@ -181,8 +181,6 @@ public class InvoiceRowPanel extends Panel {
 					.getValue());
 			invoiceRow.setPrice(new BigDecimal(tableRow.getItemProperty("Unit Price").getValue().toString()));
 			invoiceRow.setTaxRate(new BigDecimal(tableRow.getItemProperty("VAT %").getValue().toString()));
-			System.out.println("Row with id "+invoiceRow.getId()+ "has " + invoiceRow.getQuantity() + "products now.");
-			System.out.println("Even in bean row with id "+invoiceBean.getBean().getRows().get(invoiceRow.getId()).getId()+ "has " + invoiceBean.getBean().getRows().get(invoiceRow.getId()).getQuantity() + "products now.");
 			tableRow.getItemProperty("SubTotal (0% VAT)").setValue(invoiceRow.getSubTotal().toString());
 			tableRow.getItemProperty("Total").setValue(invoiceRow.getTotal().toString());
 			tableRow.getItemProperty("Unit Price").setValue(invoiceRow.getPrice().toString());
