@@ -8,17 +8,21 @@ import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
 import com.vaadin.ui.Link;
 import com.vaadin.ui.Panel;
+import com.vaadin.ui.Button.ClickEvent;
 
 public class TitlePanel extends Panel{
 	private GridLayout layout;
 	private Label titleLabel;
 	private Button createButton;
+	private Button downloadButton;
+	private FileDownloader fileDownloader;
 	
 	public TitlePanel(Button button){
 		layout = new GridLayout(3,1);
@@ -33,6 +37,16 @@ public class TitlePanel extends Panel{
 		layout.setComponentAlignment(titleLabel, Alignment.MIDDLE_LEFT);
 		layout.addComponent(createButton, 1, 0);
 		layout.setComponentAlignment(createButton, Alignment.MIDDLE_RIGHT);
+		downloadButton = new Button("Download PDF");
+		downloadButton.setEnabled(false);
+		downloadButton.addClickListener(new ClickListener() {
+			public void buttonClick(ClickEvent event) {
+				downloadButton.setEnabled(false);
+				
+			}
+		});
+		layout.addComponent(downloadButton, 2,0);
+		layout.setComponentAlignment(downloadButton, Alignment.MIDDLE_LEFT);
 		layout.setSizeFull();
 		layout.setSpacing(true);
 		layout.setMargin(true);
@@ -40,11 +54,9 @@ public class TitlePanel extends Panel{
 	}
 
 	protected void setLink(File file) {
-		layout.removeComponent(2, 0);
-		Button downloadButton = new Button("View PDF");
-		FileDownloader fileDownloader = new FileDownloader(new FileResource(file));
+		downloadButton.setEnabled(false);
+		fileDownloader = new FileDownloader(new FileResource(file));
 		fileDownloader.extend(downloadButton);
-		layout.addComponent(downloadButton, 2,0);
-		layout.setComponentAlignment(downloadButton, Alignment.MIDDLE_LEFT);
+		downloadButton.setEnabled(true);
 	}
 }
