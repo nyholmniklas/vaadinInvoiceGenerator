@@ -19,6 +19,7 @@ public class VaadinInvoiceGui extends Panel {
 	private InfoPanel infoPanel;
 	private DescriptionPanel descriptionPanel;
 	private InvoiceRowPanel invoiceRowPanel;
+	private UploadPanel uploadPanel;
 	private VaadinInvoiceController controller;
 
 	public VaadinInvoiceGui(VaadinInvoiceController controller) {
@@ -32,6 +33,7 @@ public class VaadinInvoiceGui extends Panel {
 		infoPanel = new InfoPanel(invoiceBean);
 		descriptionPanel = new DescriptionPanel(invoiceBean);
 		invoiceRowPanel = new InvoiceRowPanel(invoiceBean);
+		uploadPanel = new UploadPanel(controller.getSessionId());
 		setActionListeners();
 		setLayout();
 	}
@@ -42,6 +44,7 @@ public class VaadinInvoiceGui extends Panel {
 		layout.addComponent(infoPanel);
 		layout.addComponent(descriptionPanel);
 		layout.addComponent(invoiceRowPanel);
+		layout.addComponent(uploadPanel);
 		layout.setMargin(true);
 		layout.setSpacing(true);
 		setContent(layout);

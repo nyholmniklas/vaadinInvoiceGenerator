@@ -137,6 +137,7 @@ public class InvoiceRowPanel extends Panel {
 	private void updateTotal(){
 		subTotalValueLabel.setValue(invoiceBean.getBean().getSubTotal().toString());
 		vatTotalValueLabel.setValue(invoiceBean.getBean().getVatTotal().toString());
+		//TODO Sanitize? Cross site scripting risk?
 		totalValueLabel.setValue("<b>"+invoiceBean.getBean().getTotal().toString()+"</b>");
 	}
 
