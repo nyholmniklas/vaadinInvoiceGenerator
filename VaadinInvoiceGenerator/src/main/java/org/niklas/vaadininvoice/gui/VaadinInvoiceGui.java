@@ -2,8 +2,10 @@ package org.niklas.vaadininvoice.gui;
 
 import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
 import org.niklas.vaadininvoice.model.Invoice;
+
 import com.vaadin.data.fieldgroup.FieldGroup.CommitException;
 import com.vaadin.data.util.BeanItem;
+import com.vaadin.ui.Accordion;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
@@ -18,8 +20,9 @@ public class VaadinInvoiceGui extends Panel {
 	private TitlePanel titlePanel;
 	private InfoPanel infoPanel;
 	private DescriptionPanel descriptionPanel;
-	private InvoiceRowPanel invoiceRowPanel;
 	private UploadPanel uploadPanel;
+	private Accordion descriptionAndUploadAccordion;
+	private InvoiceRowPanel invoiceRowPanel;
 	private VaadinInvoiceController controller;
 
 	public VaadinInvoiceGui(VaadinInvoiceController controller) {
@@ -34,6 +37,7 @@ public class VaadinInvoiceGui extends Panel {
 		descriptionPanel = new DescriptionPanel(invoiceBean);
 		invoiceRowPanel = new InvoiceRowPanel(invoiceBean);
 		uploadPanel = new UploadPanel(controller.getSessionId());
+		descriptionAndUploadAccordion = new Accordion();
 		setActionListeners();
 		setLayout();
 	}
@@ -42,9 +46,10 @@ public class VaadinInvoiceGui extends Panel {
 		layout = new VerticalLayout();
 		layout.addComponent(titlePanel);
 		layout.addComponent(infoPanel);
-		layout.addComponent(descriptionPanel);
+		descriptionAndUploadAccordion.addTab(descriptionPanel, "Write description");
+		descriptionAndUploadAccordion.addTab(uploadPanel, "Upload image for logo");
+		layout.addComponent(descriptionAndUploadAccordion);
 		layout.addComponent(invoiceRowPanel);
-		layout.addComponent(uploadPanel);
 		layout.setMargin(true);
 		layout.setSpacing(true);
 		setContent(layout);
