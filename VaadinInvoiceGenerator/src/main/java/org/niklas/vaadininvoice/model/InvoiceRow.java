@@ -36,7 +36,7 @@ public class InvoiceRow {
 	}
 
 	public BigDecimal getPrice() {
-		return price;
+		return price.setScale(2);
 	}
 	
 	public String getTotalToString(){
@@ -56,7 +56,7 @@ public class InvoiceRow {
 	}
 
 	public BigDecimal getTaxRate() {
-		return taxRate;
+		return taxRate.setScale(2);
 	}
 
 	public void setTaxRate(BigDecimal taxRate) {
@@ -64,16 +64,15 @@ public class InvoiceRow {
 	}
 
 	public BigDecimal getTotal() {
-		return price.multiply(new BigDecimal(quantity));
+		return getPrice().multiply(new BigDecimal(getQuantity())).setScale(2);
 	}
 	
 	public BigDecimal getSubTotal(){
-		BigDecimal total = getTotal();
-		BigDecimal subTotal = total.subtract(total.multiply(taxRate.divide(new BigDecimal(100))));
-		return subTotal;
+		BigDecimal subTotal = getTotal().subtract(getTotal().multiply(getTaxRate().divide(new BigDecimal(100))));
+		return subTotal.setScale(2);
 	}
 
 	public BigDecimal getVatTotal() {
-		return getTotal().subtract(getSubTotal());
+		return getTotal().subtract(getSubTotal()).setScale(2);
 	}
 }

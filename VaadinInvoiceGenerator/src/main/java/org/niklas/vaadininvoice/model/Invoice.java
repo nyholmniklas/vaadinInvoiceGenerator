@@ -35,7 +35,7 @@ public class Invoice {
 	}
 	
 	public BigDecimal getTotal() {
-		BigDecimal total = new BigDecimal(0);
+		BigDecimal total = new BigDecimal(0).setScale(2);
 		for (InvoiceRow row:rows.values()) {
 			total = total.add(row.getTotal());
 		}
@@ -43,7 +43,7 @@ public class Invoice {
 	}
 	
 	public BigDecimal getSubTotal() {
-		BigDecimal subTotal = new BigDecimal(0);
+		BigDecimal subTotal = new BigDecimal(0).setScale(2);
 		for (InvoiceRow row:rows.values()) {
 			subTotal = subTotal.add(row.getSubTotal());
 		}
@@ -51,7 +51,7 @@ public class Invoice {
 	}
 	
 	public BigDecimal getVatTotal() {
-		BigDecimal vatTotal = new BigDecimal(0);
+		BigDecimal vatTotal = new BigDecimal(0).setScale(2);
 		for (InvoiceRow row:rows.values()) {
 			vatTotal = vatTotal.add(row.getVatTotal());
 		}

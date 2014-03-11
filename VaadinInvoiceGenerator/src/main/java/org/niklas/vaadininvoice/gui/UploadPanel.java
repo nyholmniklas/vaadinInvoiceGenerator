@@ -29,7 +29,6 @@ public class UploadPanel extends Panel{
 			
 			@Override
 			public void uploadSucceeded(SucceededEvent event) {
-				uploadComponent.setCaption("Upload new logo");
 				
 			}
 		};
