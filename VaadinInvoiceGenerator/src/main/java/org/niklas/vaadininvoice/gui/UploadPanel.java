@@ -1,7 +1,10 @@
 package org.niklas.vaadininvoice.gui;
 
 
+import org.niklas.vaadininvoice.model.Invoice;
+
 import com.vaadin.data.fieldgroup.FieldGroup;
+import com.vaadin.data.util.BeanItem;
 import com.vaadin.shared.ui.datefield.Resolution;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.DateField;
@@ -16,8 +19,10 @@ public class UploadPanel extends Panel{
 	private Label uploadLabel;
 	private UploadComponent uploadComponent;
 	private String sessionId;
+	private BeanItem<Invoice> invoiceBean;
 	
-	public UploadPanel(String sessionId) {
+	public UploadPanel(BeanItem<Invoice> invoiceBean, String sessionId) {
+		this.invoiceBean = invoiceBean;
 		this.sessionId = sessionId;
 		initComponents();
 		setLayout();
@@ -29,7 +34,7 @@ public class UploadPanel extends Panel{
 			
 			@Override
 			public void uploadSucceeded(SucceededEvent event) {
-				
+				invoiceBean.getBean().setLogoImageFilePath(getFile().getAbsolutePath());
 			}
 		};
 	}

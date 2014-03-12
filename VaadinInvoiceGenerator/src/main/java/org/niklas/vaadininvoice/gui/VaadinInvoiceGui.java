@@ -36,7 +36,7 @@ public class VaadinInvoiceGui extends Panel {
 		infoPanel = new InfoPanel(invoiceBean);
 		descriptionPanel = new DescriptionPanel(invoiceBean);
 		invoiceRowPanel = new InvoiceRowPanel(invoiceBean);
-		uploadPanel = new UploadPanel(controller.getSessionId());
+		uploadPanel = new UploadPanel(invoiceBean, controller.getSessionId());
 		descriptionAndUploadAccordion = new Accordion();
 		setActionListeners();
 		setLayout();

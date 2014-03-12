@@ -1,7 +1,10 @@
 package org.niklas.vaadininvoice.invoice2pdf;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.xobject.PDJpeg;
 import org.niklas.vaadininvoice.model.Invoice;
 import org.niklas.vaadininvoice.model.InvoiceRow;
 
@@ -39,7 +43,13 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	
 	private PDPage createPage(PDDocument doc, Invoice invoice) throws IOException {
 		PDPage page = new PDPage();
+		//Draw logo here because of contentstream and imager creation order bug!! Look into generalized method of drawing images on pdf
+		InputStream in = new FileInputStream(new File(invoice.getLogoImageFilePath()));
+		PDJpeg img = new PDJpeg(doc, in);
+		//Have to create new content stream to avoid bug with pdfbox
 		PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+		img.setWidth(200);
+		contentStream.drawImage(img, 100, 100);
 		writeCustomerAddress(invoice, page, contentStream);
 		writeCompanyAddress(invoice, page, contentStream);
 		writeInvoiceInfo(invoice, page, contentStream);
@@ -66,6 +76,17 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		writeText(250, 655, invoice.getCompany().getCity(), contentStream);
 		return page;
 	}
+	
+//	private PDPage drawLogo(Invoice invoice, PDPage page, PDDocument doc) throws IOException {
+//		InputStream in = new FileInputStream(new File(invoice.getLogoImageFilePath()));
+//		PDJpeg img = new PDJpeg(doc, in);
+//		//Have to create new content stream to avoid bug with pdfbox
+//		PDPageContentStream contentStream = new PDPageContentStream(doc, page);
+//		img.setWidth(200);
+//		contentStream.drawImage(img, 100, 700);
+//		contentStream.close();
+//		return page;
+//	}
 	
 	private void writeText(int x, int y, String value, PDPageContentStream contentStream) throws IOException {		
 		writeTextWithFont(x, y, value, contentStream, normalFont);

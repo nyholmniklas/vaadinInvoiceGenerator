@@ -18,6 +18,7 @@ public class Invoice {
 	private Date dueDate;
 	private Date invoiceDate;
 	private DecimalFormat priceFormat;
+	private String logoImageFilePath;
 	
 	public Invoice() {
 		priceFormat = new DecimalFormat("###.##", new DecimalFormatSymbols(Locale.US));
@@ -128,6 +129,14 @@ public class Invoice {
 
 	public void setInvoiceDate(Date invoiceDate) {
 		this.invoiceDate = invoiceDate;
+	}
+
+	public String getLogoImageFilePath() {
+		return logoImageFilePath;
+	}
+
+	public void setLogoImageFilePath(String logoImageFilePath) {
+		this.logoImageFilePath = logoImageFilePath;
 	}
 
 }

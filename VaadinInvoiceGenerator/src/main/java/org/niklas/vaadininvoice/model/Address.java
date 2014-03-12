@@ -16,11 +16,11 @@ public class Address {
 	private String country;
 
 	public Address(){
-		name = "";
+		name = "John Doe";
 		name2 = "";
-		address = "";
-		postcode = "";
-		city = "";
+		address = "Main Street 15 C 4";
+		postcode = "00700";
+		city = "Farawayland";
 		country = "";
 	}
 	
