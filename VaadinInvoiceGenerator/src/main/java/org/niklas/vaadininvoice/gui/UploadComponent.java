@@ -70,7 +70,19 @@ public abstract class UploadComponent extends VerticalLayout
     @Override
     public OutputStream receiveUpload(String filename,  String MIMEType) {
         FileOutputStream fos = null;
-        file = new File(directory, getUI().getSession().getSession().getId());
+        String extension = "";
+		if (MIMEType.equals("image/png")){
+			extension = ".png";
+		}
+		else if (MIMEType.equals("image/jpeg")) {
+			extension = ".jpeg";
+		}
+		else if (MIMEType.equals("image/jpg")) {
+			extension = ".jpg";
+		}
+		//TODO else throw exception!!!!
+		
+        file = new File(directory, getUI().getSession().getSession().getId()+extension);
  
         try {
             fos = new FileOutputStream(file);
