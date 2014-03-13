@@ -1,5 +1,6 @@
 package org.niklas.vaadininvoice.invoice2pdf;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,13 +44,25 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	
 	private PDPage createPage(PDDocument doc, Invoice invoice) throws IOException {
 		PDPage page = new PDPage();
+		
 		//Draw logo here because of contentstream and imager creation order bug!! Look into generalized method of drawing images on pdf
-		InputStream in = new FileInputStream(new File(invoice.getLogoImageFilePath()));
-		PDJpeg img = new PDJpeg(doc, in);
-		//Have to create new content stream to avoid bug with pdfbox
-		PDPageContentStream contentStream = new PDPageContentStream(doc, page);
-		img.setWidth(200);
-		contentStream.drawImage(img, 100, 100);
+		PDPageContentStream contentStream;
+		if (invoice.getLogoImageFilePath() != null) {
+			InputStream in = new FileInputStream(new File(invoice.getLogoImageFilePath()));
+			PDJpeg img = new PDJpeg(doc, in);
+			//Have to create new content stream to avoid bug with pdfbox
+			contentStream = new PDPageContentStream(doc, page);
+			Dimension logoDimensions = getImageDimensions(img);
+//			img.setWidth((int) Math.round(logoDimensions.getWidth()));
+//			img.setHeight((int) Math.round(logoDimensions.getHeight()));
+//			contentStream.drawImage(img, 50, 50);
+			contentStream.drawXObject(img, 50f, 50f, (float)logoDimensions.getWidth(), (float) logoDimensions.getHeight());
+		}
+		else {
+			contentStream = new PDPageContentStream(doc, page);
+		}
+
+		
 		writeCustomerAddress(invoice, page, contentStream);
 		writeCompanyAddress(invoice, page, contentStream);
 		writeInvoiceInfo(invoice, page, contentStream);
@@ -196,6 +209,25 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	    contentStream.endText();
 	    
 	    return page;
+	}
+	
+	private Dimension getImageDimensions(PDJpeg img) {
+		float maxWidth = 100;
+		float maxHeight = 50;
+		float width = img.getWidth();
+		float height = img.getHeight();
+		System.out.println("Image of size "+width+"x"+height+"px was resized to:");
+		if (width > maxWidth) {
+			height = (maxWidth / width) * height;
+			width = maxWidth;
+		}
+		if (height > maxHeight) {
+			width = (maxHeight / height) * width;
+			height = maxHeight;
+		}
+		System.out.println(width+"x"+height+"px.");
+		
+		return new Dimension((int) width,(int) height);
 	}
 
 }
