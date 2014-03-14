@@ -15,7 +15,7 @@ import com.vaadin.ui.VerticalLayout;
 public class DescriptionPanel extends Panel {
 	private BeanItem<Invoice> invoiceBean;
 	private FieldGroup descriptionFieldGroup;
-	private Label descriptionLabel;
+//	private Label descriptionLabel;
 	private TextArea descriptionTextArea;
 	
 	public DescriptionPanel(BeanItem<Invoice> invoiceBean){
@@ -38,16 +38,16 @@ public class DescriptionPanel extends Panel {
 	}
 
 	private void initComponents() {
-		descriptionLabel = new Label("<b>Description</b>", ContentMode.HTML);
+//		descriptionLabel = new Label("<b>Description</b>", ContentMode.HTML);
 		descriptionTextArea = new TextArea();
 	}
 
 	private void setLayout() {
-		setHeight(115, Unit.PIXELS);
+		setHeight(90, Unit.PIXELS);
 		descriptionTextArea.setSizeFull();
 		descriptionTextArea.setHeight(50, Unit.PIXELS);
 		VerticalLayout layout = new VerticalLayout();
-		layout.addComponent(descriptionLabel);
+//		layout.addComponent(descriptionLabel);
 		layout.addComponent(descriptionTextArea);
 		layout.setSpacing(true);
 		layout.setMargin(true);

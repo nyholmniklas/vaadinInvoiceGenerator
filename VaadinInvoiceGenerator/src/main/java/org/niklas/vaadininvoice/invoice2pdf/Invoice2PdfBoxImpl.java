@@ -142,19 +142,22 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		int i = 0;
 		for (; i < invoice.getRows().size() ; i++) {
 			InvoiceRow row = invoice.getRows().get(i);
-			y = y - 25 - (14*i);
-			writeText(x, y, row.getDescription(), contentStream);
-			writeText(x+100, y, Integer.toString(row.getQuantity()), contentStream);
-			writeText(x+200, y, row.getPrice().toString(), contentStream);
-			writeText(x+300, y, row.getTaxRate().toString(), contentStream);
-			writeText(x+400, y, row.getTotalToString(), contentStream);
+			int tempY = y - 25 - (14*i);
+			writeText(x, tempY, row.getDescription(), contentStream);
+			writeText(x+100, tempY, Integer.toString(row.getQuantity()), contentStream);
+			writeText(x+200, tempY, row.getPrice().toString(), contentStream);
+			writeText(x+300, tempY, row.getTaxRate().toString(), contentStream);
+			writeText(x+400, tempY, row.getTotal().toString()+" EUR", contentStream);
 		}
-		writeText(x+300, y - 50 - (14*i), "Sub-Total: ", contentStream);
-		writeText(x+400, y - 50 - (14*i), invoice.getSubTotal().toString()+" EUR", contentStream);
-		writeText(x+300, y - 50 - (14*i--), "VAT Total: ", contentStream);
-		writeText(x+400, y - 50 - (14*i), invoice.getVatTotal().toString()+" EUR", contentStream);
-		writeBoldText(x+300, y - 50 - (14*i--), "TOTAL: ", contentStream);
-		writeBoldText(x+400, y - 50 - (14*i), invoice.getTotal().toString()+" EUR", contentStream);
+		i++;
+		writeText(x+300, y - 50 - (20*i), "Sub-Total: ", contentStream);
+		writeText(x+400, y - 50 - (20*i), invoice.getSubTotal().toString()+" EUR", contentStream);
+		i++;
+		writeText(x+300, y - 50 - (20*i), "VAT Total: ", contentStream);
+		writeText(x+400, y - 50 - (20*i), invoice.getVatTotal().toString()+" EUR", contentStream);
+		i++;
+		writeBoldText(x+300, y - 50 - (20*i), "TOTAL: ", contentStream);
+		writeBoldText(x+400, y - 50 - (20*i), invoice.getTotal().toString()+" EUR", contentStream);
 		
 		return page;
 	}
@@ -216,8 +219,8 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	}
 	
 	private Dimension getImageDimensions(PDJpeg img) {
-		float maxWidth = 150;
-		float maxHeight = 100;
+		float maxWidth = 200;
+		float maxHeight = 80;
 		float width = img.getWidth();
 		float height = img.getHeight();
 		System.out.println("Image of size "+width+"x"+height+"px was resized to:");
