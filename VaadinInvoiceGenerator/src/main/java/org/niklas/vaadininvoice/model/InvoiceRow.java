@@ -1,6 +1,7 @@
 package org.niklas.vaadininvoice.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -36,7 +37,7 @@ public class InvoiceRow {
 	}
 
 	public BigDecimal getPrice() {
-		return price.setScale(2);
+		return price.setScale(2, RoundingMode.HALF_EVEN);
 	}
 	
 	public String getTotalToString(){
@@ -52,27 +53,27 @@ public class InvoiceRow {
 	}
 
 	public void setPrice(BigDecimal price) {
-		this.price = price;
+		this.price = price.setScale(2, RoundingMode.HALF_EVEN);
 	}
 
 	public BigDecimal getTaxRate() {
-		return taxRate.setScale(2);
+		return taxRate.setScale(2, RoundingMode.HALF_EVEN);
 	}
 
 	public void setTaxRate(BigDecimal taxRate) {
-		this.taxRate = taxRate;
+		this.taxRate = taxRate.setScale(2, RoundingMode.HALF_EVEN);
 	}
 
 	public BigDecimal getTotal() {
-		return getPrice().multiply(new BigDecimal(getQuantity())).setScale(2);
+		return getPrice().multiply(new BigDecimal(getQuantity())).setScale(2, RoundingMode.HALF_EVEN);
 	}
 	
 	public BigDecimal getSubTotal(){
 		BigDecimal subTotal = getTotal().subtract(getTotal().multiply(getTaxRate().divide(new BigDecimal(100))));
-		return subTotal.setScale(2);
+		return subTotal.setScale(2, RoundingMode.HALF_EVEN);
 	}
 
 	public BigDecimal getVatTotal() {
-		return getTotal().subtract(getSubTotal()).setScale(2);
+		return getTotal().subtract(getSubTotal()).setScale(2, RoundingMode.HALF_EVEN);
 	}
 }

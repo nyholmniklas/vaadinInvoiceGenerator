@@ -1,6 +1,7 @@
 package org.niklas.vaadininvoice.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Calendar;
@@ -36,7 +37,7 @@ public class Invoice {
 	}
 	
 	public BigDecimal getTotal() {
-		BigDecimal total = new BigDecimal(0).setScale(2);
+		BigDecimal total = new BigDecimal(0).setScale(2, RoundingMode.HALF_EVEN);
 		for (InvoiceRow row:rows.values()) {
 			total = total.add(row.getTotal());
 		}
@@ -44,7 +45,7 @@ public class Invoice {
 	}
 	
 	public BigDecimal getSubTotal() {
-		BigDecimal subTotal = new BigDecimal(0).setScale(2);
+		BigDecimal subTotal = new BigDecimal(0).setScale(2, RoundingMode.HALF_EVEN);
 		for (InvoiceRow row:rows.values()) {
 			subTotal = subTotal.add(row.getSubTotal());
 		}
@@ -52,7 +53,7 @@ public class Invoice {
 	}
 	
 	public BigDecimal getVatTotal() {
-		BigDecimal vatTotal = new BigDecimal(0).setScale(2);
+		BigDecimal vatTotal = new BigDecimal(0).setScale(2, RoundingMode.HALF_EVEN);
 		for (InvoiceRow row:rows.values()) {
 			vatTotal = vatTotal.add(row.getVatTotal());
 		}
