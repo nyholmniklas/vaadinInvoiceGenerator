@@ -7,14 +7,15 @@ import org.niklas.vaadininvoice.model.Invoice;
 public class VaadinInvoiceController {
 	private Invoice2Pdf invoice2Pdf;
 	private String sessionId;
+	private File file;
 
 	public void setInvoice2Pdf(Invoice2Pdf invoice2Pdf) {
 		this.invoice2Pdf = invoice2Pdf;
 	}
 
 	public void createPdf(Invoice invoice){
-		
-		invoice2Pdf.getPdfFromInvoice(invoice, sessionId);
+		file = new File("C:\\temp\\"+sessionId+".pdf");
+		invoice2Pdf.getPdfFromInvoice(invoice, file);
 	}
 
 	public void setSessionId(String id) {
@@ -26,7 +27,6 @@ public class VaadinInvoiceController {
 	}
 
 	public File getPdfFile() {
-		File file = new File("C:\\temp\\"+sessionId+".pdf");
 		return file;
 	}
 }
