@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
+import com.vaadin.server.ErrorEvent;
+import com.vaadin.server.ErrorHandler;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.ProgressBar;
+import com.vaadin.ui.UI;
 import com.vaadin.ui.Upload;
 import com.vaadin.ui.Upload.FailedEvent;
 import com.vaadin.ui.Upload.FailedListener;
@@ -47,7 +50,7 @@ public abstract class UploadComponent extends VerticalLayout
         upload.addFailedListener((Upload.FailedListener) this);
         upload.addProgressListener((Upload.ProgressListener) this);
         upload.addFinishedListener((Upload.FinishedListener) this);
-
+        
         processingLayout = new HorizontalLayout();
         processingLayout.setSpacing(true);
         processingLayout.setVisible(false);
@@ -66,6 +69,8 @@ public abstract class UploadComponent extends VerticalLayout
         });
         processingLayout.addComponent(cancelProcessing);
     }
+    
+    
 
     @Override
     public OutputStream receiveUpload(String filename,  String MIMEType) {
@@ -77,10 +82,13 @@ public abstract class UploadComponent extends VerticalLayout
 		else if (MIMEType.equals("image/jpg")) {
 			extension = ".jpg";
 		}
+		else {
+			Notification.show("Logo file must be JPEG!", Notification.Type.ERROR_MESSAGE);
+			upload.interruptUpload();
+		}
 //		else if (MIMEType.equals("image/png")){
 //			extension = ".png";
-//		}
-		//TODO else throw exception!!!!
+//		}S
 		
         file = new File(directory, getUI().getSession().getSession().getId()+extension);
  
@@ -99,7 +107,6 @@ public abstract class UploadComponent extends VerticalLayout
             upload.interruptUpload();
             return;
         }
-        
         processingLayout.setVisible(true);
         progressBar.setValue(new Float(readBytes / (float) contentLength));
     }
@@ -119,8 +126,7 @@ public abstract class UploadComponent extends VerticalLayout
         } else if (cancelled) {
             
         } else {
-            Notification.show("There was a problem uploading your file.",
-                    "<pre>"+event.getReason().getStackTrace().toString()+"</pre>", Notification.Type.ERROR_MESSAGE);
+            Notification.show("There was a problem uploading your file", Notification.Type.ERROR_MESSAGE);
         }
         
         try{
