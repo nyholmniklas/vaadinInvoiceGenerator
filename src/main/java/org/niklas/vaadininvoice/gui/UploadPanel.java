@@ -1,6 +1,7 @@
 package org.niklas.vaadininvoice.gui;
 
 
+import org.niklas.vaadininvoice.controller.VaadinInvoiceController;
 import org.niklas.vaadininvoice.model.Invoice;
 
 import com.vaadin.data.fieldgroup.FieldGroup;
@@ -16,21 +17,24 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Upload.SucceededEvent;
 
 public class UploadPanel extends Panel{
+	private VaadinInvoiceController controller;
 	private Label uploadLabel;
 	private UploadComponent uploadComponent;
 	private String sessionId;
 	private BeanItem<Invoice> invoiceBean;
 	
-	public UploadPanel(BeanItem<Invoice> invoiceBean, String sessionId) {
+	public UploadPanel(BeanItem<Invoice> invoiceBean, String sessionId, VaadinInvoiceController controller) {
 		this.invoiceBean = invoiceBean;
 		this.sessionId = sessionId;
+		this.controller = controller;
 		initComponents();
 		setLayout();
 	}
 
 	private void initComponents() {
 		uploadLabel = new Label("<b>Upload Logo", ContentMode.HTML);
-		uploadComponent = new UploadComponent("Upload logo", sessionId, 1000000) {
+		System.out.println(controller.getFolderPath());
+		uploadComponent = new UploadComponent("Upload logo", sessionId, 1000000, controller.getFolderPath()) {
 			
 			@Override
 			public void uploadSucceeded(SucceededEvent event) {

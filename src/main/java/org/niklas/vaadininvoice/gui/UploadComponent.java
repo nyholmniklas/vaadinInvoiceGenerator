@@ -39,12 +39,12 @@ public abstract class UploadComponent extends VerticalLayout
     protected Button cancelProcessing;
     protected HorizontalLayout processingLayout;
     
-    public UploadComponent(String buttonCaption, String sessionId, int maxSize) {
+    public UploadComponent(String buttonCaption, String sessionId, int maxSize, String folderPath) {
         upload = new Upload();
         this.addComponent(upload);
         this.maxSize = maxSize;
         upload.setReceiver( this); 
-        this.directory = "/temp";
+        this.directory = folderPath;
         upload.setButtonCaption(buttonCaption);
         upload.addSucceededListener((Upload.SucceededListener) this);
         upload.addFailedListener((Upload.FailedListener) this);
