@@ -44,7 +44,7 @@ public abstract class UploadComponent extends VerticalLayout
         this.addComponent(upload);
         this.maxSize = maxSize;
         upload.setReceiver( this); 
-        this.directory = "/temp/";
+        this.directory = "/temp";
         upload.setButtonCaption(buttonCaption);
         upload.addSucceededListener((Upload.SucceededListener) this);
         upload.addFailedListener((Upload.FailedListener) this);
@@ -90,7 +90,7 @@ public abstract class UploadComponent extends VerticalLayout
 //			extension = ".png";
 //		}S
 		
-        file = new File(directory, getUI().getSession().getSession().getId()+extension);
+        file = new File(directory+"/"+ getUI().getSession().getSession().getId()+extension);
  
         try {
             fos = new FileOutputStream(file);

@@ -21,7 +21,6 @@ public class VaadinInvoiceController {
 
 	public void createPdf(Invoice invoice){
 		String filePath = folderPath+"/"+sessionId+".pdf";
-		if (!new File(folderPath).exists()) new File(folderPath).mkdir();
 		file = new File(filePath);
 		invoice2Pdf.getPdfFromInvoice(invoice, file);
 	}
