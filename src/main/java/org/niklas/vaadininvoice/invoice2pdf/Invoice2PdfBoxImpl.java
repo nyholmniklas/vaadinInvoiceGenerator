@@ -119,7 +119,7 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 	}
 	
 	private PDPage writeInvoiceInfo(int x, int y, Invoice invoice, PDPage page, PDPageContentStream contentStream) throws IOException {
-		DateFormat df = new SimpleDateFormat("dd.MM.YYYY");
+		DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 		writeBoldText(x, y, "Invoice Date", contentStream);
 		writeText(x, y - 14, df.format(invoice.getInvoiceDate()), contentStream);
 		writeBoldText(x, y - 50, "Due Date", contentStream);
