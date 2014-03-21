@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 626b407a3e3197360c631c747c178de1d9201b31
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -27,60 +24,22 @@
 			<url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
-<<<<<<< HEAD
-=======
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>vaadininvoice</groupId>
-	<artifactId>vaadininvoice</artifactId>
-	<packaging>war</packaging>
-	<version>1.0</version>
-	<name>vaadininvoice</name>
-	<repositories>
-		<repository>
-			<id>eap</id>
-			<url>http://maven.repository.redhat.com/techpreview/all</url>
-			<releases>
-				<enabled>true</enabled>
->>>>>>> 5f351ed3ce4ed62b50ba8e16d2ff615cacff01c5
-=======
->>>>>>> 626b407a3e3197360c631c747c178de1d9201b31
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 626b407a3e3197360c631c747c178de1d9201b31
 			<id>vaadin-snapshots</id>
 			<url>http://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
-<<<<<<< HEAD
-=======
 			<id>eap</id>
 			<url>http://maven.repository.redhat.com/techpreview/all</url>
 			<releases>
 				<enabled>true</enabled>
->>>>>>> 5f351ed3ce4ed62b50ba8e16d2ff615cacff01c5
-=======
->>>>>>> 626b407a3e3197360c631c747c178de1d9201b31
 			</releases>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 626b407a3e3197360c631c747c178de1d9201b31
 	<dependencies>
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -253,8 +212,6 @@
 			<id>openshift</id>
 			<build>
 				<finalName>travel</finalName>
-<<<<<<< HEAD
-=======
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.6</maven.compiler.source>
@@ -284,9 +241,6 @@
 			<id>openshift</id>
 			<build>
 				<finalName>vaadininvoice</finalName>
->>>>>>> 5f351ed3ce4ed62b50ba8e16d2ff615cacff01c5
-=======
->>>>>>> 626b407a3e3197360c631c747c178de1d9201b31
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>
@@ -300,8 +254,4 @@
 			</build>
 		</profile>
 	</profiles>
-<<<<<<< HEAD
 </project>
-=======
-</project>
->>>>>>> 626b407a3e3197360c631c747c178de1d9201b31
