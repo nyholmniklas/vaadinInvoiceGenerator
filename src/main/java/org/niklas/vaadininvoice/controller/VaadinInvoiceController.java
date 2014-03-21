@@ -8,13 +8,21 @@ public class VaadinInvoiceController {
 	private Invoice2Pdf invoice2Pdf;
 	private String sessionId;
 	private File file;
-
+	private String folderPath;
+	
+	public VaadinInvoiceController(){
+		folderPath = "/temp";
+		if (!new File(folderPath).exists()) new File(folderPath).mkdir();
+	}
+	
 	public void setInvoice2Pdf(Invoice2Pdf invoice2Pdf) {
 		this.invoice2Pdf = invoice2Pdf;
 	}
 
 	public void createPdf(Invoice invoice){
-		file = new File("C:\\temp\\"+sessionId+".pdf");
+		String filePath = folderPath+"/"+sessionId+".pdf";
+		if (!new File(folderPath).exists()) new File(folderPath).mkdir();
+		file = new File(filePath);
 		invoice2Pdf.getPdfFromInvoice(invoice, file);
 	}
 

@@ -44,7 +44,7 @@ public abstract class UploadComponent extends VerticalLayout
         this.addComponent(upload);
         this.maxSize = maxSize;
         upload.setReceiver( this); 
-        this.directory = "C:\\temp\\";
+        this.directory = "/temp/";
         upload.setButtonCaption(buttonCaption);
         upload.addSucceededListener((Upload.SucceededListener) this);
         upload.addFailedListener((Upload.FailedListener) this);
