@@ -5,7 +5,7 @@ Vaadin Invoice Generator
 Vaadin-based web application for creating a PDF Invoice.
 
 ## Screenshot
-![Screenshot](https://raw.github.com/nyholmniklas/vaadinInvoiceGenerator/master/VaadinInvoiceGenerator/doc/screenshot.png)
+![Screenshot](https://raw.github.com/nyholmniklas/vaadinInvoiceGenerator/master/doc/screenshot.png)
 
 ## Dependencies
 All the relevant depencies are included in the pom.xml file.
@@ -15,4 +15,4 @@ All the relevant depencies are included in the pom.xml file.
  -Hibernate Validator
 
 ## Class Diagram
-![Class Diagram](https://raw.github.com/nyholmniklas/vaadinInvoiceGenerator/master/VaadinInvoiceGenerator/doc/class_diagram.jpg)
+![Class Diagram](https://raw.github.com/nyholmniklas/vaadinInvoiceGenerator/master/doc/class_diagram.jpg)
