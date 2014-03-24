@@ -62,6 +62,7 @@ public class Invoice {
 	
 	public void removeRowById(Integer id) {
 		rows.remove(id);
+		System.out.println("Number of rows: " + rows.size());
 	}
 
 	public void addRow(int id, InvoiceRow row) {

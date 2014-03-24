@@ -57,9 +57,6 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 			//Have to create new content stream to avoid bug with pdfbox
 			contentStream = new PDPageContentStream(doc, page);
 			Dimension logoDimensions = getImageDimensions(img);
-//			img.setWidth((int) Math.round(logoDimensions.getWidth()));
-//			img.setHeight((int) Math.round(logoDimensions.getHeight()));
-//			contentStream.drawImage(img, 50, 50);
 			contentStream.drawXObject(img, 50f, 692f, (float)logoDimensions.getWidth(), (float) logoDimensions.getHeight());
 		}
 		else {
@@ -139,14 +136,14 @@ public class Invoice2PdfBoxImpl implements Invoice2Pdf{
 		writeBoldText(x+400, y, "Total", contentStream);
 		
 		int i = 0;
-		for (; i < invoice.getRows().size() ; i++) {
-			InvoiceRow row = invoice.getRows().get(i);
+		for (InvoiceRow row: invoice.getRows().values()) {
 			int tempY = y - 25 - (14*i);
 			writeText(x, tempY, row.getDescription(), contentStream);
 			writeText(x+100, tempY, Integer.toString(row.getQuantity()), contentStream);
 			writeText(x+200, tempY, row.getPrice().toString(), contentStream);
 			writeText(x+300, tempY, row.getTaxRate().toString(), contentStream);
-			writeText(x+400, tempY, row.getTotal().toString()+" EUR", contentStream);
+			writeText(x+400, tempY, row.getTotal().toString()+" EUR", contentStream); 
+			i++;
 		}
 		i++;
 		writeText(x+300, y - 50 - (20*i), "Sub-Total: ", contentStream);
