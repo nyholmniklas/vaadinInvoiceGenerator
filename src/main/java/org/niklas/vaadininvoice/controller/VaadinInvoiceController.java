@@ -1,8 +1,11 @@
 package org.niklas.vaadininvoice.controller;
 
 import java.io.File;
+
 import org.niklas.vaadininvoice.invoice2pdf.Invoice2Pdf;
 import org.niklas.vaadininvoice.model.Invoice;
+
+import com.vaadin.server.VaadinRequest;
 
 public class VaadinInvoiceController {
 	private Invoice2Pdf invoice2Pdf;
@@ -12,8 +15,9 @@ public class VaadinInvoiceController {
 			.getenv("OPENSHIFT_DATA_DIR");
 	public static final String LOCAL_PATH = "C:\\temp\\";
 	private String folderPath;
-
+	
 	public VaadinInvoiceController() {
+		
 		if (OPENSHIFT_PATH == null || OPENSHIFT_PATH.isEmpty()) {
 			System.out.println("Using local file path");
 			folderPath = LOCAL_PATH;

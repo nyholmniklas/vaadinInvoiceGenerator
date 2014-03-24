@@ -30,9 +30,8 @@ public class VaadinInvoiceGui extends Panel {
 		this.controller = controller;
 		invoice = new Invoice();
 		invoiceBean = new BeanItem<Invoice>(invoice);
-
 		createButton = new Button("Generate PDF");
-		titlePanel = new TitlePanel(createButton, invoiceBean);
+		titlePanel = new TitlePanel(createButton, invoiceBean, controller);
 		infoPanel = new InfoPanel(invoiceBean);
 		descriptionPanel = new DescriptionPanel(invoiceBean);
 		invoiceRowPanel = new InvoiceRowPanel(invoiceBean);
